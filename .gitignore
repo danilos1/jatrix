@@ -1,7 +1,6 @@
 # Default ignored files
 syntax: glob
 
-*.xml
 *.iml
 .idea
 target
