@@ -3,6 +3,6 @@ syntax: glob
 
 *.iml
 .idea
-
+target
 
 
