@@ -1,2 +1,2 @@
 # MatrixJa
-A project for performing different operations with matrices.
+A library for performing different operations with matrices.
