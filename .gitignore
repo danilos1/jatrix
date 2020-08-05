@@ -1,8 +1,0 @@
-# Default ignored files
-syntax: glob
-
-*.iml
-.idea
-target
-
-
