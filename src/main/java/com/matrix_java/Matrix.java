@@ -5,7 +5,7 @@ package com.matrix_java;
  * @param <T> - some type of values, containing in a matrix
  */
 public class Matrix<T> implements Cloneable {
-    private T[][] matrix;
+    T[][] matrix;
     private final int row, col;
     private Solver solver;  
     
@@ -38,10 +38,13 @@ public class Matrix<T> implements Cloneable {
         return solver;
     }
 
+
+
+
     /**
      * A class for getting a solver of concrete matrix.
      */
-    public class Solver { }
+    public static class Solver { }
     
     /**
      * A method for checking if a matrix is square (quantity of rows and columns must be equals)
@@ -119,7 +122,7 @@ public class Matrix<T> implements Cloneable {
      * A method that transposes some matrix.
      * @return Returns a transpose matrix of concrete matrix.
      */
-    public Matrix getTranspose() {
+    public Matrix<T> getTranspose() {
         Matrix<T> matrixT = new Matrix<>(col, row);
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
@@ -145,17 +148,12 @@ public class Matrix<T> implements Cloneable {
         return matrix;
     }
 
-    /**
-     * TODO
-     */
-    /*@Override
-    public Matrix clone() {
-        Matrix<T> newMatrix = new Matrix(row, col);
-        try {
-            newMatrix = (Matrix) super.clone(); 
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+    @Override
+    public Matrix<T> clone() {
+        Matrix<T> matrix = new Matrix<>(row, col);
+        for (int i = 0; i < row; i++) {
+            System.arraycopy(this.matrix[i], 0, matrix.matrix[i], 0, col);
         }
-        return newMatrix;
-    }*/
+        return matrix;
+    }
 }

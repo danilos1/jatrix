@@ -10,16 +10,20 @@ public class Matrices {
     
     private Matrices() {}
     
-    public static Matrix add(Matrix m1, Matrix m2) { return null; }
+    public static <T> Matrix<T> add(Matrix<T> m1, Matrix<T> m2) { return null; }
+
+    public static <T> Matrix<T> add(Matrix<T> dest, Matrix<T> m1, Matrix<T> m2) { return null; }
     
-    public static Matrix add(Matrix dest, Matrix m1, Matrix m2) { return null;}
+    public static <T> Matrix<T> mul(Matrix<T> m1, Matrix<T> m2) { return null; }
     
-    public static Matrix mul(Matrix m1, Matrix m2) { return null; }
-    
-    public static Matrix mul(Matrix dest, Matrix m1, Matrix m2) { return null; }
+    public static <T> Matrix<T> mul(Matrix<T> dest, Matrix<T> m1, Matrix<T> m2) { return null; }
     
     public static void sort() {}
     
-    public static void sort(Matrix matrix, Comparator comparator) { }
+    public static <T> void sort(Matrix<T> matrix, Comparator<T> comparator) { }
+
+    public static <T> void transpose(Matrix<T> matrix) {
+
+    }
    
 }
