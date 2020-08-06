@@ -10,5 +10,6 @@ public class TestMatrix {
         System.out.println(matrix);
         Matrices.transpose(matrix);
         System.out.println(matrix);
+        System.out.println("Hello world");
     }
 }
