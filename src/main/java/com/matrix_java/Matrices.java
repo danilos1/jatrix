@@ -17,6 +17,10 @@ public class Matrices {
     public static <T extends Number> Matrix<T> multiply(Matrix<T> m1, Matrix<T> m2) { return null; }
     
     public static <T extends Number> Matrix<T> multiply(Matrix<T> dest, Matrix<T> m1, Matrix<T> m2) { return null; }
+
+    public static <T extends Number> Matrix<T> sub(Matrix<T> m1, Matrix<T> m2) { return null; }
+
+    public static <T extends Number> Matrix<T> sub(Matrix<T> dest, Matrix<T> m1, Matrix<T> m2) { return null; }
     
     public static <T> void sort() {}
     
