@@ -1,14 +1,23 @@
 package com.matrix_java;
 
+
 /**
  * Matrix class is used as a representation of a matrix
  * @param <T> - some type of values, containing in a matrix
  */
 public class Matrix<T extends Number> implements Cloneable {
-    T[][] matrix;
+    private T[][] matrix;
     private final int row, col;
-    private Solver solver;  
-    
+    private Solver solver;
+
+    public void setMatrix(T[][] matrix) {
+        this.matrix = matrix;
+    }
+
+    public T[][] getMatrix() {
+        return matrix;
+    }
+
     public void clear() {
         matrix = null;
     }
@@ -37,6 +46,7 @@ public class Matrix<T extends Number> implements Cloneable {
         if (solver == null) solver = new Solver();
         return solver;
     }
+
 
     /**
      * A class for getting a solver of concrete matrix.
@@ -129,7 +139,7 @@ public class Matrix<T extends Number> implements Cloneable {
         Matrix<T> matrixT = new Matrix<>(col, row);
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
-                matrixT.matrix[i][j] = matrix[j][i]; 
+                matrixT.matrix[i][j] = matrix[j][i];
             }
         }
         return matrixT;

@@ -30,10 +30,10 @@ public class Matrices {
 
         for (int i = 0; i < cols; i++) {
             for (int j = 0; j < rows; j++) {
-                transposedMatrix.matrix[i][j] = matrix.matrix[j][i];
+                transposedMatrix.set(i, j, matrix.get(j, i));
             }
         }
-        matrix.matrix = transposedMatrix.matrix;
+        matrix.setMatrix(transposedMatrix.getMatrix());
     }
    
 }
