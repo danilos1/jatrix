@@ -1,14 +1,23 @@
 package com.matrix_java;
 
+
 /**
  * Matrix class is used as a representation of a matrix
  * @param <T> - some type of values, containing in a matrix
  */
-public class Matrix<T> implements Cloneable {
-    T[][] matrix;
+public class Matrix<T extends Number> implements Cloneable {
+    private T[][] matrix;
     private final int row, col;
-    private Solver solver;  
-    
+    private Solver solver;
+
+    public void setMatrix(T[][] matrix) {
+        this.matrix = matrix;
+    }
+
+    public T[][] getMatrix() {
+        return matrix;
+    }
+
     public void clear() {
         matrix = null;
     }
@@ -39,16 +48,20 @@ public class Matrix<T> implements Cloneable {
     }
 
 
-
-
     /**
      * A class for getting a solver of concrete matrix.
      */
-    public static class Solver { }
-    
+    public static class Solver {
+        private Solver() {}
+
+        public double getDeterminant() {
+            return 0;
+        }
+    }
+
     /**
-     * A method for checking if a matrix is square (quantity of rows and columns must be equals)
-     * @return returns a result if a matrix is pair (Quantity of rows and 
+     * A method for checking if a matrix is square (number of rows and columns must be equals)
+     * @return a result if a matrix is pair (Quantity of rows and
      * columns must be same)
      */
     public boolean isSquare() {
@@ -61,7 +74,7 @@ public class Matrix<T> implements Cloneable {
      * @param col - quantity of columns
      */
     public Matrix(int row, int col) {
-        matrix =  (T[][]) (new Object[row][col]);
+        matrix =  (T[][]) (new Number[row][col]);
         this.row = row;
         this.col = col;
     }
@@ -73,7 +86,7 @@ public class Matrix<T> implements Cloneable {
      * @param val - some value, which is filler of matrix
      */
     public Matrix(int row, int col, T val) {
-        matrix =  (T[][]) (new Object[row][col]);
+        matrix =  (T[][]) (new Number[row][col]);
         this.row = row;
         this.col = col;
         fill(val);
@@ -120,13 +133,13 @@ public class Matrix<T> implements Cloneable {
 
     /**
      * A method that transposes some matrix.
-     * @return Returns a transpose matrix of concrete matrix.
+     * @return a transpose matrix of concrete matrix.
      */
     public Matrix<T> getTranspose() {
         Matrix<T> matrixT = new Matrix<>(col, row);
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
-                matrixT.matrix[i][j] = matrix[j][i]; 
+                matrixT.matrix[i][j] = matrix[j][i];
             }
         }
         return matrixT;
