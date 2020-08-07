@@ -118,6 +118,10 @@ public class Matrix implements Cloneable {
     public Matrix(int size) {
         this(size, size);
     }
+
+    public Matrix(int size, T val) {
+        this(size, size, val);
+    }
     
     private void checkSize(double[][] matrix) {
         int cur = matrix[0].length;
