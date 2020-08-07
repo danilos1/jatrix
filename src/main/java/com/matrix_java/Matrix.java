@@ -119,7 +119,7 @@ public class Matrix implements Cloneable {
         this(size, size);
     }
 
-    public Matrix(int size, T val) {
+    public Matrix(int size, double val) {
         this(size, size, val);
     }
     
