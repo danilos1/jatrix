@@ -5,16 +5,16 @@ package com.matrix_java;
  * Matrix class is used as a representation of a matrix
  * @param <T> - some type of values, containing in a matrix
  */
-public class Matrix<T extends Number> implements Cloneable {
-    private T[][] matrix;
+public class Matrix implements Cloneable {
+    private double[][] matrix;
     private final int row, col;
     private Solver solver;
 
-    public void setMatrix(T[][] matrix) {
+    public void setMatrix(double[][] matrix) {
         this.matrix = matrix;
     }
 
-    public T[][] getMatrix() {
+    public double[][] getMatrix() {
         return matrix;
     }
 
@@ -30,11 +30,11 @@ public class Matrix<T extends Number> implements Cloneable {
         return col;
     }
        
-    public T get(int row, int col) {
+    public double get(int row, int col) {
         return matrix[row][col];
     }
     
-    public void set(int row, int col, T item) {
+    public void set(int row, int col, double item) {
         matrix[row][col] = item;
     }
 
@@ -74,7 +74,7 @@ public class Matrix<T extends Number> implements Cloneable {
      * @param col - quantity of columns
      */
     public Matrix(int row, int col) {
-        matrix =  (T[][]) (new Number[row][col]);
+        matrix = new double[row][col];
         this.row = row;
         this.col = col;
     }
@@ -85,8 +85,8 @@ public class Matrix<T extends Number> implements Cloneable {
      * @param col - quantity of columns
      * @param val - some value, which is filler of matrix
      */
-    public Matrix(int row, int col, T val) {
-        matrix =  (T[][]) (new Number[row][col]);
+    public Matrix(int row, int col, double val) {
+        matrix =  new double[row][col];
         this.row = row;
         this.col = col;
         fill(val);
@@ -96,14 +96,14 @@ public class Matrix<T extends Number> implements Cloneable {
      * A basic constructor, receiving an array of some type T .
      * @param matrix - a filled matrix of type T .
      */
-    public Matrix(T[][] matrix) {
+    public Matrix(double[][] matrix) {
         checkSize(matrix);
         this.matrix = matrix;
         this.row = matrix.length;
         this.col = matrix[0].length;
     }
 
-    private void fill(T val) {
+    private void fill(double val) {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 matrix[i][j] = val;
@@ -119,7 +119,7 @@ public class Matrix<T extends Number> implements Cloneable {
         this(size, size);
     }
     
-    private void checkSize(T[][] matrix) {
+    private void checkSize(double[][] matrix) {
         int cur = matrix[0].length;
         for (int i = 0; i < matrix.length - 1; i++) {
             int next = matrix[i+1].length;
@@ -135,8 +135,8 @@ public class Matrix<T extends Number> implements Cloneable {
      * A method that transposes some matrix.
      * @return a transpose matrix of concrete matrix.
      */
-    public Matrix<T> getTranspose() {
-        Matrix<T> matrixT = new Matrix<>(col, row);
+    public Matrix getTranspose() {
+        Matrix matrixT = new Matrix(col, row);
         for (int i = 0; i < col; i++) {
             for (int j = 0; j < row; j++) {
                 matrixT.matrix[i][j] = matrix[j][i];
@@ -157,13 +157,13 @@ public class Matrix<T extends Number> implements Cloneable {
         return sb.toString();
     }
 
-    public T[][] toArray() {
+    public double[][] toArray() {
         return matrix;
     }
 
     @Override
-    public Matrix<T> clone() {
-        Matrix<T> matrix = new Matrix<>(row, col);
+    public Matrix clone() {
+        Matrix matrix = new Matrix(row, col);
         for (int i = 0; i < row; i++) {
             System.arraycopy(this.matrix[i], 0, matrix.matrix[i], 0, col);
         }
