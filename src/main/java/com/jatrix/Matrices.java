@@ -30,7 +30,7 @@ public class Matrices {
     }
 
     public static Matrix sub(Matrix m1, Matrix m2) {
-        if (isEqualsDimensions(m1, m2))
+        if (!isEqualsDimensions(m1, m2))
             throw new MatrixSizeException("Dimensions of matrices must be equaled");
 
         int rows = m1.getRows();
