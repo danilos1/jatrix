@@ -1,4 +1,4 @@
-package com.matrix_java;
+package com.jatrix;
 
 
 /**
@@ -173,4 +173,5 @@ public class Matrix implements Cloneable {
         }
         return matrix;
     }
+    
 }
