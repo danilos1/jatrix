@@ -53,7 +53,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
     @Override
-    public Iterator<Double> iterator() {
+    public MatrixIterator iterator() {
         return new MatrixIterator(matrix);
     }
 

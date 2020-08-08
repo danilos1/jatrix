@@ -6,7 +6,6 @@ public class MatrixIterator implements Iterator<Double> {
     private double[][] matrix;
     private int i, j;
     private int row, col;
-    private int curRow, curCol;
 
     public MatrixIterator(double[][] matrix) {
         this.matrix = matrix;
@@ -25,7 +24,6 @@ public class MatrixIterator implements Iterator<Double> {
             i++;
             j = 0;
         }
-
         return matrix[i][j++];
     }
 }
