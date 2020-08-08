@@ -3,7 +3,6 @@ package com.jatrix;
 
 /**
  * Matrix class is used as a representation of a matrix
- * @param <T> - some type of values, containing in a matrix
  */
 public class Matrix implements Cloneable {
     private double[][] matrix;
