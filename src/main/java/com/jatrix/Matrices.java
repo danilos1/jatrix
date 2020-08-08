@@ -7,6 +7,7 @@ package com.jatrix;
 public class Matrices {
     
     private Matrices() {}
+    
 
     public static void transpose(Matrix matrix) {
         int rows = matrix.getRows();
