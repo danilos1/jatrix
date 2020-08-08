@@ -1,6 +1,9 @@
 package com.jatrix;
 
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Matrix class is used as a representation of a matrix
  */
@@ -18,7 +21,7 @@ public class Matrix implements Cloneable {
     }
 
     public void clear() {
-        matrix = null;
+        matrix = new double[row][col];
     }
     
     public int getRows() {
@@ -134,6 +137,31 @@ public class Matrix implements Cloneable {
         }     
     }
 
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(row, col, solver);
+        result = 31 * result + Arrays.hashCode(matrix);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object matrix) {
+        if (matrix == null) throw new NullPointerException("Matrix cannot be equaled to null");
+        if (!(matrix instanceof Matrix))
+            throw new ClassCastException("Cannot cast "+matrix.getClass().getName()+" to Matrix");
+
+        Matrix matrix1 = (Matrix) matrix;
+
+        if (row != matrix1.row || col != matrix1.col) return false;
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (this.matrix[i][j] != matrix1.matrix[i][j]) return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * A method that transposes some matrix.
      * @return a transpose matrix of concrete matrix.
@@ -172,5 +200,4 @@ public class Matrix implements Cloneable {
         }
         return matrix;
     }
-    
 }

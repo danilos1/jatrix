@@ -7,5 +7,7 @@ public class TestMatrix {
 
         Matrix m3 = Matrices.add(Matrices.add(m1, m2), m2);
         System.out.println(m3);
+
+        TestMatrix m4 = null;
     }
 }
