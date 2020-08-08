@@ -22,5 +22,17 @@ public class Matrices {
         }
         matrix.setMatrix(transposedMatrix.getMatrix());
     }
+
+    public static Matrix add(Matrix m1, Matrix m2) {
+        int rows = m1.getRows();
+        int columns = m1.getColumns();
+        Matrix m3 = new Matrix(rows, columns);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                m3.set(i, j, m1.get(i, j) + m2.get(i, j));
+            }
+        }
+        return m3;
+    }
    
 }
