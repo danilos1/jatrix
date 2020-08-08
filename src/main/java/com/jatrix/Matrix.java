@@ -2,12 +2,15 @@ package com.jatrix;
 
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Objects;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 /**
  * Matrix class is used as a representation of a matrix
  */
-public class Matrix implements Cloneable {
+public class Matrix implements Cloneable, Iterable<Double> {
     private double[][] matrix;
     private final int row, col;
     private Solver solver;
@@ -47,6 +50,11 @@ public class Matrix implements Cloneable {
     public Solver getSolver() {
         if (solver == null) solver = new Solver();
         return solver;
+    }
+
+    @Override
+    public Iterator<Double> iterator() {
+        return new MatrixIterator(matrix);
     }
 
 
