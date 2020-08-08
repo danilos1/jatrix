@@ -1,10 +1,7 @@
-package com.jatrix;
+package main.java.com.jatrix;
 
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.BaseStream;
 import java.util.stream.DoubleStream;
@@ -61,6 +58,10 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return new MatrixIterator(matrix);
     }
 
+    @Override
+    public MatrixSplitIterator spliterator() {
+        return new MatrixSplitIterator(matrix);
+    }
 
     /**
      * A class for getting a solver of concrete matrix.
@@ -179,7 +180,13 @@ public class Matrix implements Cloneable, Iterable<Double> {
      * @return
      */
     public DoubleStream stream() {
-        return null;
+        DoubleStream doubleStream = DoubleStream.of(matrix[0]);
+        DoubleStream tempDoubleStream;
+        for (int i = 1; i < row; i++) {
+            tempDoubleStream = DoubleStream.of(matrix[i]);
+            doubleStream = DoubleStream.concat(doubleStream, tempDoubleStream);
+        }
+        return doubleStream;
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.jatrix;
+package main.java.com.jatrix;
 
 /**
  * Matrices class is intended for performing basic matrix operations such as

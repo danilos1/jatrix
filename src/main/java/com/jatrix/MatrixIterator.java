@@ -1,4 +1,4 @@
-package com.jatrix;
+package main.java.com.jatrix;
 
 import java.util.Iterator;
 
