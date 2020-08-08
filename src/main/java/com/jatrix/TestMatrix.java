@@ -5,9 +5,7 @@ public class TestMatrix {
         Matrix m1 = new Matrix(new double[][]{{1,2},{3,4}});
         Matrix m2 = new Matrix(new double[][]{{5,8},{3,2}});
 
-        Matrix m3 = Matrices.add(Matrices.add(m1, m2), m2);
+        Matrix m3 = Matrices.sub(m1, m2);
         System.out.println(m3);
-
-        TestMatrix m4 = null;
     }
 }
