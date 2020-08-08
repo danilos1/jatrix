@@ -1,4 +1,4 @@
-package com.matrix_java;
+package com.jatrix;
 
 /**
  *
