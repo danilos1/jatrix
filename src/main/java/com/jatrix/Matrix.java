@@ -6,6 +6,10 @@ import java.util.Iterator;
 import java.util.Objects;
 import java.util.Spliterator;
 import java.util.function.Consumer;
+import java.util.stream.BaseStream;
+import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Matrix class is used as a representation of a matrix
@@ -171,6 +175,14 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
     /**
+     * TODO
+     * @return
+     */
+    public DoubleStream stream() {
+        return null;
+    }
+
+    /**
      * A method that transposes some matrix.
      * @return a transpose matrix of concrete matrix.
      */
@@ -208,4 +220,5 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return matrix;
     }
+    
 }
