@@ -6,7 +6,8 @@ package main.java.com.jatrix;
  */
 public class Matrices {
 
-    private Matrices() { }
+    private Matrices() {
+    }
 
 
     private static boolean isNotEqualsDimensions(Matrix m1, Matrix m2) {
@@ -53,12 +54,25 @@ public class Matrices {
     public static Matrix mul(Matrix m1, Matrix m2) {
         if (m1.getColumns() != m2.getRows())
             throw new MatrixSizeException("Invalid multiplication operation. Number of columns of the first matrix " +
-                    "must be equaled to number of rows of the second one. Expected: "+m1.getColumns()+", but founded: "
-            + m2.getRows());
+                    "must be equaled to number of rows of the second one. Expected: " + m1.getColumns() + ", but founded: "
+                    + m2.getRows());
 
-        // Code for multiplication
-        
-        return null;
+        int rows = m1.getRows();
+        int suma = m1.getColumns();
+        int columnsM2 = m2.getColumns();
+        Matrix newMatrix = new Matrix(rows, columnsM2);
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columnsM2; j++) {
+                double sum = 0;
+                for (int k = 0; k < suma; k++) {
+                    sum += m1.get(i, k) * m2.get(k, j);
+                }
+                newMatrix.set(i, j, sum);
+            }
+        }
+
+        return newMatrix;
     }
 
 
@@ -69,7 +83,7 @@ public class Matrices {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                newMatrix.set(i, j,c * matrix.get(i, j));
+                newMatrix.set(i, j, c * matrix.get(i, j));
             }
         }
 
