@@ -8,12 +8,14 @@ public class Matrices {
 
     private Matrices() { }
 
-    private static boolean isEqualsDimensions(Matrix m1, Matrix m2) {
-        return m1.getRows() == m2.getRows() && m1.getColumns() == m2.getColumns();
+
+    private static boolean isNotEqualsDimensions(Matrix m1, Matrix m2) {
+        return m1.getRows() != m2.getRows() || m1.getColumns() != m2.getColumns();
     }
 
+
     public static Matrix add(Matrix m1, Matrix m2) {
-        if (!isEqualsDimensions(m1, m2))
+        if (isNotEqualsDimensions(m1, m2))
             throw new MatrixSizeException("Dimensions of matrices must be equaled");
 
         int rows = m1.getRows();
@@ -29,8 +31,9 @@ public class Matrices {
         return newMatrix;
     }
 
+
     public static Matrix sub(Matrix m1, Matrix m2) {
-        if (!isEqualsDimensions(m1, m2))
+        if (isNotEqualsDimensions(m1, m2))
             throw new MatrixSizeException("Dimensions of matrices must be equaled");
 
         int rows = m1.getRows();
@@ -46,12 +49,9 @@ public class Matrices {
         return newMatrix;
     }
 
-    private static boolean ableToMultiplication(Matrix m1, Matrix m2) {
-        return m1.getColumns() == m2.getRows();
-    }
 
     public static Matrix mul(Matrix m1, Matrix m2) {
-        if (!ableToMultiplication(m1, m2))
+        if (m1.getColumns() != m2.getRows())
             throw new MatrixSizeException("Invalid multiplication operation. Number of columns of the first matrix " +
                     "must be equaled to number of rows of the second one. Expected: "+m1.getColumns()+", but founded: "
             + m2.getRows());
@@ -60,6 +60,7 @@ public class Matrices {
         
         return null;
     }
+
 
     public static Matrix mul(double c, Matrix matrix) {
         int rows = matrix.getRows();
@@ -87,5 +88,10 @@ public class Matrices {
         }
 
         return transposedMatrix;
+    }
+
+
+    public static Matrix inverse(Matrix matrix) {
+        return null;
     }
 }
