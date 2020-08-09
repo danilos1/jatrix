@@ -2,11 +2,7 @@ package main.java.com.jatrix;
 
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.stream.BaseStream;
 import java.util.stream.DoubleStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 /**
  * Matrix class is used as a representation of a matrix
@@ -16,33 +12,41 @@ public class Matrix implements Cloneable, Iterable<Double> {
     private final int row, col;
     private Solver solver;
 
+
     public void setMatrix(double[][] matrix) {
         this.matrix = matrix;
     }
+
 
     public double[][] getMatrix() {
         return matrix;
     }
 
+
     public void clear() {
         matrix = new double[row][col];
     }
-    
+
+
     public int getRows() {
         return row;
     }
 
+
     public int getColumns() {
         return col;
     }
-       
+
+
     public double get(int row, int col) {
         return matrix[row][col];
     }
-    
+
+
     public void set(int row, int col, double item) {
         matrix[row][col] = item;
     }
+
 
     /**
      * A method for getting a solver of a matrix.
@@ -53,15 +57,18 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return solver;
     }
 
+
     @Override
     public MatrixIterator iterator() {
         return new MatrixIterator(matrix);
     }
 
+
     @Override
     public MatrixSplitIterator spliterator() {
         return new MatrixSplitIterator(matrix);
     }
+
 
     /**
      * A class for getting a solver of concrete matrix.
@@ -74,6 +81,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
     }
 
+
     /**
      * A method for checking if a matrix is square (number of rows and columns must be equals)
      * @return a result if a matrix is pair (Quantity of rows and
@@ -82,6 +90,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
     public boolean isSquare() {
         return row == col;
     }
+
 
     /**
      * A basic constructor, used for creating a matrix of row x col size
@@ -93,7 +102,8 @@ public class Matrix implements Cloneable, Iterable<Double> {
         this.row = row;
         this.col = col;
     }
-    
+
+
     /**
      * A basic constructor, used for creating a matrix row x col size with filled values of val parameter
      * @param row - quantity of rows
@@ -106,7 +116,8 @@ public class Matrix implements Cloneable, Iterable<Double> {
         this.col = col;
         fill(val);
     }
-    
+
+
     /**
      * A basic constructor, receiving an array of some type T .
      * @param matrix - a filled matrix of type T .
@@ -117,6 +128,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         this.row = matrix.length;
         this.col = matrix[0].length;
     }
+
 
     private void fill(double val) {
         for (int i = 0; i < row; i++) {
@@ -134,6 +146,11 @@ public class Matrix implements Cloneable, Iterable<Double> {
         this(size, size);
     }
 
+    /**
+     * TODO
+     * @param size
+     * @param val
+     */
     public Matrix(int size, double val) {
         this(size, size, val);
     }
@@ -176,8 +193,8 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
     /**
-     * TODO
-     * @return
+     * A method for supporting a Stream API with matrices
+     * @return a DoubleStream of the matrix
      */
     public DoubleStream stream() {
         DoubleStream doubleStream = DoubleStream.of(matrix[0]);
@@ -215,6 +232,26 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return sb.toString();
     }
 
+    /**
+     * A method, which outs a matrix in a pretty form
+     * TODO
+     * @return a matrix in a pretty form
+     */
+    public String prettyOut() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("The size of matrix: %d x %d", row, col));
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                // code
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * A method for converting the matrix into two-dimensional array
+     * @return a two-dimensional array underlying in the matrix
+     */
     public double[][] toArray() {
         return matrix;
     }
@@ -227,5 +264,4 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return matrix;
     }
-    
 }
