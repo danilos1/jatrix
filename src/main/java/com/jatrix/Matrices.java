@@ -52,7 +52,7 @@ public class Matrices {
 
     public static Matrix mul(Matrix m1, Matrix m2) {
         if (!ableToMultiplication(m1, m2))
-            throw new MatrixSizeException("Invalid multiplication operation. Number of columns of the first matrix " +
+            throw new MatrixSizeException("Invalid multiplication operation. \nNumber of columns of the first matrix " +
                     "must be equaled to number of rows of the second one. Expected: "+m1.getColumns()+", but founded: "
             + m2.getRows());
 
