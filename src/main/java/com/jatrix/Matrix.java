@@ -256,6 +256,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return matrix;
     }
 
+
     @Override
     public Matrix clone() {
         Matrix matrix = new Matrix(row, col);
@@ -265,9 +266,11 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return matrix;
     }
 
+
     public double[] getRow(int i) {
         return matrix[i];
     }
+
 
     public boolean isPair() {
         return (row & 0b1) == 0 && (col & 0b1) == 0;
