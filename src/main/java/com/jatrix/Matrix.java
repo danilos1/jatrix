@@ -264,4 +264,9 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return matrix;
     }
+
+    public double[] getRow(int i) {
+        return matrix[i];
+    }
+
 }
