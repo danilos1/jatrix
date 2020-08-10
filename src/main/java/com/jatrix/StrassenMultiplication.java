@@ -8,7 +8,6 @@ public class StrassenMultiplication {
         return null;
     }
 
-
     public static Matrix[] split(Matrix A) {
         int size = A.getRows();
         Matrix[] splitedMatrices = {
