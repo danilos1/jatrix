@@ -56,6 +56,10 @@ public class Matrices {
                     "must be equaled to number of rows of the second one. Expected: " + m1.getColumns() + ", but founded: "
                     + m2.getRows());
 
+        if (m1.isSquare() && m1.isPair() && m2.isSquare() && m2.isPair()) {
+            return StrassenMultiplication.mul(m1, m2);
+        }
+
         int rows = m1.getRows();
         int suma = m1.getColumns();
         int columnsM2 = m2.getColumns();

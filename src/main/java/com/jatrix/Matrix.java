@@ -269,4 +269,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return matrix[i];
     }
 
+    public boolean isPair() {
+        return (row & 0b1) == 0 && (col & 0b1) == 0;
+    }
 }

@@ -5,6 +5,10 @@ import java.util.Arrays;
 public class StrassenMultiplication {
 
     public static Matrix mul(Matrix A, Matrix B) {
+        if (A.getRows() == 2 && B.getRows() == 2) {
+            
+        }
+
         return null;
     }
 
