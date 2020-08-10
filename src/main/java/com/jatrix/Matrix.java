@@ -137,7 +137,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
             }
         }
     }
-    
+
     /**
      * A basic constructor, receiving a size, which is a quantity of rows and columns simultaneously.
      * @param size - a quantity of rows and columns simultaneously
@@ -154,17 +154,17 @@ public class Matrix implements Cloneable, Iterable<Double> {
     public Matrix(int size, double val) {
         this(size, size, val);
     }
-    
+
     private void checkSize(double[][] matrix) {
         int cur = matrix[0].length;
         for (int i = 0; i < matrix.length - 1; i++) {
             int next = matrix[i+1].length;
-            if (cur != next) 
+            if (cur != next)
                 throw new MatrixSizeException("Columns dimensions "
                         + "are not matched! Expected row of "+cur+" size, but founded: "
                         +next);
             cur = next;
-        }     
+        }
     }
 
     @Override
@@ -219,7 +219,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return matrixT;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
