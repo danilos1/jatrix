@@ -1,4 +1,4 @@
-# Comparison of default multiplication and Strassen's product of two matrices
+# Comparison of default and Strassen's product of two matrices
 
 | Benchmark | (N) | Mode | Cnt | Score | Error | Units |
 | --------- |:----|:-----|:----|:------|:------|:------|
