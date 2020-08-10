@@ -94,7 +94,6 @@ public class Matrices {
                     + m2.getRows());
 
         if (m1.isSquare() && m1.isPair() && m2.isSquare() && m2.isPair() && m1.getRows() > 32) {
-            System.out.println("Doing Strassen product...");
             return StrassenProduct.mul(m1, m2);
         }
 
