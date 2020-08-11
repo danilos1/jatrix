@@ -271,4 +271,15 @@ public class Matrix implements Cloneable, Iterable<Double> {
     public boolean isPair() {
         return (row & 0b1) == 0 && (col & 0b1) == 0;
     }
+
+
+    /**
+     * TODO
+     * A method for checking if the matrix contains the specified element (item).
+     * @param item
+     * @return true if element is existed in the matrix and false if it's not in the matrix.
+     */
+    public boolean contains(double item) {
+        return false;
+    }
 }
