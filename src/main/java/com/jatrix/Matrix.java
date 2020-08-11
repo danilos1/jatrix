@@ -3,6 +3,8 @@ package main.java.com.jatrix;
 
 import java.util.*;
 import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Matrix class is used as a representation of a matrix
@@ -197,13 +199,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
      * @return a DoubleStream of the matrix
      */
     public DoubleStream stream() {
-        DoubleStream doubleStream = DoubleStream.of(matrix[0]);
-        DoubleStream tempDoubleStream;
-        for (int i = 1; i < row; i++) {
-            tempDoubleStream = DoubleStream.of(matrix[i]);
-            doubleStream = DoubleStream.concat(doubleStream, tempDoubleStream);
-        }
-        return doubleStream;
+        return StreamSupport.doubleStream(this.spliterator(), false);
     }
 
     /**
