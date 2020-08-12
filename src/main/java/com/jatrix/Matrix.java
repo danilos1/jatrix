@@ -208,8 +208,9 @@ public class Matrix implements Cloneable, Iterable<Double> {
      * @return a parallel DoubleStream
      */
     public DoubleStream parallelStream() {
-        return StreamSupport.doubleStream(this.spliterator(), true);
+        return null;
     }
+
 
 
     /**
