@@ -3,6 +3,8 @@ package main.java.com.jatrix;
 
 import java.util.*;
 import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Matrix class is used as a representation of a matrix
@@ -137,7 +139,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
             }
         }
     }
-    
+
     /**
      * A basic constructor, receiving a size, which is a quantity of rows and columns simultaneously.
      * @param size - a quantity of rows and columns simultaneously
@@ -154,17 +156,17 @@ public class Matrix implements Cloneable, Iterable<Double> {
     public Matrix(int size, double val) {
         this(size, size, val);
     }
-    
+
     private void checkSize(double[][] matrix) {
         int cur = matrix[0].length;
         for (int i = 0; i < matrix.length - 1; i++) {
             int next = matrix[i+1].length;
-            if (cur != next) 
+            if (cur != next)
                 throw new MatrixSizeException("Columns dimensions "
                         + "are not matched! Expected row of "+cur+" size, but founded: "
                         +next);
             cur = next;
-        }     
+        }
     }
 
     @Override
@@ -197,14 +199,18 @@ public class Matrix implements Cloneable, Iterable<Double> {
      * @return a DoubleStream of the matrix
      */
     public DoubleStream stream() {
-        DoubleStream doubleStream = DoubleStream.of(matrix[0]);
-        DoubleStream tempDoubleStream;
-        for (int i = 1; i < row; i++) {
-            tempDoubleStream = DoubleStream.of(matrix[i]);
-            doubleStream = DoubleStream.concat(doubleStream, tempDoubleStream);
-        }
-        return doubleStream;
+        return StreamSupport.doubleStream(this.spliterator(), false);
     }
+
+
+    /**
+     * TODO
+     * @return a parallel DoubleStream
+     */
+    public DoubleStream parallelStream() {
+        return StreamSupport.doubleStream(this.spliterator(), true);
+    }
+
 
     /**
      * A method that transposes some matrix.
@@ -219,7 +225,8 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return matrixT;
     }
-    
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -231,6 +238,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return sb.toString();
     }
+
 
     /**
      * A method, which outs a matrix in a pretty form
@@ -248,6 +256,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return sb.toString();
     }
 
+
     /**
      * A method for converting the matrix into two-dimensional array
      * @return a two-dimensional array underlying in the matrix
@@ -256,6 +265,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return matrix;
     }
 
+
     @Override
     public Matrix clone() {
         Matrix matrix = new Matrix(row, col);
@@ -263,5 +273,39 @@ public class Matrix implements Cloneable, Iterable<Double> {
             System.arraycopy(this.matrix[i], 0, matrix.matrix[i], 0, col);
         }
         return matrix;
+    }
+
+
+    public double[] getRow(int i) {
+        return matrix[i];
+    }
+
+
+    public boolean isPair() {
+        return (row & 0b1) == 0 && (col & 0b1) == 0;
+    }
+
+
+    /**
+     * TODO
+     * A method for checking if the matrix contains the specified element (item).
+     * @param item
+     * @return true if element is existed in the matrix and false if it's not in the matrix.
+     */
+    public boolean contains(double item) {
+        for (int i = 0; i < row; i++) {
+            int l = 0, h = col - 1;
+            while (l <= h) {
+                int mid = ( l + h ) >> 1;
+                if (item > matrix[i][mid]) {
+                    l = mid + 1;
+                }
+                else if (item < matrix[i][mid]) {
+                    h = mid - 1;
+                }
+                else return true;
+            }
+        }
+        return false;
     }
 }

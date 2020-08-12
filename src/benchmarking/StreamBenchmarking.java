@@ -16,22 +16,23 @@ import java.util.concurrent.TimeUnit;
 @Measurement(iterations = 10)
 @State(Scope.Thread)
 public class StreamBenchmarking {
-    @Param({"32", "512", "1024", "10000"})
+    @Param({"1024"})
     private int N;
     private Matrix matrix;
 
+
     @Setup(Level.Invocation)
-    public void createMatrix() {
+    public void prepare() {
         matrix = new Matrix(N, N, 5);
     }
 
     @Benchmark
-    public double sumWithStreams() {
+    public double sumWithStreamsBenchmark() {
         return matrix.stream().sum();
     }
 
     @Benchmark
-    public double sumWithForCycle() {
+    public double sumWithForCycleBenchmark() {
         double sum = 0;
         double[][] m = matrix.getMatrix();
         int rows = m.length;
