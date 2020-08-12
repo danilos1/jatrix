@@ -38,7 +38,7 @@ public class MatrixSplitIterator implements Spliterator.OfDouble {
     @Override
     public OfDouble trySplit() {
         int size = matrix.length;
-        if (size == 1) {
+        if (size == 2) {
             return null;
         }
 

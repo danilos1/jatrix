@@ -202,6 +202,16 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return StreamSupport.doubleStream(this.spliterator(), false);
     }
 
+
+    /**
+     * TODO
+     * @return a parallel DoubleStream
+     */
+    public DoubleStream parallelStream() {
+        return StreamSupport.doubleStream(this.spliterator(), true);
+    }
+
+
     /**
      * A method that transposes some matrix.
      * @return a transpose matrix of concrete matrix.
@@ -216,6 +226,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return matrixT;
     }
 
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -227,6 +238,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return sb.toString();
     }
+
 
     /**
      * A method, which outs a matrix in a pretty form
@@ -243,6 +255,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return sb.toString();
     }
+
 
     /**
      * A method for converting the matrix into two-dimensional array
@@ -280,6 +293,19 @@ public class Matrix implements Cloneable, Iterable<Double> {
      * @return true if element is existed in the matrix and false if it's not in the matrix.
      */
     public boolean contains(double item) {
+        for (int i = 0; i < row; i++) {
+            int l = 0, h = col - 1;
+            while (l <= h) {
+                int mid = ( l + h ) >> 1;
+                if (item > matrix[i][mid]) {
+                    l = mid + 1;
+                }
+                else if (item < matrix[i][mid]) {
+                    h = mid - 1;
+                }
+                else return true;
+            }
+        }
         return false;
     }
 }
