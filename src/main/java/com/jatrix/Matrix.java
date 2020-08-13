@@ -148,6 +148,15 @@ public class Matrix implements Cloneable, Iterable<Double> {
         this(size, size);
     }
 
+
+    public Matrix identity() {
+        matrix = new double[row][col];
+        for (int i = 0; i < row; i++) {
+            matrix[i][i] = 1;
+        }
+        return this;
+    }
+
     /**
      * TODO
      * @param size
@@ -273,6 +282,11 @@ public class Matrix implements Cloneable, Iterable<Double> {
             System.arraycopy(this.matrix[i], 0, matrix.matrix[i], 0, col);
         }
         return matrix;
+    }
+
+
+    public void setRow(int i, double[] row) {
+        matrix[i] = row;
     }
 
 
