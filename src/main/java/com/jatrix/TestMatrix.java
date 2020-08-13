@@ -9,11 +9,9 @@ import java.util.Arrays;
 public class TestMatrix {
     public static void main(String[] args) {
         Matrix A = new Matrix(new double[][]{
-                {0,2,3, 12, 7},
-                {17,2,3, 23, -5},
-                {0,31,-39, 6, 3},
-                {4,-12,10, -5, -5},
-                {7,8,1, 0, 9},
+                {6,10,3},
+                {3,5,6},
+                {7,8,1},
         });
 
         LUPDecomposition lup = new LUPDecomposition(A);

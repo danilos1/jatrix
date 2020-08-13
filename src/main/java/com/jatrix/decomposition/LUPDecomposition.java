@@ -4,21 +4,25 @@ import main.java.com.jatrix.Matrix;
 import main.java.com.jatrix.MatrixSizeException;
 
 public class LUPDecomposition {
-    private Matrix P;
     private Matrix L;
     private Matrix U;
+    private Matrix P;
 
-    public Matrix getP() {
-        return P;
-    }
 
     public Matrix getL() {
         return L;
     }
 
+
     public Matrix getU() {
         return U;
     }
+
+
+    public Matrix getP() {
+        return P;
+    }
+
 
     public LUPDecomposition(Matrix A) {
         if (!A.isSquare())
@@ -27,11 +31,13 @@ public class LUPDecomposition {
         decompose(A);
     }
 
+
     private void swap(Matrix m, int row1, int row2) {
         double[] tempRow = m.getRow(row1);
         m.setRow(row1, m.getRow(row2));
         m.setRow(row2, tempRow);
     }
+
 
     private void decompose(Matrix A) {
         int size = A.getRows();
@@ -44,7 +50,6 @@ public class LUPDecomposition {
             int idx = i;
             double max = U.get(idx, idx);
 
-            // finding an index of max value by rows
             for (int j = i+1; j < size; j++) {
                 double cur = U.get(j, i);
                 if (Math.abs(cur) > Math.abs(max)) {
@@ -53,26 +58,21 @@ public class LUPDecomposition {
                 }
             }
 
-            // swapping rows if necessary
             if (idx != i) {
                 swap(U, i, idx);
                 swap(P, i, idx);
             }
 
-            // filling a lower triangular matrix: L
-            for (int k = i+1; k < size; k++) {
-                L.set(k, i, U.get(k,i)/U.get(i,i));
-            }
-
-            // filling an upper triangular matrix: U
             for (int k = i+1; k < size; k++) {
                 double div = U.get(k,i)/U.get(i,i);
+                L.set(k, i, div);
                 for (int j = i; j < size; j++) {
                     U.set(k, j, U.get(k,j) - U.get(i,j)*div);
                 }
             }
         }
     }
+
 
     public double det() {
         double det = 1;
