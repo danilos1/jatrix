@@ -32,7 +32,7 @@ public class LUDecomposition {
         }
     }
 
-    public Matrix getL() {
+    public Matrix getLowerTriangularMatrix() {
         return L;
     }
 
