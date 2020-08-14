@@ -17,10 +17,19 @@ public class LUDecomposition {
     }
 
     private void decompose(Matrix A) {
-        U = new Matrix(A.getRows());
-        L = new Matrix(A.getRows());
+        int size = A.getRows();
+        L = new Matrix(size).identity();
+        U = A.clone();
 
-
+        for (int i = 0; i < size - 1; i++) {
+            for (int k = i+1; k < size; k++) {
+                double div = U.get(k,i)/U.get(i,i);
+                L.set(k, i, div);
+                for (int j = i; j < size; j++) {
+                    U.set(k, j, U.get(k,j) - U.get(i,j)*div);
+                }
+            }
+        }
     }
 
     public Matrix getL() {
@@ -32,7 +41,7 @@ public class LUDecomposition {
     }
 
     public double det() {
-        double det = 0;
+        double det = 1;
         for (int i = 0; i < U.getRows(); i++) {
             det *= U.get(i, i);
         }
