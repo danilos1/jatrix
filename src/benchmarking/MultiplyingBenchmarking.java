@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Measurement(iterations = 15)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class MultiplyingBenchmarking {
-    @Param({"32", "128", "256", "1024"})
+    @Param({"10000"})
     int N;
 
     private Matrix A;
@@ -32,10 +32,10 @@ public class MultiplyingBenchmarking {
         Matrices.fillRandom(B);
     }
 
-    @Benchmark
-    public Matrix defaultMultiplicationBenchmark() {
-        return Matrices.multiply(A, B);
-    }
+//    @Benchmark
+//    public Matrix defaultMultiplicationBenchmark() {
+//        return Matrices.multiply(A, B);
+//    }
 
     @Benchmark
     public Matrix StrassenProductBenchmark() {
