@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Measurement(iterations = 15)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class MultiplyingBenchmarking {
-    @Param({"32","256", "512", "1024"})
+    @Param({"32", "128", "256", "1024"})
     int N;
 
     private Matrix A;

@@ -7,6 +7,7 @@ public class LUPDecomposition {
     private Matrix L;
     private Matrix U;
     private Matrix P;
+    private StringBuilder sb;
 
 
     public Matrix getL() {
@@ -29,6 +30,7 @@ public class LUPDecomposition {
             throw new MatrixSizeException("Invalid matrix to LU decomposition: matrix must be square.\nFounded: " +
                     A.getRows() + " by " + A.getColumns());
         decompose(A);
+        sb = new StringBuilder("The current matrix: \n"+A.toString());
     }
 
 
@@ -50,7 +52,7 @@ public class LUPDecomposition {
             int idx = i;
             double max = U.get(idx, idx);
 
-            for (int j = i+1; j < size; j++) {
+            for (int j = i + 1; j < size; j++) {
                 double cur = U.get(j, i);
                 if (Math.abs(cur) > Math.abs(max)) {
                     max = cur;
@@ -61,13 +63,12 @@ public class LUPDecomposition {
             if (idx != i) {
                 swap(U, i, idx);
                 swap(P, i, idx);
-            }
-
-            for (int k = i+1; k < size; k++) {
-                double div = U.get(k,i)/U.get(i,i);
-                L.set(k, i, div);
-                for (int j = i; j < size; j++) {
-                    U.set(k, j, U.get(k,j) - U.get(i,j)*div);
+                for (int k = i + 1; k < size; k++) {
+                    double div = U.get(k, i) / U.get(i, i);
+                    L.set(k, i, div);
+                    for (int j = i; j < size; j++) {
+                        U.set(k, j, U.get(k, j) - U.get(i, j) * div);
+                    }
                 }
             }
         }
@@ -81,5 +82,16 @@ public class LUPDecomposition {
         }
 
         return det;
+    }
+
+    @Override
+    public String toString() {
+        sb.append("\nPermutation matrix: \n")
+                .append(P.toString())
+                .append("\nLower triangular matrix: \n")
+                .append(L.toString())
+                .append("\nUpper triangular matrix: \n")
+                .append(U.toString());
+        return sb.toString();
     }
 }
