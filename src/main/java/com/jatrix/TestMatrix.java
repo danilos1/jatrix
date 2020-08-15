@@ -3,19 +3,17 @@ package main.java.com.jatrix;
 import main.java.com.jatrix.decomposition.LUDecomposition;
 import main.java.com.jatrix.decomposition.LUPDecomposition;
 
-
 public class TestMatrix {
     public static void main(String[] args) {
-        Matrix A = new Matrix(new double[][]{
-                {5, 2, 3},
-                {6, 2, 6},
-                {7, 8, 9},
-        });
+        Matrix m1 = new Matrix(5, 5, 10);
+        double[][] n =
+                {{-1, 0.02, 4, 5, 9},
+                {40, 58, 6190, 6, 69},
+                {71, 8, 9, 9, 5},
+                {0, 5, 9, 0, 1}};
+        Matrix m2 = new Matrix(n);
 
-        LUPDecomposition lup = new LUPDecomposition(A);
-        LUDecomposition lu = new LUDecomposition(A);
-
-        System.out.println(lu.getU());
-        System.out.println(lu.getL());
+        double array = Search.minDiagonal(m2);
+        System.out.println(array);
     }
 }
