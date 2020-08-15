@@ -33,11 +33,6 @@ public class MultiplyingBenchmarking {
     }
 
     @Benchmark
-    public Matrix defaultMultiplicationBenchmark() {
-        return Matrices.multiply(A, B);
-    }
-
-    @Benchmark
     public Matrix StrassenProductBenchmark() {
         return StrassenProduct.mul(A, B);
     }

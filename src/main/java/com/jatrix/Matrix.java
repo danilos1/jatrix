@@ -1,6 +1,5 @@
 package main.java.com.jatrix;
 
-
 import java.util.*;
 import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
@@ -52,6 +51,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * A method for getting a solver of a matrix.
+     *
      * @return Returns a solver of concrete matrix.
      */
     public Solver getSolver() {
@@ -76,7 +76,8 @@ public class Matrix implements Cloneable, Iterable<Double> {
      * A class for getting a solver of concrete matrix.
      */
     public static class Solver {
-        private Solver() {}
+        private Solver() {
+        }
 
         public double getDeterminant() {
             return 0;
@@ -86,6 +87,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * A method for checking if a matrix is square (number of rows and columns must be equals)
+     *
      * @return a result if a matrix is pair (Quantity of rows and
      * columns must be same)
      */
@@ -96,6 +98,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * A basic constructor, used for creating a matrix of row x col size
+     *
      * @param row - quantity of rows
      * @param col - quantity of columns
      */
@@ -108,12 +111,13 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * A basic constructor, used for creating a matrix row x col size with filled values of val parameter
+     *
      * @param row - quantity of rows
      * @param col - quantity of columns
      * @param val - some value, which is filler of matrix
      */
     public Matrix(int row, int col, double val) {
-        matrix =  new double[row][col];
+        matrix = new double[row][col];
         this.row = row;
         this.col = col;
         fill(val);
@@ -122,6 +126,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * A basic constructor, receiving an array of some type T .
+     *
      * @param matrix - a filled matrix of type T .
      */
     public Matrix(double[][] matrix) {
@@ -142,6 +147,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * A basic constructor, receiving a size, which is a quantity of rows and columns simultaneously.
+     *
      * @param size - a quantity of rows and columns simultaneously
      */
     public Matrix(int size) {
@@ -150,6 +156,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * TODO
+     *
      * @param size
      * @param val
      */
@@ -160,11 +167,11 @@ public class Matrix implements Cloneable, Iterable<Double> {
     private void checkSize(double[][] matrix) {
         int cur = matrix[0].length;
         for (int i = 0; i < matrix.length - 1; i++) {
-            int next = matrix[i+1].length;
+            int next = matrix[i + 1].length;
             if (cur != next)
                 throw new MatrixSizeException("Columns dimensions "
-                        + "are not matched! Expected row of "+cur+" size, but founded: "
-                        +next);
+                        + "are not matched! Expected row of " + cur + " size, but founded: "
+                        + next);
             cur = next;
         }
     }
@@ -180,7 +187,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
     public boolean equals(Object matrix) {
         if (matrix == null) throw new NullPointerException("Matrix cannot be equaled to null");
         if (!(matrix instanceof Matrix))
-            throw new ClassCastException("Cannot cast "+matrix.getClass().getName()+" to Matrix");
+            throw new ClassCastException("Cannot cast " + matrix.getClass().getName() + " to Matrix");
 
         Matrix matrix1 = (Matrix) matrix;
 
@@ -196,6 +203,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * A method for supporting a Stream API with matrices
+     *
      * @return a DoubleStream of the matrix
      */
     public DoubleStream stream() {
@@ -205,6 +213,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * TODO
+     *
      * @return a parallel DoubleStream
      */
     public DoubleStream parallelStream() {
@@ -212,9 +221,9 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
 
-
     /**
      * A method that transposes some matrix.
+     *
      * @return a transpose matrix of concrete matrix.
      */
     public Matrix getTranspose() {
@@ -244,22 +253,41 @@ public class Matrix implements Cloneable, Iterable<Double> {
     /**
      * A method, which outs a matrix in a pretty form
      * TODO
+     *
      * @return a matrix in a pretty form
      */
-    public String prettyOut() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("The size of matrix: %d x %d", row, col));
+    public void prettyOut() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(String.format("The size of matrix: %d x %d", row, col)).append("\n").append("|\t");
+//        System.out.printf("The size of matrix: %d x %d", row, col);
+//        System.out.println();
+//
+//        String str = "|\t";
+//        for (int i = 0; i < row; i++) {
+//            for (int j = 0; j < col; j++) {
+//                str += matrix[i][j] + "\t|\t";
+//            }
+//            System.out.println(str);
+//            str = "|\t";
+//        }
+        int n = 9;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                // code
+                int length = String.valueOf(matrix[i][j]).length();
+                if (length < n) {
+                    //System.out.printf("|%.2f|", matrix[i][j]);
+                } else {
+                    //System.out.printf("|%10.2f|", matrix[i][j]);
+                }
             }
+            System.out.println();
         }
-        return sb.toString();
     }
 
 
     /**
      * A method for converting the matrix into two-dimensional array
+     *
      * @return a two-dimensional array underlying in the matrix
      */
     public double[][] toArray() {
@@ -290,6 +318,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
     /**
      * TODO
      * A method for checking if the matrix contains the specified element (item).
+     *
      * @param item
      * @return true if element is existed in the matrix and false if it's not in the matrix.
      */
@@ -297,14 +326,12 @@ public class Matrix implements Cloneable, Iterable<Double> {
         for (int i = 0; i < row; i++) {
             int l = 0, h = col - 1;
             while (l <= h) {
-                int mid = ( l + h ) >> 1;
+                int mid = (l + h) >> 1;
                 if (item > matrix[i][mid]) {
                     l = mid + 1;
-                }
-                else if (item < matrix[i][mid]) {
+                } else if (item < matrix[i][mid]) {
                     h = mid - 1;
-                }
-                else return true;
+                } else return true;
             }
         }
         return false;
