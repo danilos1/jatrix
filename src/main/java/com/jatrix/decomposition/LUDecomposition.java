@@ -7,6 +7,7 @@ public class LUDecomposition {
     private Matrix A;
     private Matrix L;
     private Matrix U;
+    private Matrix P;
     private LUPDecomposition lup;
 
     private boolean isExist(Matrix A) {
@@ -17,10 +18,6 @@ public class LUDecomposition {
         if (!A.isSquare())
             throw new MatrixSizeException("Invalid matrix to LU decomposition: matrix must be square.\nFounded: " +
                     A.getRows() + " x " + A.getColumns());
-
-        /*if (singularity)
-            new LUPDecomposition(A);*/
-
         decompose(A);
     }
 
@@ -55,12 +52,17 @@ public class LUDecomposition {
         return U;
     }
 
+    public Matrix getP() {
+        return lup.getP();
+    }
+
     public double det() {
+        if (lup != null) return lup.det();
         double det = 1;
         for (int i = 0; i < U.getRows(); i++) {
             det *= U.get(i ,i);
         }
-
         return det;
     }
+
 }

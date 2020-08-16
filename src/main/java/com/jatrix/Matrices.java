@@ -1,5 +1,8 @@
 package main.java.com.jatrix;
 
+import main.java.com.jatrix.decomposition.LUDecomposition;
+import main.java.com.jatrix.decomposition.LUPDecomposition;
+
 import java.util.Random;
 
 /**
@@ -122,7 +125,17 @@ public class Matrices {
     }
 
 
-    public static Matrix inverse(Matrix matrix) {
+    /**
+     * TODO
+     * @param matrix
+     * @return
+     */
+    public static double[][] inverse(Matrix matrix) {
+        if (!matrix.isSquare())
+            throw new MatrixSizeException("Matrix must be square. Founded: " +
+                    matrix.getRows() + " x " + matrix.getColumns());
+
         return null;
     }
+
 }

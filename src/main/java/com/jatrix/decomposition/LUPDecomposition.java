@@ -7,6 +7,7 @@ public class LUPDecomposition {
     private Matrix L;
     private Matrix U;
     private Matrix P;
+    private int exchanges;
     private StringBuilder sb;
 
 
@@ -60,28 +61,43 @@ public class LUPDecomposition {
                 }
             }
 
+            if (max == 0) continue;
+
             if (idx != i) {
                 swap(U, i, idx);
                 swap(P, i, idx);
-                for (int k = i + 1; k < size; k++) {
-                    double div = U.get(k, i) / U.get(i, i);
-                    L.set(k, i, div);
-                    for (int j = i; j < size; j++) {
-                        U.set(k, j, U.get(k, j) - U.get(i, j) * div);
-                    }
+                exchanges++;
+            }
+
+            for (int k = i + 1; k < size; k++) {
+                double div = U.get(k, i) / U.get(i, i);
+                L.set(k, i, div);
+                for (int j = i; j < size; j++) {
+                    U.set(k, j, U.get(k, j) - U.get(i, j) * div);
                 }
             }
         }
     }
 
 
+    public double[] getPArray() {
+        double[] pA = new double[P.getRows()];
+        for (int i = 0; i < pA.length; i++) {
+            for (int j = 0; j < P.getColumns(); j++) {
+                if (P.get(i, j) == 1) {
+                    pA[i] = j+1;
+                }
+            }
+        }
+        return pA;
+    }
+
     public double det() {
         double det = 1;
         for (int i = 0; i < U.getRows(); i++) {
             det *= U.get(i,i);
         }
-
-        return det;
+        return (exchanges & 0b1) == 0 ? det : -det;
     }
 
     @Override

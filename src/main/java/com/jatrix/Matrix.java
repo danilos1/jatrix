@@ -11,7 +11,6 @@ import java.util.stream.StreamSupport;
 public class Matrix implements Cloneable, Iterable<Double> {
     private double[][] matrix;
     private final int row, col;
-    private Solver solver;
 
 
     public void setMatrix(double[][] matrix) {
@@ -49,17 +48,6 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
 
-    /**
-     * A method for getting a solver of a matrix.
-     *
-     * @return Returns a solver of concrete matrix.
-     */
-    public Solver getSolver() {
-        if (solver == null) solver = new Solver();
-        return solver;
-    }
-
-
     @Override
     public MatrixIterator iterator() {
         return new MatrixIterator(matrix);
@@ -69,19 +57,6 @@ public class Matrix implements Cloneable, Iterable<Double> {
     @Override
     public MatrixSplitIterator spliterator() {
         return new MatrixSplitIterator(matrix);
-    }
-
-
-    /**
-     * A class for getting a solver of concrete matrix.
-     */
-    public static class Solver {
-        private Solver() {
-        }
-
-        public double getDeterminant() {
-            return 0;
-        }
     }
 
 
@@ -185,12 +160,14 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
     }
 
+
     @Override
     public int hashCode() {
-        int result = Objects.hash(row, col, solver);
+        int result = Objects.hash(row, col);
         result = 31 * result + Arrays.hashCode(matrix);
         return result;
     }
+
 
     @Override
     public boolean equals(Object matrix) {
@@ -320,7 +297,11 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
 
     public double[] getRow(int i) {
-        return matrix[i];
+        double[] c = new double[col];
+        for (int j = 0; j < row; j++) {
+            c[j] = matrix[j][i];
+        }
+        return c;
     }
 
 
