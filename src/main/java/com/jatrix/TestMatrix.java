@@ -9,11 +9,14 @@ import java.util.Random;
 
 public class TestMatrix {
     public static void main(String[] args) {
-        Matrix matrix = new Matrix(6);
-        Matrices.fillRandom(matrix);
-        System.out.println(matrix.prettyOut());
-
-        System.out.println("numbers of -3: "+matrix.stream().filter(x -> x == -3).count());
+        double[][] n = {{1, 2, 3},
+                        {4, 5, 6},
+                        {7, 8, 9}};
+        Matrix m1 = new Matrix(n);
+        double x = Search.maxColumns(m1, 0);
+        System.out.println(x);
+        double y = Search.maxRows(m1, 2);
+        System.out.println(y);
 
     }
 }

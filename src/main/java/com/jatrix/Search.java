@@ -112,4 +112,32 @@ public class Search {
         }
         return minElement;
     }
+
+    public static double maxColumns(Matrix matrix, int index) {
+        double maxElements = 0;
+        for (int i = 0; i < matrix.getColumnDimension(); i++) {
+            double max = matrix.get(0, index);
+            for (int j = 0; j < matrix.getRowDimension(); j++) {
+                if (matrix.get(j, index) > max) {
+                    max = matrix.get(j, index);
+                }
+            }
+            maxElements = max;
+        }
+        return maxElements;
+    }
+
+    public static double maxRows(Matrix matrix, int index) {
+        double maxElements = 0;
+        for (int i = 0; i < matrix.getRowDimension(); i++) {
+            double max = matrix.get(index, 0);
+            for (int j = 0; j < matrix.getColumnDimension(); j++) {
+                if (matrix.get(index, j) > max) {
+                    max = matrix.get(index, j);
+                }
+            }
+            maxElements = max;
+        }
+        return maxElements;
+    }
 }
