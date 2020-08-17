@@ -8,7 +8,7 @@ public final class StrassenProduct {
     private StrassenProduct() {}
 
     public static Matrix mul(Matrix m1, Matrix m2) {
-        if (m1.getRows() <= 32) {
+        if (m1.getRowDimension() <= 32) {
             return Matrices.mul(m1, m2);
         }
 
@@ -32,7 +32,7 @@ public final class StrassenProduct {
     }
 
     public static Matrix[] split(Matrix A) {
-        int size = A.getRows() >> 1;
+        int size = A.getRowDimension() >> 1;
         Matrix a11 = new Matrix(size);
         Matrix a12 = new Matrix(size);
         Matrix a21 = new Matrix(size);
@@ -49,7 +49,7 @@ public final class StrassenProduct {
     }
 
     public static Matrix join(Matrix a11, Matrix a12, Matrix a21, Matrix a22) {
-        int size = a11.getRows();
+        int size = a11.getRowDimension();
         Matrix joinedMatrix = new Matrix(size << 1);
 
         for (int i = 0; i < size; i++) {

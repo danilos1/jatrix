@@ -1,8 +1,9 @@
 package main.java.com.jatrix;
 
+import main.java.com.jatrix.exceptions.MatrixSizeException;
+
 import java.util.*;
 import java.util.stream.DoubleStream;
-import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
@@ -28,12 +29,12 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
 
-    public int getRows() {
+    public int getRowDimension() {
         return row;
     }
 
 
-    public int getColumns() {
+    public int getColumnDimension() {
         return col;
     }
 
@@ -147,6 +148,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
     public Matrix(int size, double val) {
         this(size, size, val);
     }
+
 
     private void checkSize(double[][] matrix) {
         int cur = matrix[0].length;

@@ -1,7 +1,6 @@
 package main.java.com.jatrix;
 
-import main.java.com.jatrix.decomposition.LUDecomposition;
-import main.java.com.jatrix.decomposition.LUPDecomposition;
+import main.java.com.jatrix.exceptions.MatrixSizeException;
 
 import java.util.Random;
 
@@ -16,7 +15,7 @@ public class Matrices {
 
 
     private static boolean isNotEqualsDimensions(Matrix m1, Matrix m2) {
-        return m1.getRows() != m2.getRows() || m1.getColumns() != m2.getColumns();
+        return m1.getRowDimension() != m2.getRowDimension() || m1.getColumnDimension() != m2.getColumnDimension();
     }
 
 
@@ -24,8 +23,8 @@ public class Matrices {
         if (isNotEqualsDimensions(m1, m2))
             throw new MatrixSizeException("Dimensions of matrices must be equaled");
 
-        int rows = m1.getRows();
-        int columns = m2.getColumns();
+        int rows = m1.getRowDimension();
+        int columns = m2.getColumnDimension();
         Matrix newMatrix = new Matrix(rows, columns);
 
         for (int i = 0; i < rows; i++) {
@@ -42,8 +41,8 @@ public class Matrices {
         if (isNotEqualsDimensions(m1, m2))
             throw new MatrixSizeException("Dimensions of matrices must be equaled");
 
-        int rows = m1.getRows();
-        int columns = m2.getColumns();
+        int rows = m1.getRowDimension();
+        int columns = m2.getColumnDimension();
         Matrix newMatrix = new Matrix(rows, columns);
 
         for (int i = 0; i < rows; i++) {
@@ -58,27 +57,27 @@ public class Matrices {
 
     public static void fillRandom(Matrix m) {
         Random random = new Random();
-        for (int i = 0; i < m.getRows(); i++) {
-            for (int j = 0; j < m.getColumns(); j++) {
+        for (int i = 0; i < m.getRowDimension(); i++) {
+            for (int j = 0; j < m.getColumnDimension(); j++) {
                 m.set(i, j, random.nextInt(20) - 10);
             }
         }
     }
 
     public static Matrix mul(Matrix m1, Matrix m2) {
-        if (m1.getColumns() != m2.getRows())
+        if (m1.getColumnDimension() != m2.getRowDimension())
             throw new MatrixSizeException("Invalid multiplication operation. Number of columns of the first matrix " +
-                    "must be equaled to number of rows of the second one. Expected: " + m1.getColumns() + ", but founded: "
-                    + m2.getRows());
+                    "must be equaled to number of rows of the second one. Expected: " + m1.getColumnDimension() + ", but founded: "
+                    + m2.getRowDimension());
 
 
-        if (m1.isSquare() && m1.isPair() && m2.isSquare() && m2.isPair() && m1.getRows() > 32) {
+        if (m1.isSquare() && m1.isPair() && m2.isSquare() && m2.isPair() && m1.getRowDimension() > 32) {
             return StrassenProduct.mul(m1, m2);
         }
 
-        int rows = m1.getRows();
-        int cols = m2.getColumns();
-        int sum = m1.getColumns();
+        int rows = m1.getRowDimension();
+        int cols = m2.getColumnDimension();
+        int sum = m1.getColumnDimension();
         Matrix newMatrix = new Matrix(rows, cols);
 
         for (int i = 0; i < rows; i++) {
@@ -96,8 +95,8 @@ public class Matrices {
 
 
     public static Matrix mul(double c, Matrix matrix) {
-        int rows = matrix.getRows();
-        int cols = matrix.getColumns();
+        int rows = matrix.getRowDimension();
+        int cols = matrix.getColumnDimension();
         Matrix newMatrix = new Matrix(rows, cols);
 
         for (int i = 0; i < rows; i++) {
@@ -111,8 +110,8 @@ public class Matrices {
 
 
     public static Matrix transpose(Matrix matrix) {
-        int rows = matrix.getRows();
-        int cols = matrix.getColumns();
+        int rows = matrix.getRowDimension();
+        int cols = matrix.getColumnDimension();
         Matrix transposedMatrix = new Matrix(cols, rows);
 
         for (int i = 0; i < cols; i++) {
@@ -133,7 +132,7 @@ public class Matrices {
     public static double[][] inverse(Matrix matrix) {
         if (!matrix.isSquare())
             throw new MatrixSizeException("Matrix must be square. Founded: " +
-                    matrix.getRows() + " x " + matrix.getColumns());
+                    matrix.getRowDimension() + " x " + matrix.getColumnDimension());
 
         return null;
     }

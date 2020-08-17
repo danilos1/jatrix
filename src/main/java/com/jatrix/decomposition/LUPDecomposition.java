@@ -1,7 +1,7 @@
 package main.java.com.jatrix.decomposition;
 
 import main.java.com.jatrix.Matrix;
-import main.java.com.jatrix.MatrixSizeException;
+import main.java.com.jatrix.exceptions.MatrixSizeException;
 
 public class LUPDecomposition {
     private Matrix L;
@@ -29,7 +29,7 @@ public class LUPDecomposition {
     public LUPDecomposition(Matrix A) {
         if (!A.isSquare())
             throw new MatrixSizeException("Invalid matrix to LU decomposition: matrix must be square.\nFounded: " +
-                    A.getRows() + " by " + A.getColumns());
+                    A.getRowDimension() + " by " + A.getColumnDimension());
         decompose(A);
         sb = new StringBuilder("The current matrix: \n"+A.toString());
     }
@@ -43,7 +43,7 @@ public class LUPDecomposition {
 
 
     private void decompose(Matrix A) {
-        int size = A.getRows();
+        int size = A.getRowDimension();
         P = new Matrix(size).identity();
         L = P.clone();
         U = A.clone();
@@ -81,9 +81,9 @@ public class LUPDecomposition {
 
 
     public double[] getPArray() {
-        double[] pA = new double[P.getRows()];
+        double[] pA = new double[P.getRowDimension()];
         for (int i = 0; i < pA.length; i++) {
-            for (int j = 0; j < P.getColumns(); j++) {
+            for (int j = 0; j < P.getColumnDimension(); j++) {
                 if (P.get(i, j) == 1) {
                     pA[i] = j+1;
                 }
@@ -94,7 +94,7 @@ public class LUPDecomposition {
 
     public double det() {
         double det = 1;
-        for (int i = 0; i < U.getRows(); i++) {
+        for (int i = 0; i < U.getRowDimension(); i++) {
             det *= U.get(i,i);
         }
         return (exchanges & 0b1) == 0 ? det : -det;

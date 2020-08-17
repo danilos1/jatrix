@@ -1,4 +1,4 @@
-package main.java.com.jatrix;
+package main.java.com.jatrix.exceptions;
 
 /**
  *
