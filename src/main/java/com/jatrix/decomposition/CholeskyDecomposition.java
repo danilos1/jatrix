@@ -61,7 +61,8 @@ public class CholeskyDecomposition {
     public double det() {
         double det = 1;
         for (int i = 0; i < L.getRowDimension(); i++) {
-            det *= L.get(i, i) * L.get(i, i);
+            double d = L.get(i, i);
+            det *= d*d;
         }
         return det;
     }

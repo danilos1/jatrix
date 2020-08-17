@@ -9,14 +9,13 @@ import java.util.Arrays;
 public class TestMatrix {
     public static void main(String[] args) {
         Matrix matrix = new Matrix(new double[][]{
-                {534, 12, -155},
-                {12, 1524, -43},
-                {-155, -43, 98},
+                {0, 0, 2},
+                {0, -1, 3},
+                {2, 3, 8},
         });
-        LUDecomposition lu = new LUDecomposition(matrix);
-        CholeskyDecomposition cd = new CholeskyDecomposition(matrix);
 
-        System.out.println(lu.det());
-        System.out.println(cd.det());
+        Matrix inversed = Matrices.inverse(matrix);
+
+        System.out.println(inversed);
     }
 }

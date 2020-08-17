@@ -1,5 +1,6 @@
 package main.java.com.jatrix.decomposition;
 
+import main.java.com.jatrix.Matrices;
 import main.java.com.jatrix.Matrix;
 import main.java.com.jatrix.exceptions.MatrixSizeException;
 
@@ -35,13 +36,6 @@ public class LUPDecomposition {
     }
 
 
-    private void swap(Matrix m, int row1, int row2) {
-        double[] tempRow = m.getRow(row1);
-        m.setRow(row1, m.getRow(row2));
-        m.setRow(row2, tempRow);
-    }
-
-
     private void decompose(Matrix A) {
         int size = A.getRowDimension();
         P = new Matrix(size).identity();
@@ -64,8 +58,8 @@ public class LUPDecomposition {
             if (max == 0) continue;
 
             if (idx != i) {
-                swap(U, i, idx);
-                swap(P, i, idx);
+                Matrices.swapRows(U, i, idx);
+                Matrices.swapRows(P, i, idx);
                 exchanges++;
             }
 

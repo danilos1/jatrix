@@ -1,6 +1,6 @@
 package main.java.com.jatrix;
 
-import main.java.com.jatrix.exceptions.MatrixSizeException;
+import main.java.com.jatrix.exceptions.*;
 
 import java.util.Random;
 
@@ -129,12 +129,89 @@ public class Matrices {
      * @param matrix
      * @return
      */
-    public static double[][] inverse(Matrix matrix) {
+    public static Matrix inverse(Matrix matrix) {
         if (!matrix.isSquare())
             throw new MatrixSizeException("Matrix must be square. Founded: " +
                     matrix.getRowDimension() + " x " + matrix.getColumnDimension());
 
-        return null;
+        int size = matrix.getRowDimension();
+        Matrix A = matrix.clone();
+        Matrix B = new Matrix(size).identity();
+
+
+        // Forward substitution
+        for (int i = 0; i < size - 1; i++) {
+
+            if (A.get(i, i) == 0) {
+                for (int j = i+1; j < size; j++) {
+                    if (A.get(j, i) == 0) {
+                        if (j == size-1) {
+                            throw new MatrixSingularException("Matrix is singular");
+                        }
+                    }
+                    else {
+                        swapRows(A, i, j);
+                        break;
+                    }
+                }
+            }
+
+            for (int k = i+1; k < size; k++) {
+                double div = A.get(k,i)/A.get(i, i);
+                for (int j = 0; j < size; j++) {
+                    A.set(k, j, A.get(k,j) - A.get(i,j)*div);
+                    B.set(k, j, B.get(k,j) - B.get(i,j)*div);
+                }
+            }
+        }
+
+        // Back substitution
+        for (int i = size - 1; i > 0; i--) {
+            if (A.get(i, i) == 0) {
+                for (int j = i+1; j < size; j++) {
+                    if (A.get(j, i) == 0) {
+                        if (j == size-1) {
+                            throw new MatrixSingularException("Matrix is singular");
+                        }
+                    }
+                    else {
+                        swapRows(A, i, j);
+                        break;
+                    }
+                }
+            }
+
+            for (int k = i-1; k >= 0; k--) {
+                double div = A.get(k,i)/A.get(i, i);
+                for (int j = size - 1; j >= 0; j--) {
+                    A.set(k, j, A.get(k,j) - A.get(i,j)*div);
+                    B.set(k, j, B.get(k,j) - B.get(i,j)*div);
+                }
+            }
+        }
+
+        // Correction
+        for (int i = 0; i < size; i++) {
+            double d = A.get(i, i);
+            if (d == 1) continue;
+            for (int j = 0; j < size; j++) {
+                B.set(i, j, B.get(i, j)/d);
+            }
+        }
+
+        return B;
     }
 
+
+    public static void swapColumns(Matrix m, int row1, int row2) {
+        double[] tempRow = m.getColumn(row1);
+        m.setRow(row1, m.getColumn(row2));
+        m.setRow(row2, tempRow);
+    }
+
+    public static void swapRows(Matrix m, int row1, int row2) {
+        double[] tempRow = m.getRow(row1);
+        m.setRow(row1, m.getRow(row2));
+        m.setRow(row2, tempRow);
+    }
 }

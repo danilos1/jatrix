@@ -39,10 +39,10 @@ public final class StrassenProduct {
         Matrix a22 = new Matrix(size);
 
         for (int i = 0; i < size; i++) {
-            System.arraycopy(A.getRow(i), 0, a11.getRow(i), 0, size);
-            System.arraycopy(A.getRow(i), size, a12.getRow(i), 0, size);
-            System.arraycopy(A.getRow(size + i), 0, a21.getRow(i), 0, size);
-            System.arraycopy(A.getRow(size + i), size, a22.getRow(i), 0, size);
+            System.arraycopy(A.getColumn(i), 0, a11.getColumn(i), 0, size);
+            System.arraycopy(A.getColumn(i), size, a12.getColumn(i), 0, size);
+            System.arraycopy(A.getColumn(size + i), 0, a21.getColumn(i), 0, size);
+            System.arraycopy(A.getColumn(size + i), size, a22.getColumn(i), 0, size);
         }
 
         return new Matrix[]{a11, a12, a21, a22};
@@ -53,10 +53,10 @@ public final class StrassenProduct {
         Matrix joinedMatrix = new Matrix(size << 1);
 
         for (int i = 0; i < size; i++) {
-            System.arraycopy(a11.getRow(i), 0, joinedMatrix.getRow(i), 0, size);
-            System.arraycopy(a12.getRow(i), 0, joinedMatrix.getRow(i), size, size);
-            System.arraycopy(a21.getRow(i), 0, joinedMatrix.getRow(size+i), 0, size);
-            System.arraycopy(a22.getRow(i), 0, joinedMatrix.getRow(size+i), size, size);
+            System.arraycopy(a11.getColumn(i), 0, joinedMatrix.getColumn(i), 0, size);
+            System.arraycopy(a12.getColumn(i), 0, joinedMatrix.getColumn(i), size, size);
+            System.arraycopy(a21.getColumn(i), 0, joinedMatrix.getColumn(size+i), 0, size);
+            System.arraycopy(a22.getColumn(i), 0, joinedMatrix.getColumn(size+i), size, size);
         }
 
         return joinedMatrix;

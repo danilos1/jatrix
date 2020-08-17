@@ -33,6 +33,7 @@ public class LUDecomposition {
                     lup = new LUPDecomposition(A);
                     this.U = lup.getU();
                     this.L = lup.getL();
+                    this.P = lup.getP();
                     return;
                 }
                 double div = U.get(k,i)/den;
@@ -53,7 +54,7 @@ public class LUDecomposition {
     }
 
     public Matrix getP() {
-        return lup.getP();
+        return P;
     }
 
     public double det() {
