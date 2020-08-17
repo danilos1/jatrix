@@ -157,7 +157,6 @@ public class Matrices {
             }
 
             for (int k = i+1; k < size; k++) {
-                if (A.get(k, i) < 0.0000000001) continue;
                 double div = A.get(k,i)/A.get(i, i);
                 for (int j = 0; j < size; j++) {
                     A.set(k, j, A.get(k,j) - A.get(i,j)*div);
@@ -184,7 +183,6 @@ public class Matrices {
             }
 
             for (int k = i-1; k >= 0; k--) {
-                if (A.get(k, i) < 0.000000001) continue;
                 double div = A.get(k,i)/A.get(i, i);
                 for (int j = size - 1; j >= 0; j--) {
                     A.set(k, j, A.get(k,j) - A.get(i,j)*div);

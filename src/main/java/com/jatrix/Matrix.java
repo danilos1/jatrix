@@ -244,32 +244,23 @@ public class Matrix implements Cloneable, Iterable<Double> {
      *
      * @return a matrix in a pretty form
      */
-    public void prettyOut() {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("The size of matrix: %d x %d", row, col)).append("\n").append("|\t");
-//        System.out.printf("The size of matrix: %d x %d", row, col);
-//        System.out.println();
-//
-//        String str = "|\t";
-//        for (int i = 0; i < row; i++) {
-//            for (int j = 0; j < col; j++) {
-//                str += matrix[i][j] + "\t|\t";
-//            }
-//            System.out.println(str);
-//            str = "|\t";
-//        }
-        int n = 9;
+    public String prettyOut() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
+
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                int length = String.valueOf(matrix[i][j]).length();
-                if (length < n) {
-                    //System.out.printf("|%.2f|", matrix[i][j]);
-                } else {
-                    //System.out.printf("|%10.2f|", matrix[i][j]);
-                }
+                double val = matrix[i][j];
+                String format = "";
+                if (val < 1E-15) format = String.format("| %.3f ",val);
+                else format = String.format("|  %.3f ",val);
+                sb.append(format);
+                if (j == col - 1) sb.append("|");
             }
-            System.out.println();
+            sb.append("\n");
         }
+
+        return sb.toString();
     }
 
 

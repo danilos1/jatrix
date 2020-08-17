@@ -5,17 +5,15 @@ import main.java.com.jatrix.decomposition.LUDecomposition;
 import main.java.com.jatrix.decomposition.LUPDecomposition;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class TestMatrix {
     public static void main(String[] args) {
-        Matrix matrix = new Matrix(new double[][]{
-                {0, 0, 9},
-                {9, 3, 0},
-                {5, 8, 0},
-        });
+        Matrix matrix = new Matrix(6);
+        Matrices.fillRandom(matrix);
+        System.out.println(matrix.prettyOut());
 
-        Matrix inversed = Matrices.inverse(matrix);
+        System.out.println("numbers of -3: "+matrix.stream().filter(x -> x == -3).count());
 
-        System.out.println(inversed);
     }
 }
