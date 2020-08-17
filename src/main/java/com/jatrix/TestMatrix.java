@@ -9,9 +9,9 @@ import java.util.Arrays;
 public class TestMatrix {
     public static void main(String[] args) {
         Matrix matrix = new Matrix(new double[][]{
-                {0, 0, 2},
-                {0, -1, 3},
-                {2, 3, 8},
+                {0, 0, 9},
+                {9, 3, 0},
+                {5, 8, 0},
         });
 
         Matrix inversed = Matrices.inverse(matrix);
