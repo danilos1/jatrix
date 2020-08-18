@@ -3,17 +3,17 @@ package main.java.com.jatrix;
 import main.java.com.jatrix.decompositions.CholeskyDecomposition;
 import main.java.com.jatrix.decompositions.LUDecomposition;
 import main.java.com.jatrix.decompositions.LUPDecomposition;
+import main.java.com.jatrix.solvers.CramerSolver;
 
 public class TestMatrix {
     public static void main(String[] args) {
         Matrix A = new Matrix(new double[][]{
-                {5, 5, -9},
-                {5, 8,  -6},
-                {-9,  -6, 8},
+                {12, 3, 15},
+                {2, -3, -4},
+                {11, -3.4, 5.7},
         });;
 
-        System.out.println(new LUPDecomposition(A).det());
-        System.out.println(new LUDecomposition(A).det());
-        System.out.println(new CholeskyDecomposition(A).det());
+        CramerSolver solver = new CramerSolver(A, new double[]{13, 0.5, -6});
+        System.out.println(solver);
     }
 }
