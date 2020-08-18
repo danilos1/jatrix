@@ -5,12 +5,22 @@ import main.java.com.jatrix.decompositions.LUDecomposition;
 import main.java.com.jatrix.exceptions.MatrixSizeException;
 import main.java.com.jatrix.exceptions.SolverNotSupportedException;
 
-import java.util.Arrays;
-
 public class CramerSolver {
     private Matrix a;
     private double[] b;
     private double[] x;
+
+    public Matrix getMatrix() {
+        return a;
+    }
+
+    public double[] getRoots() {
+        return x;
+    }
+
+    public double[] getConstants() {
+        return b;
+    }
 
     public CramerSolver(Matrix a, double[] b) {
         if (a.getRowDimension() != b.length)

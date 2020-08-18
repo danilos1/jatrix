@@ -102,7 +102,6 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * A basic constructor, receiving an array of some type T .
-     *
      * @param matrix - a filled matrix of type T .
      */
     public Matrix(double[][] matrix) {
@@ -131,6 +130,11 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
 
+    /**
+     * A method for converting the matrix to identity matrix.
+     * @return a current matrix, converted to identity matrix
+     * (a matrix with ones on the main diagonal and zeros elsewhere)
+     */
     public Matrix identity() {
         matrix = new double[row][col];
         for (int i = 0; i < row; i++) {
@@ -140,10 +144,8 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
     /**
-     * TODO
-     *
-     * @param size
-     * @param val
+     * @param size a matrix order or a number of rows and cols simultaneously
+     * @param val a value to fill the matrix
      */
     public Matrix(int size, double val) {
         this(size, size, val);
@@ -324,9 +326,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
 
     /**
-     * TODO
-     * A method for checking if the matrix contains the specified element (item).
-     *
+     * A method for checking if the matrix contains the specified element.
      * @param item
      * @return true if element is existed in the matrix and false if it's not in the matrix.
      */
@@ -345,9 +345,11 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return false;
     }
 
+
     public double[] getRow(int rowIdx) {
         return matrix[rowIdx];
     }
+
 
     public void setColumn(int colIdx, double[] newCol) {
         for (int i = 0; i < row; i++) {

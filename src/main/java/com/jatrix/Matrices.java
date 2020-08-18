@@ -1,5 +1,6 @@
 package main.java.com.jatrix;
 
+import main.java.com.jatrix.conversion.MatrixConversion;
 import main.java.com.jatrix.exceptions.*;
 
 import java.util.Random;
@@ -64,6 +65,7 @@ public class Matrices {
         }
     }
 
+
     public static Matrix mul(Matrix m1, Matrix m2) {
         if (m1.getColumnDimension() != m2.getRowDimension())
             throw new MatrixSizeException("Invalid multiplication operation. Number of columns of the first matrix " +
@@ -125,9 +127,9 @@ public class Matrices {
 
 
     /**
-     * TODO
-     * @param matrix
-     * @return
+     * A method for finding an inversion of the matrix, using Gauss Elimination
+     * @param matrix - the matrix for which you want to get the inversion
+     * @return an inversed matrix
      */
     public static Matrix inverse(Matrix matrix) {
         if (!matrix.isSquare())
@@ -149,8 +151,8 @@ public class Matrices {
                         }
                     }
                     else {
-                        swapRows(A, i, j);
-                        swapRows(B, i, j);
+                        MatrixConversion.swapRows(A, i, j);
+                        MatrixConversion.swapRows(B, i, j);
                         break;
                     }
                 }
@@ -175,8 +177,8 @@ public class Matrices {
                         }
                     }
                     else {
-                        swapRows(A, i, j);
-                        swapRows(B, i, j);
+                        MatrixConversion.swapRows(A, i, j);
+                        MatrixConversion.swapRows(B, i, j);
                         break;
                     }
                 }
@@ -203,18 +205,5 @@ public class Matrices {
         }
 
         return B;
-    }
-
-
-    public static void swapColumns(Matrix m, int row1, int row2) {
-        double[] tempRow = m.getColumn(row1);
-        m.setRow(row1, m.getColumn(row2));
-        m.setRow(row2, tempRow);
-    }
-
-    public static void swapRows(Matrix m, int row1, int row2) {
-        double[] tempRow = m.getRow(row1);
-        m.setRow(row1, m.getRow(row2));
-        m.setRow(row2, tempRow);
     }
 }
