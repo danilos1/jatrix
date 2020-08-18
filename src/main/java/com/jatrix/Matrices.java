@@ -168,9 +168,9 @@ public class Matrices {
         // Back substitution
         for (int i = size - 1; i > 0; i--) {
             if (A.get(i, i) == 0) {
-                for (int j = i-1; j >= 0; j++) {
+                for (int j = i+1; j < size; j++) {
                     if (A.get(j, i) == 0) {
-                        if (j == 0) {
+                        if (j == size-1) {
                             throw new MatrixSingularException("Matrix is singular");
                         }
                     }
@@ -194,7 +194,8 @@ public class Matrices {
         // Correction
         for (int i = 0; i < size; i++) {
             double d = A.get(i, i);
-            if (A.get(i,i) < 1E-15) throw new MatrixSingularException("Matrix is singular");
+            if (d == 0)
+                throw new MatrixSingularException("Matrix is singular");
             if (d == 1) continue;
             for (int j = 0; j < size; j++) {
                 B.set(i, j, B.get(i, j)/d);
