@@ -4,20 +4,24 @@ import main.java.com.jatrix.Matrices;
 import main.java.com.jatrix.Matrix;
 import main.java.com.jatrix.StrassenProduct;
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
 @State(Scope.Thread)
-@Warmup(iterations = 15)
-@Measurement(iterations = 15)
-@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@Warmup(iterations = 5)
+@Measurement(iterations = 5)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class MultiplyingBenchmarking {
-    @Param({"256"})
+    @Param({"32"})
     int N;
 
     private Matrix A;
@@ -39,7 +43,12 @@ public class MultiplyingBenchmarking {
 
 
     public static void main(String[] args) throws RunnerException {
-        Options options = new OptionsBuilder().include(MultiplyingBenchmarking.class.getSimpleName()).forks(1).build();
+        Options options = new OptionsBuilder()
+                .resultFormat(ResultFormatType.TEXT)
+                .result("src/benchmarking/bench.txt")
+                .include(MultiplyingBenchmarking.class.getSimpleName())
+                .forks(1)
+                .build();
         new Runner(options).run();
     }
 }
