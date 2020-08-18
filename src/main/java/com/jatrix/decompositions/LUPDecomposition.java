@@ -2,6 +2,7 @@ package main.java.com.jatrix.decompositions;
 
 import main.java.com.jatrix.Matrices;
 import main.java.com.jatrix.Matrix;
+import main.java.com.jatrix.conversion.MatrixConversion;
 import main.java.com.jatrix.exceptions.MatrixSizeException;
 
 public class LUPDecomposition {
@@ -58,8 +59,8 @@ public class LUPDecomposition {
             if (max == 0) continue;
 
             if (idx != i) {
-                Matrices.swapRows(U, i, idx);
-                Matrices.swapRows(P, i, idx);
+                MatrixConversion.swapRows(U, i, idx);
+                MatrixConversion.swapRows(P, i, idx);
                 exchanges++;
             }
 

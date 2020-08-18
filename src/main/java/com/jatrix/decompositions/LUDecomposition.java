@@ -65,5 +65,4 @@ public class LUDecomposition {
         }
         return det;
     }
-
 }
