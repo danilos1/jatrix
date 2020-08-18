@@ -9,14 +9,14 @@ import java.util.Random;
 
 public class TestMatrix {
     public static void main(String[] args) {
-        double[][] n = {{1, 2, 3},
-                        {4, 5, 6},
-                        {7, 8, 9}};
-        Matrix m1 = new Matrix(n);
-        double x = Search.maxColumns(m1, 0);
-        System.out.println(x);
-        double y = Search.maxRows(m1, 2);
-        System.out.println(y);
+        Matrix matrix = new Matrix(new double[][] {
+                {0, 1, 2},
+                {1, 2, 1},
+                {2, 7, 8}
+        });
+
+        Matrix matrix1 = Matrices.inverse(matrix);
+        System.out.println(matrix1);
 
     }
 }
