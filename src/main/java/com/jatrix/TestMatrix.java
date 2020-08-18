@@ -1,19 +1,19 @@
 package main.java.com.jatrix;
 
-import main.java.com.jatrix.decomposition.CholeskyDecomposition;
-import main.java.com.jatrix.decomposition.LUDecomposition;
-import main.java.com.jatrix.decomposition.LUPDecomposition;
-
-import java.util.Arrays;
-import java.util.Random;
+import main.java.com.jatrix.decompositions.CholeskyDecomposition;
+import main.java.com.jatrix.decompositions.LUDecomposition;
+import main.java.com.jatrix.decompositions.LUPDecomposition;
 
 public class TestMatrix {
     public static void main(String[] args) {
-        Matrix m = new Matrix(new double[][]{
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 1},
-        });
-        System.out.println(Matrices.inverse(m));
+        Matrix A = new Matrix(new double[][]{
+                {5, 5, -9},
+                {5, 8,  -6},
+                {-9,  -6, 8},
+        });;
+
+        System.out.println(new LUPDecomposition(A).det());
+        System.out.println(new LUDecomposition(A).det());
+        System.out.println(new CholeskyDecomposition(A).det());
     }
 }

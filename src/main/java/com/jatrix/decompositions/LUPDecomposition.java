@@ -1,4 +1,4 @@
-package main.java.com.jatrix.decomposition;
+package main.java.com.jatrix.decompositions;
 
 import main.java.com.jatrix.Matrices;
 import main.java.com.jatrix.Matrix;
