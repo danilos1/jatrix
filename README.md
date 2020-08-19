@@ -2,6 +2,6 @@
   <img src="https://github.com/danilos1/jatrix/blob/danilos/logo.png"/>
 </p>
 
-A library for performing different operations with matrices.
 
+## A library for performing different operations with matrices.
 
