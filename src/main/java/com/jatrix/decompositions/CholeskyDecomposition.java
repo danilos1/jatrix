@@ -1,4 +1,4 @@
-package main.java.com.jatrix.decomposition;
+package main.java.com.jatrix.decompositions;
 
 import main.java.com.jatrix.Matrix;
 import main.java.com.jatrix.exceptions.DecompositionNotSupportedException;
@@ -7,6 +7,7 @@ import main.java.com.jatrix.exceptions.MatrixSizeException;
 public class CholeskyDecomposition {
     private Matrix L;
     private Matrix Lt;
+    private int sign;
 
     public CholeskyDecomposition(Matrix A) {
         if (!A.isSquare())
@@ -30,6 +31,7 @@ public class CholeskyDecomposition {
         int size = A.getRowDimension();
         L = new Matrix(size).identity();
         Lt = new Matrix(size);
+        sign = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < i+1; j++) {
                 double sum = 0.0;
@@ -37,7 +39,9 @@ public class CholeskyDecomposition {
                     for (int k = 0; k < j; k++) {
                         sum += L.get(j, k) * L.get(j, k);
                     }
-                    L.set(j, j, Math.sqrt(A.get(j, j) - sum));
+                    double dif = A.get(j, j) - sum;
+                    if (dif < 0) throw new DecompositionNotSupportedException("Matrix is non-positive") ;
+                    L.set(j, j, Math.sqrt(dif));
                 }
                 else {
                     for (int k = 0; k < j; k++) {
@@ -64,6 +68,6 @@ public class CholeskyDecomposition {
             double d = L.get(i, i);
             det *= d*d;
         }
-        return det;
+        return (sign & 0b1) == 0 ? det : -det;
     }
 }

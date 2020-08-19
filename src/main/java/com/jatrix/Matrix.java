@@ -1,8 +1,6 @@
 package main.java.com.jatrix;
 
 import main.java.com.jatrix.exceptions.MatrixSizeException;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 import java.util.stream.DoubleStream;
@@ -104,7 +102,6 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
     /**
      * A basic constructor, receiving an array of some type T .
-     *
      * @param matrix - a filled matrix of type T .
      */
     public Matrix(double[][] matrix) {
@@ -133,6 +130,11 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
 
+    /**
+     * A method for converting the matrix to identity matrix.
+     * @return a current matrix, converted to identity matrix
+     * (a matrix with ones on the main diagonal and zeros elsewhere)
+     */
     public Matrix identity() {
         matrix = new double[row][col];
         for (int i = 0; i < row; i++) {
@@ -142,10 +144,8 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
     /**
-     * TODO
-     *
-     * @param size
-     * @param val
+     * @param size a matrix order or a number of rows and cols simultaneously
+     * @param val a value to fill the matrix
      */
     public Matrix(int size, double val) {
         this(size, size, val);
@@ -250,32 +250,50 @@ public class Matrix implements Cloneable, Iterable<Double> {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
 
-        Matrix m1 = new Matrix(matrix);
-//        double n = 8;
-//        double numberLengthMax = 0, numberLengthMin = 0;
-//        int lengthMax = 0, lengthMin = 0;
+        double[] columnLengths = new double[col];
+        for (int i = 0; i < col; i++) {
+            int maxLength = String.valueOf((int)matrix[0][i]).length();
+            for (int j = 1; j < row; j++) {
+                int cur = String.valueOf((int) matrix[j][i]).length();
+                if (Math.abs(cur) > Math.abs(maxLength)) maxLength = cur;
+            }
+            columnLengths[i] = maxLength;
+        }
+
         for (int i = 0; i < row; i++) {
-//            numberLengthMax = Search.maxColumns(m1, i);
-//            numberLengthMin = Search.minColumns(m1, i);
-//
-//            lengthMax = String.valueOf(numberLengthMax).length();
-//            lengthMin = String.valueOf(numberLengthMin).length();
+            sb.append("| ");
             for (int j = 0; j < col; j++) {
-                String format = "";
-                format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 22, " ") + StringUtils.rightPad(" ", 22, "") + "|");
-//                if (lengthMax > n) {
-//                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
-//                } else if (lengthMin < n){
-//                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
-//                } else {
-//                    //format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 10, " ") + StringUtils.rightPad(" ",5, " ") + "|");
-//                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
-//                }
-                sb.append(format);
+                String format = "%-"+(columnLengths[j] + 4)+"3f | ";
+                sb.append(String.format(format, matrix[i][j]));
             }
             sb.append("\n");
         }
+        return sb.toString();
+    }
 
+    public String prettyOut(int accuracy) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
+
+
+        double[] columnLengths = new double[col];
+        for (int i = 0; i < col; i++) {
+            int maxLength = String.valueOf((int)matrix[0][i]).length();
+            for (int j = 1; j < row; j++) {
+                int cur = String.valueOf((int) matrix[j][i]).length();
+                if (Math.abs(cur) > Math.abs(maxLength)) maxLength = cur;
+            }
+            columnLengths[i] = maxLength;
+        }
+
+        for (int i = 0; i < row; i++) {
+            sb.append("| ");
+            for (int j = 0; j < col; j++) {
+                String format = "%-"+(columnLengths[j] + accuracy + 1)+accuracy+"f | ";
+                sb.append(String.format(format, matrix[i][j]));
+            }
+            sb.append("\n");
+        }
         return sb.toString();
     }
 
@@ -300,8 +318,8 @@ public class Matrix implements Cloneable, Iterable<Double> {
     }
 
 
-    public void setRow(int i, double[] row) {
-        matrix[i] = row;
+    public void setRow(int i, double[] newCol) {
+        matrix[i] = newCol;
     }
 
 
@@ -320,9 +338,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
 
 
     /**
-     * TODO
-     * A method for checking if the matrix contains the specified element (item).
-     *
+     * A method for checking if the matrix contains the specified element.
      * @param item
      * @return true if element is existed in the matrix and false if it's not in the matrix.
      */
@@ -341,7 +357,15 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return false;
     }
 
+
     public double[] getRow(int rowIdx) {
         return matrix[rowIdx];
+    }
+
+
+    public void setColumn(int colIdx, double[] newCol) {
+        for (int i = 0; i < row; i++) {
+            matrix[i][colIdx] = newCol[i];
+        }
     }
 }

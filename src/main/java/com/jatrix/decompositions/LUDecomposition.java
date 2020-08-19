@@ -1,4 +1,4 @@
-package main.java.com.jatrix.decomposition;
+package main.java.com.jatrix.decompositions;
 
 import main.java.com.jatrix.Matrix;
 import main.java.com.jatrix.exceptions.MatrixSizeException;
@@ -65,5 +65,4 @@ public class LUDecomposition {
         }
         return det;
     }
-
 }
