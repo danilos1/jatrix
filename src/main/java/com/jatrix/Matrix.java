@@ -264,7 +264,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         for (int i = 0; i < row; i++) {
             sb.append("| ");
             for (int j = 0; j < col; j++) {
-                String format = "%-"+(columnLengths[j] + 3 + 1)+"3f | ";
+                String format = "%-"+(columnLengths[j] + 4)+"3f | ";
                 sb.append(String.format(format, matrix[i][j]));
             }
             sb.append("\n");
