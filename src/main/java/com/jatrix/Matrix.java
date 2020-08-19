@@ -262,14 +262,15 @@ public class Matrix implements Cloneable, Iterable<Double> {
             lengthMin = String.valueOf(numberLengthMin).length();
             for (int j = 0; j < col; j++) {
                 String format = "";
-                if (lengthMax > n) {
-                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
-                } else if (lengthMin < n){
-                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
-                } else {
-                    //format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 10, " ") + StringUtils.rightPad(" ",5, " ") + "|");
-                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
-                }
+                format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
+//                if (lengthMax > n) {
+//                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
+//                } else if (lengthMin < n){
+//                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
+//                } else {
+//                    //format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 10, " ") + StringUtils.rightPad(" ",5, " ") + "|");
+//                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
+//                }
                 sb.append(format);
             }
             sb.append("\n");
