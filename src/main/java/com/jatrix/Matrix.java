@@ -246,44 +246,57 @@ public class Matrix implements Cloneable, Iterable<Double> {
      *
      * @return a matrix in a pretty form
      */
-//    public String prettyOut(Matrix matrix) {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
-//
-//        for (int i = 0; i < row; i++) {
-//            for (int j = 0; j < col; j++) {
-//                double val = matrix[i][j];
-//                String format = "";
-//                if (val < 1E-15) format = String.format("| %.3f ",val);
-//                else format = String.format("|  %.3f ",val);
-//                sb.append(format);
-//                if (j == col - 1) sb.append("|");
-//            }
-//            sb.append("\n");
-//        }
-//
-//        return sb.toString();
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
-//        int n = 9;
-//        int index = 0;
-//        for (int i = 0; i < row; i++) {
-//            index++;
-//            double[] length = new double[matrix.getColumnDimension()];
-//            for (int j = 0; j < col; j++) {
-//                double numberLength = Search.maxColumns(matrix, index);
-//                String format = "";
-//                if (numberLength > n) {
-//                    //format = String.format();
-//                } else {
-//                    //format = String.format();
-//                }
-//                sb.append(format);
-//            }
-//            sb.append("\n");
-//        }
-//        return sb.toString();
-//    }
+    public String prettyOut() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
+
+
+        double[] columnLengths = new double[col];
+        for (int i = 0; i < col; i++) {
+            int maxLength = String.valueOf((int)matrix[0][i]).length();
+            for (int j = 1; j < row; j++) {
+                int cur = String.valueOf((int) matrix[j][i]).length();
+                if (Math.abs(cur) > Math.abs(maxLength)) maxLength = cur;
+            }
+            columnLengths[i] = maxLength;
+        }
+
+        for (int i = 0; i < row; i++) {
+            sb.append("| ");
+            for (int j = 0; j < col; j++) {
+                String format = "%-"+(columnLengths[j] + 3 + 1)+"3f | ";
+                sb.append(String.format(format, matrix[i][j]));
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String prettyOut(int accuracy) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
+
+
+        double[] columnLengths = new double[col];
+        for (int i = 0; i < col; i++) {
+            int maxLength = String.valueOf((int)matrix[0][i]).length();
+            for (int j = 1; j < row; j++) {
+                int cur = String.valueOf((int) matrix[j][i]).length();
+                if (Math.abs(cur) > Math.abs(maxLength)) maxLength = cur;
+            }
+            columnLengths[i] = maxLength;
+        }
+
+        for (int i = 0; i < row; i++) {
+            sb.append("| ");
+            for (int j = 0; j < col; j++) {
+                String format = "%-"+(columnLengths[j] + accuracy + 1)+accuracy+"f | ";
+                sb.append(String.format(format, matrix[i][j]));
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 
 
     /**
