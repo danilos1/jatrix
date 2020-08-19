@@ -251,18 +251,18 @@ public class Matrix implements Cloneable, Iterable<Double> {
         sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
 
         Matrix m1 = new Matrix(matrix);
-        double n = 8;
-        double numberLengthMax = 0, numberLengthMin = 0;
-        int lengthMax = 0, lengthMin = 0;
+//        double n = 8;
+//        double numberLengthMax = 0, numberLengthMin = 0;
+//        int lengthMax = 0, lengthMin = 0;
         for (int i = 0; i < row; i++) {
-            numberLengthMax = Search.maxColumns(m1, i);
-            numberLengthMin = Search.minColumns(m1, i);
-
-            lengthMax = String.valueOf(numberLengthMax).length();
-            lengthMin = String.valueOf(numberLengthMin).length();
+//            numberLengthMax = Search.maxColumns(m1, i);
+//            numberLengthMin = Search.minColumns(m1, i);
+//
+//            lengthMax = String.valueOf(numberLengthMax).length();
+//            lengthMin = String.valueOf(numberLengthMin).length();
             for (int j = 0; j < col; j++) {
                 String format = "";
-                format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
+                format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 22, " ") + StringUtils.rightPad(" ", 22, "") + "|");
 //                if (lengthMax > n) {
 //                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
 //                } else if (lengthMin < n){
