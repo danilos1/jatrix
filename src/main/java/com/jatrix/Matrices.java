@@ -60,7 +60,7 @@ public class Matrices {
         Random random = new Random();
         for (int i = 0; i < m.getRowDimension(); i++) {
             for (int j = 0; j < m.getColumnDimension(); j++) {
-                m.set(i, j, random.nextInt(20) - 10);
+                m.set(i, j, random.nextDouble());
             }
         }
     }
