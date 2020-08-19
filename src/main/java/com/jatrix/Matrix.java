@@ -1,6 +1,8 @@
 package main.java.com.jatrix;
 
 import main.java.com.jatrix.exceptions.MatrixSizeException;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 import java.util.stream.DoubleStream;
@@ -244,44 +246,37 @@ public class Matrix implements Cloneable, Iterable<Double> {
      *
      * @return a matrix in a pretty form
      */
-//    public String prettyOut(Matrix matrix) {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
-//
-//        for (int i = 0; i < row; i++) {
-//            for (int j = 0; j < col; j++) {
-//                double val = matrix[i][j];
-//                String format = "";
-//                if (val < 1E-15) format = String.format("| %.3f ",val);
-//                else format = String.format("|  %.3f ",val);
-//                sb.append(format);
-//                if (j == col - 1) sb.append("|");
-//            }
-//            sb.append("\n");
-//        }
-//
-//        return sb.toString();
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
-//        int n = 9;
-//        int index = 0;
-//        for (int i = 0; i < row; i++) {
-//            index++;
-//            double[] length = new double[matrix.getColumnDimension()];
-//            for (int j = 0; j < col; j++) {
-//                double numberLength = Search.maxColumns(matrix, index);
-//                String format = "";
-//                if (numberLength > n) {
-//                    //format = String.format();
-//                } else {
-//                    //format = String.format();
-//                }
-//                sb.append(format);
-//            }
-//            sb.append("\n");
-//        }
-//        return sb.toString();
-//    }
+    public String prettyOut() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
+
+        Matrix m1 = new Matrix(matrix);
+        double n = 8;
+        double numberLengthMax = 0, numberLengthMin = 0;
+        int lengthMax = 0, lengthMin = 0;
+        for (int i = 0; i < row; i++) {
+            numberLengthMax = Search.maxColumns(m1, i);
+            numberLengthMin = Search.minColumns(m1, i);
+
+            lengthMax = String.valueOf(numberLengthMax).length();
+            lengthMin = String.valueOf(numberLengthMin).length();
+            for (int j = 0; j < col; j++) {
+                String format = "";
+                if (lengthMax > n) {
+                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
+                } else if (lengthMin < n){
+                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
+                } else {
+                    //format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 10, " ") + StringUtils.rightPad(" ",5, " ") + "|");
+                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
+                }
+                sb.append(format);
+            }
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
 
 
     /**

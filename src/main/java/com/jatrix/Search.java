@@ -127,6 +127,21 @@ public class Search {
         return maxElements;
     }
 
+    public static double minColumns(Matrix matrix, int index) {
+        double minElements = 0;
+        for (int i = 0; i < matrix.getColumnDimension(); i++) {
+            double min = matrix.get(0, index);
+            for (int j = 0; j < matrix.getRowDimension(); j++) {
+                if (matrix.get(j, index) < min) {
+                    min = matrix.get(j, index);
+                }
+            }
+            minElements = min;
+        }
+        return minElements;
+    }
+
+
     public static double maxRows(Matrix matrix, int index) {
         double maxElements = 0;
         for (int i = 0; i < matrix.getRowDimension(); i++) {
