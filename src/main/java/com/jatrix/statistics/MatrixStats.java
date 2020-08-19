@@ -1,6 +1,8 @@
-package main.java.com.jatrix;
+package main.java.com.jatrix.statistics;
 
-public class Search {
+import main.java.com.jatrix.Matrix;
+
+public class MatrixStats {
     public static double[] minColumns(Matrix matrix) {
         double[] minElements = new double[matrix.getColumnDimension()];
         for (int i = 0; i < matrix.getColumnDimension(); i++) {
@@ -21,6 +23,20 @@ public class Search {
             double max = matrix.get(0, i);
             for (int j = 0; j < matrix.getRowDimension(); j++) {
                 if (matrix.get(j, i) > max) {
+                    max = matrix.get(j, i);
+                }
+            }
+            maxElements[i] = max;
+        }
+        return maxElements;
+    }
+
+    public static double[] maxAbsColumns(Matrix matrix) {
+        double[] maxElements = new double[matrix.getColumnDimension()];
+        for (int i = 0; i < matrix.getColumnDimension(); i++) {
+            double max = matrix.get(0, i);
+            for (int j = 0; j < matrix.getRowDimension(); j++) {
+                if (Math.abs(matrix.get(j, i)) > Math.abs(max)) {
                     max = matrix.get(j, i);
                 }
             }
@@ -126,6 +142,35 @@ public class Search {
         }
         return maxElements;
     }
+
+    public static double maxAbsColumns(Matrix matrix, int index) {
+        double maxElements = 0;
+        for (int i = 0; i < matrix.getColumnDimension(); i++) {
+            double max = matrix.get(0, index);
+            for (int j = 0; j < matrix.getRowDimension(); j++) {
+                if (Math.abs(matrix.get(j, index)) > Math.abs(max)) {
+                    max = matrix.get(j, index);
+                }
+            }
+            maxElements = max;
+        }
+        return maxElements;
+    }
+
+    public static double minColumns(Matrix matrix, int index) {
+        double minElements = 0;
+        for (int i = 0; i < matrix.getColumnDimension(); i++) {
+            double min = matrix.get(0, index);
+            for (int j = 0; j < matrix.getRowDimension(); j++) {
+                if (matrix.get(j, index) < min) {
+                    min = matrix.get(j, index);
+                }
+            }
+            minElements = min;
+        }
+        return minElements;
+    }
+
 
     public static double maxRows(Matrix matrix, int index) {
         double maxElements = 0;
