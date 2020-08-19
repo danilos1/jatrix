@@ -7,13 +7,18 @@ import main.java.com.jatrix.solvers.CramerSolver;
 
 public class TestMatrix {
     public static void main(String[] args) {
-        Matrix A = new Matrix(new double[][]{
-                {12, 3, 15},
-                {2, -3, -4},
-                {11, -3.4, 5.7},
-        });;
+        Matrix newMatrix = new Matrix(new double[][]{
+                {-7.32111111, 5, -0.5555},
+                {-1221.55, 2.51, -1},
+                {3, 0.05555, 1}
+        });
 
-        CramerSolver solver = new CramerSolver(A, new double[]{13, 0.5, -6});
-        System.out.println(solver);
+        System.out.println(newMatrix.prettyOut());
+//        System.out.println(newMatrix.prettyOut());
+
+        System.out.println((int) 9.99999999999);
+
+
+
     }
 }

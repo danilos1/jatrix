@@ -1,6 +1,9 @@
 package main.java.com.jatrix;
 
 import main.java.com.jatrix.exceptions.MatrixSizeException;
+import main.java.com.jatrix.statistics.MatrixStats;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 import java.util.stream.DoubleStream;
@@ -246,44 +249,61 @@ public class Matrix implements Cloneable, Iterable<Double> {
      *
      * @return a matrix in a pretty form
      */
-//    public String prettyOut(Matrix matrix) {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
-//
-//        for (int i = 0; i < row; i++) {
+    public String prettyOut() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
+        double[] maxValues = MatrixStats.maxAbsColumns(this);
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                String format = " %-" + String.valueOf(maxValues[j]).length() + ".3f  |";
+                sb.append(String.format(format, matrix[i][j]));
+            }
+            sb.append("\n");
+        }
+
+        /*for (int i = 0; i < row; i++) {
+            int maxNumLength = 0;
+            // Finding an absolute maximum num by column
+            for (int j = 0; j < col; j++) {
+                double maxNum = Math.abs(matrix[0][j]);
+                for (int k = 1; k < row; k++) {
+                    if (Math.abs(matrix[k][j]) > Math.abs(maxNum)) maxNum = matrix[k][j];
+                }
+
+            }
+
+        }*/
+
+
+          /*  for (int j = 0; j < row; j++) {
+                String format = " %-" + maxNumLength + ".3f |";
+                sb.append(String.format(format, matrix[i][j]));
+            }
+            sb.append("\n");
+        }*/
+
+
 //            for (int j = 0; j < col; j++) {
-//                double val = matrix[i][j];
 //                String format = "";
-//                if (val < 1E-15) format = String.format("| %.3f ",val);
-//                else format = String.format("|  %.3f ",val);
-//                sb.append(format);
-//                if (j == col - 1) sb.append("|");
-//            }
-//            sb.append("\n");
-//        }
-//
-//        return sb.toString();
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
-//        int n = 9;
-//        int index = 0;
-//        for (int i = 0; i < row; i++) {
-//            index++;
-//            double[] length = new double[matrix.getColumnDimension()];
-//            for (int j = 0; j < col; j++) {
-//                double numberLength = Search.maxColumns(matrix, index);
-//                String format = "";
-//                if (numberLength > n) {
-//                    //format = String.format();
+//                format = StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|";
+//                if (lengthMax > n) {
+//                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
+//                } else if (lengthMin < n){
+//                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
 //                } else {
-//                    //format = String.format();
+//                    //format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 10, " ") + StringUtils.rightPad(" ",5, " ") + "|");
+//                    format = String.format(StringUtils.leftPad(String.valueOf(m1.get(i, j)), 15, " ") + StringUtils.rightPad(" ", 15, "") + "|");
 //                }
 //                sb.append(format);
 //            }
 //            sb.append("\n");
 //        }
-//        return sb.toString();
-//    }
+
+
+
+        return sb.toString();
+    }
 
 
     /**
