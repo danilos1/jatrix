@@ -1,17 +1,14 @@
 package main.java.com.jatrix;
 
-import main.java.com.jatrix.decompositions.LUDecomposition;
-import main.java.com.jatrix.solvers.CramerSolver;
-
-import java.util.Random;
+import java.io.File;
 
 public class TestMatrix {
     public static void main(String[] args) {
-        int N = 30;
-        Matrix newMatrix = new Matrix(N);
+        Matrix newMatrix = new Matrix(5);
         Matrices.fillRandom(newMatrix);
 
-        LUDecomposition lu = new LUDecomposition(newMatrix);
-        System.out.println(lu.getU().prettyOut(5));
+        File file = new File("target/out.md");
+        MatrixPrinter printer = new MatrixPrinter(newMatrix);
+        printer.saveAsMarkdown(file,true);
     }
 }
