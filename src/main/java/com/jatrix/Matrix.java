@@ -248,8 +248,6 @@ public class Matrix implements Cloneable, Iterable<Double> {
      */
     public String prettyOut() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
-        sb.append("An accuracy: 3").append("\n\n");
 
         double[] columnLengths = new double[col];
         for (int i = 0; i < col; i++) {
