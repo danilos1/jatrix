@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class TestMatrix {
     public static void main(String[] args) {
-        int N = 30;
+        int N = 50;
         Matrix newMatrix = new Matrix(N);
         Matrices.fillRandom(newMatrix);
 
