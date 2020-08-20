@@ -23,7 +23,7 @@ For detail information you should go to the [Documentation](#docs) page.
 
 ## Features
 
-There are some features of Jatrix library
+There are some features of Jatrix library:
 - A straightforward API.
 - Strassen multiplying (more faster than default matrix product, you can the result of comparison at [samples](https://github.com/danilos1/jatrix/blob/master/samples/) directory
   of the matrix multiplications).
