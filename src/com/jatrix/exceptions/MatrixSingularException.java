@@ -1,4 +1,4 @@
-package main.java.com.jatrix.exceptions;
+package com.jatrix.exceptions;
 
 public class MatrixSingularException extends RuntimeException {
     public MatrixSingularException(String message) {

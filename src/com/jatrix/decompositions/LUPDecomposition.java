@@ -1,9 +1,8 @@
-package main.java.com.jatrix.decompositions;
+package com.jatrix.decompositions;
 
-import main.java.com.jatrix.Matrices;
-import main.java.com.jatrix.Matrix;
-import main.java.com.jatrix.conversion.MatrixConversion;
-import main.java.com.jatrix.exceptions.MatrixSizeException;
+import com.jatrix.core.Matrix;
+import com.jatrix.conversion.MatrixConversion;
+import com.jatrix.exceptions.MatrixSizeException;
 
 public class LUPDecomposition {
     private Matrix L;

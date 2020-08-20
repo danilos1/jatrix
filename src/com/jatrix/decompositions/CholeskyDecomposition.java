@@ -1,8 +1,8 @@
-package main.java.com.jatrix.decompositions;
+package com.jatrix.decompositions;
 
-import main.java.com.jatrix.Matrix;
-import main.java.com.jatrix.exceptions.DecompositionNotSupportedException;
-import main.java.com.jatrix.exceptions.MatrixSizeException;
+import com.jatrix.core.Matrix;
+import com.jatrix.exceptions.DecompositionNotSupportedException;
+import com.jatrix.exceptions.MatrixSizeException;
 
 public class CholeskyDecomposition {
     private Matrix L;

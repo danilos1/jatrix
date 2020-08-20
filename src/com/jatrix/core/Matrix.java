@@ -1,6 +1,6 @@
-package main.java.com.jatrix;
+package com.jatrix.core;
 
-import main.java.com.jatrix.exceptions.MatrixSizeException;
+import com.jatrix.exceptions.MatrixSizeException;
 
 import java.util.*;
 import java.util.stream.DoubleStream;

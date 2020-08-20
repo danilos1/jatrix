@@ -1,7 +1,7 @@
-package main.java.com.jatrix.decompositions;
+package com.jatrix.decompositions;
 
-import main.java.com.jatrix.Matrix;
-import main.java.com.jatrix.exceptions.MatrixSizeException;
+import com.jatrix.core.Matrix;
+import com.jatrix.exceptions.MatrixSizeException;
 
 public class LUDecomposition {
     private Matrix A;

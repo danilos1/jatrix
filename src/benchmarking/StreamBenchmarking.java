@@ -1,7 +1,7 @@
 package benchmarking;
 
 
-import main.java.com.jatrix.Matrix;
+import com.jatrix.core.Matrix;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;

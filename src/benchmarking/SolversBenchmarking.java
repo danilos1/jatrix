@@ -1,9 +1,9 @@
 package benchmarking;
 
 
-import main.java.com.jatrix.Matrices;
-import main.java.com.jatrix.Matrix;
-import main.java.com.jatrix.solvers.CramerSolver;
+import com.jatrix.core.Matrices;
+import com.jatrix.core.Matrix;
+import com.jatrix.solvers.CramerSolver;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;

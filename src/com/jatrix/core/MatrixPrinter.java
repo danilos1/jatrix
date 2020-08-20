@@ -1,4 +1,4 @@
-package main.java.com.jatrix;
+package com.jatrix.core;
 
 import java.io.File;
 import java.io.FileWriter;

@@ -1,6 +1,6 @@
-package main.java.com.jatrix.statistics;
+package com.jatrix.statistics;
 
-import main.java.com.jatrix.Matrix;
+import com.jatrix.core.Matrix;
 
 public class MatrixStats {
     public static double[] minColumns(Matrix matrix) {
