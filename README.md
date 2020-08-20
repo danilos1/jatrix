@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/danilos1/jatrix/tree/master/images/logo.png"/>
+  <img src="https://github.com/danilos1/jatrix/images/logo.png"/>
 </p>
 
 
