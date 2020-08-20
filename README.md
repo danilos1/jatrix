@@ -8,9 +8,9 @@
 </p>
 
 
-## A library for performing different operations with matrices.
+## A library for performing different operations with matrices
 
-Hi there! Jatrix is a new library for performing different operations with matrices. There are some operations with matrices: summation, subtraction, multiplying, trasposition, inversion, solving a system of linear equations, decompostitions, etc. The library is focused on performance and simplicity. In the [benchmarking](https://github.com/danilos1/jatrix/tree/master/src/benchmarking) package you find a benchmark of some solutions.
+Hi there! Jatrix is a new library for performing different operations with matrices. There are some operations with matrices: summation, subtraction, multiplying, trasposition, inversion, solving a system of linear equations, decompostitions, etc. The library is focused on performance and simplicity. In the [benchmarking](https://github.com/danilos1/jatrix/tree/master/src/benchmarking) package you find benchmarks of some solutions.
 <hr>
 
 The ```Jatrix API``` is consist of the following sections:
@@ -32,7 +32,7 @@ There are some features of Jatrix library
 
 ## <a name="docs">Documentation</a>
 
-All ```Jatrix API``` is stored in [JavaDoc]((https://github.com/danilos1/jatrix/blob/master/docs/index.html))
+All ```Jatrix API``` is stored in [JavaDoc](https://github.com/danilos1/jatrix/blob/master/docs/index.html)
 
 ## License
 
