@@ -1,9 +1,9 @@
-package main.java.com.jatrix.solvers;
+package com.jatrix.solvers;
 
-import main.java.com.jatrix.Matrix;
-import main.java.com.jatrix.decompositions.LUDecomposition;
-import main.java.com.jatrix.exceptions.MatrixSizeException;
-import main.java.com.jatrix.exceptions.SolverNotSupportedException;
+import com.jatrix.core.Matrix;
+import com.jatrix.exceptions.MatrixSizeException;
+import com.jatrix.decompositions.LUDecomposition;
+import com.jatrix.exceptions.SolverNotSupportedException;
 
 public class CramerSolver {
     private Matrix a;

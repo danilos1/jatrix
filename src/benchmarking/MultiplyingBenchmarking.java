@@ -1,8 +1,8 @@
 package benchmarking;
 
-import main.java.com.jatrix.Matrices;
-import main.java.com.jatrix.Matrix;
-import main.java.com.jatrix.StrassenProduct;
+import com.jatrix.core.Matrices;
+import com.jatrix.core.Matrix;
+import com.jatrix.core.StrassenProduct;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
@@ -10,9 +10,6 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)

@@ -1,7 +1,7 @@
-package main.java.com.jatrix;
+package com.jatrix.core;
 
-import static main.java.com.jatrix.Matrices.add;
-import static main.java.com.jatrix.Matrices.sub;
+import static com.jatrix.core.Matrices.add;
+import static com.jatrix.core.Matrices.sub;
 
 public final class StrassenProduct {
 

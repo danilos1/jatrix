@@ -1,6 +1,6 @@
-package main.java.com.jatrix;
+package com.jatrix.core;
 
-import main.java.com.jatrix.exceptions.MatrixSizeException;
+import com.jatrix.exceptions.MatrixSizeException;
 
 import java.util.*;
 import java.util.stream.DoubleStream;
@@ -248,7 +248,6 @@ public class Matrix implements Cloneable, Iterable<Double> {
      */
     public String prettyOut() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
 
         double[] columnLengths = new double[col];
         for (int i = 0; i < col; i++) {
@@ -257,7 +256,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
                 int cur = String.valueOf((int) matrix[j][i]).length();
                 if (Math.abs(cur) > Math.abs(maxLength)) maxLength = cur;
             }
-            columnLengths[i] = maxLength;
+            columnLengths[i] = maxLength + 1;
         }
 
         for (int i = 0; i < row; i++) {
@@ -274,7 +273,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
     public String prettyOut(int accuracy) {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("The size of the matrix: %d x %d", row, col)).append("\n");
-
+        sb.append("An accuracy: ").append(accuracy).append("\n\n");
 
         double[] columnLengths = new double[col];
         for (int i = 0; i < col; i++) {
@@ -283,9 +282,8 @@ public class Matrix implements Cloneable, Iterable<Double> {
                 int cur = String.valueOf((int) matrix[j][i]).length();
                 if (Math.abs(cur) > Math.abs(maxLength)) maxLength = cur;
             }
-            columnLengths[i] = maxLength;
+            columnLengths[i] = maxLength + 1;
         }
-
         for (int i = 0; i < row; i++) {
             sb.append("| ");
             for (int j = 0; j < col; j++) {

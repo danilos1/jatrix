@@ -1,7 +1,8 @@
-package main.java.com.jatrix;
+package com.jatrix.core;
 
-import main.java.com.jatrix.conversion.MatrixConversion;
-import main.java.com.jatrix.exceptions.*;
+import com.jatrix.conversion.MatrixConversion;
+import com.jatrix.exceptions.MatrixSingularException;
+import com.jatrix.exceptions.MatrixSizeException;
 
 import java.util.Random;
 

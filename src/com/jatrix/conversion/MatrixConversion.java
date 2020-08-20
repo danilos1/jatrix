@@ -1,6 +1,6 @@
-package main.java.com.jatrix.conversion;
+package com.jatrix.conversion;
 
-import main.java.com.jatrix.Matrix;
+import com.jatrix.core.Matrix;
 
 public class MatrixConversion {
 
