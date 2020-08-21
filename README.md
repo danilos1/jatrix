@@ -19,6 +19,68 @@ The ```Jatrix API``` is consist of the following sections:
   <img src="https://github.com/danilos1/jatrix/blob/master/images/api.png"/>
 </p>
 
+- ```core``` section is basic package, stores main classes of the library such as ```Matrix```, ```Matrices```, ```MatrixIterator``` etc.
+ 
+ For instance, let's initialize some matrix and perform matrix product:
+ 
+ ``` 
+ Matrix a = new Matrix(new double[][]{
+      { 1, 7, 3},
+      {-5, 0, 9}
+ });
+     
+ Matrix b = new Matrix(new double[][]{
+      {8, 10},
+      {3,-12},
+      {1, -7},
+ });
+     
+Matrix result = Matrices.mul(a, b);
+System.out.println(result.prettyOut());
+```
+     
+- ```exceptions``` section includes exceptions of the library.
+- In ```solvers``` section you'll find a tools for solving linear equations.
+
+To demonstrate one of a solvers, let's solver the following system of linear equation:
+  
+   { -5*x1 + 3*x2 - x3 = 1<br>
+   { 8*x2 + 2*x3 = -5<br>
+   { 12*x1 + 7*x2 - 6*x3 = 6
+   
+   ```
+   Matrix coefficients = new Matrix(new double[][]{
+      { -5, 3, -1 },
+      {  0, 8,  2 },
+      { 12, 7, -6 },
+   });
+   
+   double[] b = {1, -5, 6};
+   
+   CramerSolver solver = new CramerSolver(coefficients, b);
+   System.out.println(solver);
+   ```
+   
+- ```decompositions``` sections is used for decomposing some matrix (See ![Matrix decomposition](https://en.wikipedia.org/wiki/Matrix_decomposition))
+
+For example, let's decompose the matrix above:
+
+```
+  Matrix a = new Matrix(new double[][]{
+      { -5, 3, -1 },
+      {  0, 8,  2 },
+      { 12, 7, -6 },
+   });
+   
+   LUDecomposition lu = new LUDecomposition(a);
+   System.out.println(lu.getL());
+   System.out.println(lu.getU());
+   System.out.println(lu.det());
+```
+
+- ```converse``` block is used for changing a matrix somewise (swap matrix rows or columns, etc)
+- To find out some statistics such as maximum or minimum by row or column you can use ```statistics``` section.
+
 For detail information you should go to the [Documentation](#docs) page.
 
 ## Features
