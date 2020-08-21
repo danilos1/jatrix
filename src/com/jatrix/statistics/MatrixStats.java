@@ -2,7 +2,17 @@ package com.jatrix.statistics;
 
 import com.jatrix.core.Matrix;
 
+/**
+ * Class for performing general statistical calculations such as min/max, average value etc. of a {@link Matrix} object.
+ */
 public class MatrixStats {
+
+
+    /**
+     * Finds a minimum value of each column of the specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return minElements - array of minimum values
+     */
     public static double[] minColumns(Matrix matrix) {
         double[] minElements = new double[matrix.getColumnDimension()];
         for (int i = 0; i < matrix.getColumnDimension(); i++) {
@@ -17,6 +27,12 @@ public class MatrixStats {
         return minElements;
     }
 
+
+    /**
+     * Finds a maximum value of each column of the specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return maxElements array of maximum values.
+     */
     public static double[] maxColumns(Matrix matrix) {
         double[] maxElements = new double[matrix.getColumnDimension()];
         for (int i = 0; i < matrix.getColumnDimension(); i++) {
@@ -31,6 +47,12 @@ public class MatrixStats {
         return maxElements;
     }
 
+
+    /**
+     * Finds maximum absolute value of the specified matrix in columns.
+     * @param matrix {@link Matrix} object.
+     * @return maxElements array of maximum absolute values
+     */
     public static double[] maxAbsColumns(Matrix matrix) {
         double[] maxElements = new double[matrix.getColumnDimension()];
         for (int i = 0; i < matrix.getColumnDimension(); i++) {
@@ -45,6 +67,12 @@ public class MatrixStats {
         return maxElements;
     }
 
+
+    /**
+     * Finds minimum values in each rows of the specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return minElements array of minimum values.
+     */
     public static double[] minRows(Matrix matrix) {
         double[] minElements = new double[matrix.getRowDimension()];
         for (int i = 0; i < matrix.getRowDimension(); i++) {
@@ -59,6 +87,12 @@ public class MatrixStats {
         return minElements;
     }
 
+
+    /**
+     * Finds the maximum values in each rows of the specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return maxElements array of maximum values.
+     */
     public static double[] maxRows(Matrix matrix) {
         double[] maxElements = new double[matrix.getRowDimension()];
         for (int i = 0; i < matrix.getRowDimension(); i++) {
@@ -73,6 +107,12 @@ public class MatrixStats {
         return maxElements;
     }
 
+
+    /**
+     * Finds a maximum value of the whole specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return maxElement maximum number of a whole matrix.
+     */
     public static double max(Matrix matrix) {
         double maxElement = matrix.get(0, 0);
         for (int i = 0; i < matrix.getRowDimension(); i++) {
@@ -85,6 +125,12 @@ public class MatrixStats {
         return maxElement;
     }
 
+
+    /**
+     * Finds a minimum value of the whole specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return minElement minimum number of a whole matrix.
+     */
     public static double min(Matrix matrix) {
         double minElement = matrix.get(0, 0);
         for (int i = 0; i < matrix.getRowDimension(); i++) {
@@ -97,6 +143,12 @@ public class MatrixStats {
         return minElement;
     }
 
+
+    /**
+     * Finds a maximum element on the diagonal of the specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return maxElement maximum diagonal number
+     */
     public static double maxDiagonal(Matrix matrix) {
         double maxElement = matrix.get(0, 0);
         int minRange;
@@ -113,6 +165,12 @@ public class MatrixStats {
         return maxElement;
     }
 
+
+    /**
+     * Finds a minimum element on the diagonal of the specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return minElement minimum diagonal number
+     */
     public static double minDiagonal(Matrix matrix) {
         double minElement = matrix.get(0, 0);
         int minRange;
@@ -129,6 +187,14 @@ public class MatrixStats {
         return minElement;
     }
 
+
+    /**
+     * Finds a maximum value of the specified matrix for a given column index.
+     * @param matrix {@link Matrix} object.
+     * @param index matrix column index
+     * @return maxElements maximum by column of <code>index</code> position number.
+     * @see #maxColumns
+     */
     public static double maxColumns(Matrix matrix, int index) {
         double maxElements = 0;
         for (int i = 0; i < matrix.getColumnDimension(); i++) {
@@ -143,6 +209,13 @@ public class MatrixStats {
         return maxElements;
     }
 
+
+    /**
+     * Finds an absolute maximum value of the specified matrix for a given column index.
+     * @param matrix {@link Matrix} object.
+     * @param index matrix column index
+     * @return maxElements absolute maximum by column of <code>index</code> position number.
+     */
     public static double maxAbsColumns(Matrix matrix, int index) {
         double maxElements = 0;
         for (int i = 0; i < matrix.getColumnDimension(); i++) {
@@ -157,6 +230,14 @@ public class MatrixStats {
         return maxElements;
     }
 
+
+    /**
+     * Finds a minimum value of the specified matrix for a given column index.
+     * @param matrix {@link Matrix} object.
+     * @param index matrix column index
+     * @return minElements minimum by column of <code>index</code> position number.
+     * @see #minColumns
+     */
     public static double minColumns(Matrix matrix, int index) {
         double minElements = 0;
         for (int i = 0; i < matrix.getColumnDimension(); i++) {
@@ -172,6 +253,13 @@ public class MatrixStats {
     }
 
 
+    /**
+     * Finds a maximum value of the specified matrix for a given row index.
+     * @param matrix {@link Matrix} object.
+     * @param index matrix row index
+     * @return maxElements maximum by row of <code>index</code> position number.
+     * @see #maxRows
+     */
     public static double maxRows(Matrix matrix, int index) {
         double maxElements = 0;
         for (int i = 0; i < matrix.getRowDimension(); i++) {

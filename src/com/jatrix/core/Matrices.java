@@ -8,19 +8,25 @@ import java.util.Random;
 
 /**
  * Matrices class is intended for performing basic matrix operations such as
- * adding, multiplication, searching, etc.
+ * adding, subtraction, multiplication, searching,  etc.
  */
+
 public class Matrices {
 
     private Matrices() {
     }
-
 
     private static boolean isNotEqualsDimensions(Matrix m1, Matrix m2) {
         return m1.getRowDimension() != m2.getRowDimension() || m1.getColumnDimension() != m2.getColumnDimension();
     }
 
 
+    /**
+     * Adds two matrices.
+     * @param m1 - the first Matrix operand.
+     * @param m2 - the second Matrix operand.
+     * @return newMatrix Matrix object of summation of <code>m1</code> and <code>m2</code>
+     */
     public static Matrix add(Matrix m1, Matrix m2) {
         if (isNotEqualsDimensions(m1, m2))
             throw new MatrixSizeException("Dimensions of matrices must be equaled");
@@ -38,7 +44,12 @@ public class Matrices {
         return newMatrix;
     }
 
-
+    /**
+     * This method is used to make a difference of two matrices.
+     * @param m1 - first matrix to sub method
+     * @param m2 - second matrix to sub method
+     * @return newMatrix - a difference of m1 and m2
+     */
     public static Matrix sub(Matrix m1, Matrix m2) {
         if (isNotEqualsDimensions(m1, m2))
             throw new MatrixSizeException("Dimensions of matrices must be equaled");
@@ -56,7 +67,10 @@ public class Matrices {
         return newMatrix;
     }
 
-
+    /**
+     * Fills the matrix with random numbers.
+     * @param m Matrix object to fill randomly.
+     */
     public static void fillRandom(Matrix m) {
         Random random = new Random();
         for (int i = 0; i < m.getRowDimension(); i++) {
@@ -66,7 +80,16 @@ public class Matrices {
         }
     }
 
-
+    /**
+     * Multiplies two matrices. It can use a Strassen's method to multiply two matrices,
+     * when matrices have dimensions, that greater than 32.
+     * @param m1 the first Matrix operand.
+     * @param m2 the second Matrix operand.
+     * @return newMatrix result of <code>m1</code> and <code>m2</code> product.
+     * @throws MatrixSizeException if number of columns of the first matrix is not equaled to number of rows of the
+     * second matrix.
+     * @see StrassenProduct
+     */
     public static Matrix mul(Matrix m1, Matrix m2) {
         if (m1.getColumnDimension() != m2.getRowDimension())
             throw new MatrixSizeException("Invalid multiplication operation. Number of columns of the first matrix " +
@@ -96,7 +119,12 @@ public class Matrices {
         return newMatrix;
     }
 
-
+    /**
+     * Multiplies a Matrix object by a double constant.
+     * @param c arbitrary number, constant.
+     * @param matrix Matrix object to multiply by a constant.
+     * @return newMatrix result of multiplication <code>matrix</code> by <code>c</code>.
+     */
     public static Matrix mul(double c, Matrix matrix) {
         int rows = matrix.getRowDimension();
         int cols = matrix.getColumnDimension();
@@ -111,7 +139,11 @@ public class Matrices {
         return newMatrix;
     }
 
-
+    /**
+     * Transpose a specified matrix. It's obtained by changing rows to columns and columns to rows.
+     * @param matrix matrix to transpose.
+     * @return transposedMatrix transposed matrix.
+     */
     public static Matrix transpose(Matrix matrix) {
         int rows = matrix.getRowDimension();
         int cols = matrix.getColumnDimension();
@@ -128,9 +160,10 @@ public class Matrices {
 
 
     /**
-     * A method for finding an inversion of the matrix, using Gauss Elimination
-     * @param matrix - the matrix for which you want to get the inversion
-     * @return an inversed matrix
+     * Inverse a matrix, using Gauss Elimination.
+     * @param matrix Matrix object for which you want to get the inversion.
+     * @return invertible matrix
+     * @throws MatrixSizeException if a matrix is non-square.
      */
     public static Matrix inverse(Matrix matrix) {
         if (!matrix.isSquare())
@@ -141,8 +174,6 @@ public class Matrices {
         Matrix A = matrix.clone();
         Matrix B = new Matrix(size).identity();
 
-
-        // Forward substitution
         for (int i = 0; i < size - 1; i++) {
             if (A.get(i, i) == 0) {
                 for (int j = i+1; j < size; j++) {
@@ -168,7 +199,6 @@ public class Matrices {
             }
         }
 
-        // Back substitution
         for (int i = size - 1; i > 0; i--) {
             if (A.get(i, i) == 0) {
                 for (int j = i+1; j < size; j++) {
@@ -194,7 +224,6 @@ public class Matrices {
             }
         }
 
-        // Correction
         for (int i = 0; i < size; i++) {
             double d = A.get(i, i);
             if (d == 0)

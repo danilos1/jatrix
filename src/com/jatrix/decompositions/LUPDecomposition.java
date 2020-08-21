@@ -4,6 +4,9 @@ import com.jatrix.core.Matrix;
 import com.jatrix.conversion.MatrixConversion;
 import com.jatrix.exceptions.MatrixSizeException;
 
+/**
+ * A class for performing a LUP factorization (decomposition) of a {@link Matrix} object.
+ */
 public class LUPDecomposition {
     private Matrix L;
     private Matrix U;
@@ -12,21 +15,38 @@ public class LUPDecomposition {
     private StringBuilder sb;
 
 
+    /**
+     * Gets a lower-triangular matrix.
+     * @return Matrix object
+     */
     public Matrix getL() {
         return L;
     }
 
 
+    /**
+     * Gets an upper-triangular matrix.
+     * @return Matrix object
+     */
     public Matrix getU() {
         return U;
     }
 
 
+    /**
+     * Gets a permutation matrix.
+     * @return Matrix object
+     */
     public Matrix getP() {
         return P;
     }
 
 
+    /**
+     * Constructs {@link LUPDecomposition} object, received a {@link Matrix} object to
+     * decompose a matrix into LUP decomposition method.
+     * @param A Matrix object to LUP factorization.
+     */
     public LUPDecomposition(Matrix A) {
         if (!A.isSquare())
             throw new MatrixSizeException("Invalid matrix to LU decomposition: matrix must be square.\nFounded: " +
@@ -86,6 +106,10 @@ public class LUPDecomposition {
         return pA;
     }
 
+    /**
+     * Gets determinant of a Matrix object.
+     * @return double value, representing determinant of Matrix object.
+     */
     public double det() {
         double det = 1;
         for (int i = 0; i < U.getRowDimension(); i++) {

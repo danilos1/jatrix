@@ -3,10 +3,20 @@ package com.jatrix.core;
 import static com.jatrix.core.Matrices.add;
 import static com.jatrix.core.Matrices.sub;
 
+/**
+ * This class implements the Strassen's algorithm.
+ * It is designed to quickly multiply matrices larger than 32 x 32
+ */
 public final class StrassenProduct {
 
     private StrassenProduct() {}
 
+    /**
+     * Multiplies two matrices by Strassen's algorithm.
+     * @param m1 the first Matrix operand to multiplying operation.
+     * @param m2 the second Matrix operand to multiplying operation.
+     * @return Matrix object - result of matrices product.
+     */
     public static Matrix mul(Matrix m1, Matrix m2) {
         if (m1.getRowDimension() <= 32) {
             return Matrices.mul(m1, m2);
@@ -31,6 +41,11 @@ public final class StrassenProduct {
         return join(c11, c12, c21, c22);
     }
 
+    /**
+     * Splits parent matrix into four child matrices.
+     * @param A parent Matrix object, which is divided by 4 child Matrix objects.
+     * @return Matrix array of four child matrices.
+     */
     public static Matrix[] split(Matrix A) {
         int size = A.getRowDimension() >> 1;
         Matrix a11 = new Matrix(size);
@@ -48,6 +63,15 @@ public final class StrassenProduct {
         return new Matrix[]{a11, a12, a21, a22};
     }
 
+    /**
+     * Joins four child matrices into one parent Matrix object.
+     * @param a11 the first child matrix
+     * @param a12 the second child matrix
+     * @param a21 the third child matrix
+     * @param a22 the fourth child matrix
+     * @return joinedMatrix parent Matrix object, joined of <code>a11</code>,<code>a12</code>,<code>a21</code>,
+     * <code>a22</code>,
+     */
     public static Matrix join(Matrix a11, Matrix a12, Matrix a21, Matrix a22) {
         int size = a11.getRowDimension();
         Matrix joinedMatrix = new Matrix(size << 1);

@@ -1,9 +1,8 @@
 package com.jatrix.exceptions;
 
 /**
- *
- * @author Solovjov D. & Timochko D.
- * This exception is used for indicating if a user set unequal column sizes
+ * An exception class for used when {@link com.jatrix.core.Matrix} object has inappropriate dimensions.
+ * @see com.jatrix.core.Matrix
  */
 public class MatrixSizeException extends RuntimeException {
     public MatrixSizeException(String string) {

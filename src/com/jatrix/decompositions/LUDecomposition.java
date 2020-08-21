@@ -3,6 +3,10 @@ package com.jatrix.decompositions;
 import com.jatrix.core.Matrix;
 import com.jatrix.exceptions.MatrixSizeException;
 
+
+/**
+ * A class for performing a LU factorization (decomposition) of a {@link Matrix} object.
+ */
 public class LUDecomposition {
     private Matrix A;
     private Matrix L;
@@ -10,10 +14,13 @@ public class LUDecomposition {
     private Matrix P;
     private LUPDecomposition lup;
 
-    private boolean isExist(Matrix A) {
-        return false;
-    }
 
+    /**
+     * Constructs {@link LUDecomposition} object, received a {@link Matrix} object to
+     * decompose a matrix into LU decomposition method.
+     * @param A Matrix object to LU factorization.
+     * @throws MatrixSizeException if a <code>A</code> matrix is non-square.
+     */
     public LUDecomposition(Matrix A) {
         if (!A.isSquare())
             throw new MatrixSizeException("Invalid matrix to LU decomposition: matrix must be square.\nFounded: " +
@@ -45,18 +52,38 @@ public class LUDecomposition {
         }
     }
 
+
+    /**
+     * Gets a lower-triangular matrix.
+     * @return Matrix object
+     */
     public Matrix getL() {
         return L;
     }
 
+
+    /**
+     * Gets an upper-triangular matrix.
+     * @return Matrix object
+     */
     public Matrix getU() {
         return U;
     }
 
+
+    /**
+     * Gets a permutation matrix.
+     * @return Matrix object
+     */
     public Matrix getP() {
         return P;
     }
 
+
+    /**
+     * Gets determinant of a Matrix object.
+     * @return double value, representing determinant of Matrix object.
+     */
     public double det() {
         if (lup != null) return lup.det();
         double det = 1;

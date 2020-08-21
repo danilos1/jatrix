@@ -4,11 +4,22 @@ import com.jatrix.core.Matrix;
 import com.jatrix.exceptions.DecompositionNotSupportedException;
 import com.jatrix.exceptions.MatrixSizeException;
 
+/**
+ * A class for performing a Cholesky factorization (decomposition) of a {@link Matrix} object.
+ */
 public class CholeskyDecomposition {
     private Matrix L;
     private Matrix Lt;
     private int sign;
 
+    /**
+     * Constructs {@link CholeskyDecomposition} object, received a {@link Matrix} object to
+     * decompose a matrix into Cholesky decomposition method.
+     * @param A Matrix object to Cholesky factorization.
+     * @throws MatrixSizeException if a <code>A</code> matrix is non-square.
+     * @throws DecompositionNotSupportedException if a <code>A</code> matrix does not support the Cholesky factorization
+     * or if a matrix is defined as non-positive.
+     */
     public CholeskyDecomposition(Matrix A) {
         if (!A.isSquare())
             throw new MatrixSizeException("Invalid matrix to LU decomposition: matrix must be square.\nFounded: " +
@@ -54,14 +65,26 @@ public class CholeskyDecomposition {
         Lt = L.getTranspose();
     }
 
+    /**
+     * Gets a lower-triangular matrix.
+     * @return Matrix object
+     */
     public Matrix getL() {
         return L;
     }
 
+    /**
+     * Gets a lower-triangular transposed matrix
+     * @return Matrix object
+     */
     public Matrix getLt() {
         return Lt;
     }
 
+    /**
+     * Gets determinant of a Matrix object.
+     * @return double value, representing determinant of Matrix object.
+     */
     public double det() {
         double det = 1;
         for (int i = 0; i < L.getRowDimension(); i++) {
