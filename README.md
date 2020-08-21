@@ -61,7 +61,7 @@ To demonstrate one of a solvers, let's solver the following system of linear equ
    System.out.println(solver);
    ```
    
-- ```decompositions``` sections is used for decomposing some matrix (See ![Matrix decomposition](https://en.wikipedia.org/wiki/Matrix_decomposition))
+- ```decompositions``` sections is used for decomposing some matrix (See [Matrix decomposition](https://en.wikipedia.org/wiki/Matrix_decomposition))
 
 For example, let's decompose the matrix above:
 
