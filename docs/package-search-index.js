@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"benchmarking"},{"l":"com.jatrix.conversion"},{"l":"com.jatrix.core"},{"l":"com.jatrix.decompositions"},{"l":"com.jatrix.exceptions"},{"l":"com.jatrix.solvers"},{"l":"com.jatrix.statistics"}]
