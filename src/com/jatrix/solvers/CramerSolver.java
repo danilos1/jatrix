@@ -5,6 +5,10 @@ import com.jatrix.exceptions.MatrixSizeException;
 import com.jatrix.decompositions.LUDecomposition;
 import com.jatrix.exceptions.SolverNotSupportedException;
 
+/**
+ * Class for solution of a quadratic system of linear algebraic equations with nonzero determinant of the basic matrix
+ */
+
 public class CramerSolver {
     private Matrix a;
     private double[] b;
@@ -21,6 +25,12 @@ public class CramerSolver {
     public double[] getConstants() {
         return b;
     }
+
+    /**
+     * A basic constructor, used for solving the matrix by the Cramer method
+     * @param a - given matrix
+     * @param b - coefficients in the right part of the equation
+     */
 
     public CramerSolver(Matrix a, double[] b) {
         if (a.getRowDimension() != b.length)

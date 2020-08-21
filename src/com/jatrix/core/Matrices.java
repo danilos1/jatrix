@@ -8,18 +8,25 @@ import java.util.Random;
 
 /**
  * Matrices class is intended for performing basic matrix operations such as
- * adding, multiplication, searching, etc.
+ * adding, subtraction, multiplication, searching,  etc.
  */
+
 public class Matrices {
 
     private Matrices() {
     }
 
-
     private static boolean isNotEqualsDimensions(Matrix m1, Matrix m2) {
         return m1.getRowDimension() != m2.getRowDimension() || m1.getColumnDimension() != m2.getColumnDimension();
     }
 
+
+    /**
+     * This method is used to make the sum of two matrices.
+     * @param m1 - first matrix to add method
+     * @param m2 - second matrix to add method
+     * @return newMatrix - sum of m1 and m2
+     */
 
     public static Matrix add(Matrix m1, Matrix m2) {
         if (isNotEqualsDimensions(m1, m2))
@@ -38,6 +45,12 @@ public class Matrices {
         return newMatrix;
     }
 
+    /**
+     * This method is used to make a difference of two matrices.
+     * @param m1 - first matrix to sub method
+     * @param m2 - second matrix to sub method
+     * @return newMatrix - a difference of m1 and m2
+     */
 
     public static Matrix sub(Matrix m1, Matrix m2) {
         if (isNotEqualsDimensions(m1, m2))
@@ -56,6 +69,10 @@ public class Matrices {
         return newMatrix;
     }
 
+    /**
+     * Fills the matrix with random numbers
+     * @param m - matrix to fillRandom method
+     */
 
     public static void fillRandom(Matrix m) {
         Random random = new Random();
@@ -66,6 +83,18 @@ public class Matrices {
         }
     }
 
+    /**
+     * This method implements the multiplication of two matrices.
+     *
+     * For example, let's consider we have matrices A and B.
+     * If A = [Aij] is an m x n and B = [Bij] is an n x p matrix,
+     * the product AB is an m x p matrix.
+     * AB = [Cij], where Cij = Ai1 * B1j + Ai2 * B2j + ... + Ain * Bnj
+     *
+     * @param m1 - first matrix to mul method
+     * @param m2 - second matrix to mul method
+     * @return newMatrix - result of m1 and m2 multiplication
+     */
 
     public static Matrix mul(Matrix m1, Matrix m2) {
         if (m1.getColumnDimension() != m2.getRowDimension())
@@ -96,6 +125,12 @@ public class Matrices {
         return newMatrix;
     }
 
+    /**
+     * Simple multiplication of the matrix by a constant.
+     * @param c - arbitrary number, constant
+     * @param matrix - matrix to mul method
+     * @return newMatrix - result of multiplication matrix by c
+     */
 
     public static Matrix mul(double c, Matrix matrix) {
         int rows = matrix.getRowDimension();
@@ -111,6 +146,12 @@ public class Matrices {
         return newMatrix;
     }
 
+    /**
+     * This method perform matrix transposition
+     * Is obtained by changing rows to columns and columns to rows.
+     * @param matrix - matrix to transpose method
+     * @return transposedMatrix - transposed matrix
+     */
 
     public static Matrix transpose(Matrix matrix) {
         int rows = matrix.getRowDimension();
@@ -130,8 +171,9 @@ public class Matrices {
     /**
      * A method for finding an inversion of the matrix, using Gauss Elimination
      * @param matrix - the matrix for which you want to get the inversion
-     * @return an inversed matrix
+     * @return an inverse matrix
      */
+
     public static Matrix inverse(Matrix matrix) {
         if (!matrix.isSquare())
             throw new MatrixSizeException("Matrix must be square. Founded: " +

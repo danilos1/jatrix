@@ -4,14 +4,26 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Represents record of the matrix in the files markdown or txt
+ */
+
 public class MatrixPrinter {
     private Matrix matrix;
 
+    /**
+     * Represents constructor, which assign matrix to field of class MatrixPrinter
+     * @param matrix - a basic matrix
+     */
 
     public MatrixPrinter(Matrix matrix) {
         this.matrix = matrix;
     }
 
+    /**
+     * Saves matrix as markdown file
+     * @param file record the final result
+     */
 
     public void saveAsMarkdown(File file) {
         try (FileWriter fileWriter = new FileWriter(file)) {
@@ -40,6 +52,11 @@ public class MatrixPrinter {
         }
     }
 
+    /**
+     * Append items to the markdown file
+     * @param file record the final result
+     * @param append add specified values
+     */
 
     public void saveAsMarkdown(File file, boolean append) {
         try (FileWriter fileWriter = new FileWriter(file, append)) {
@@ -69,6 +86,10 @@ public class MatrixPrinter {
         }
     }
 
+    /**
+     * Saves matrix as text file
+     * @param file record the final result
+     */
 
     public void saveAsText(File file) {
         try (FileWriter fileWriter = new FileWriter(file)) {
@@ -81,6 +102,11 @@ public class MatrixPrinter {
         }
     }
 
+    /**
+     * Append items to the txt file
+     * @param file record the final result
+     * @param append add specified values
+     */
 
     public void saveAsText(File file, boolean append) {
         try (FileWriter fileWriter = new FileWriter(file, append)) {

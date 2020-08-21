@@ -3,9 +3,21 @@ package com.jatrix.core;
 import static com.jatrix.core.Matrices.add;
 import static com.jatrix.core.Matrices.sub;
 
+/**
+ * This class implements the Strassen algorithm.
+ * It is designed to quickly multiply matrices larger than 64 x 64
+ */
+
 public final class StrassenProduct {
 
     private StrassenProduct() {}
+
+    /**
+     * Method for multiplying two matrices
+     * @param m1 - first matrix to mul method
+     * @param m2 - second matrix to mul method
+     * @return the matrix
+     */
 
     public static Matrix mul(Matrix m1, Matrix m2) {
         if (m1.getRowDimension() <= 32) {
@@ -31,6 +43,12 @@ public final class StrassenProduct {
         return join(c11, c12, c21, c22);
     }
 
+    /**
+     * Method to split parent matrix into child matrices
+     * @param A - a basic parent matrix
+     * @return array of child matrices
+     */
+
     public static Matrix[] split(Matrix A) {
         int size = A.getRowDimension() >> 1;
         Matrix a11 = new Matrix(size);
@@ -47,6 +65,15 @@ public final class StrassenProduct {
 
         return new Matrix[]{a11, a12, a21, a22};
     }
+
+    /**
+     * Method to join child matrices into parent matrix
+     * @param a11 - first child matrix
+     * @param a12 - second child matrix
+     * @param a21 - third child matrix
+     * @param a22 - fourth child matrix
+     * @return joinedMatrix - parent matrix
+     */
 
     public static Matrix join(Matrix a11, Matrix a12, Matrix a21, Matrix a22) {
         int size = a11.getRowDimension();

@@ -4,10 +4,19 @@ import com.jatrix.core.Matrix;
 import com.jatrix.exceptions.DecompositionNotSupportedException;
 import com.jatrix.exceptions.MatrixSizeException;
 
+/**
+ * Representation of a symmetric positive definite matrix in the form A = L * L (transpose)
+ */
+
 public class CholeskyDecomposition {
     private Matrix L;
     private Matrix Lt;
     private int sign;
+
+    /**
+     * Constructor, which decompose the matrix and checks matrix on square
+     * @param A
+     */
 
     public CholeskyDecomposition(Matrix A) {
         if (!A.isSquare())
@@ -54,13 +63,28 @@ public class CholeskyDecomposition {
         Lt = L.getTranspose();
     }
 
+    /**
+     * Gets lower-triangular matrix
+     * @return the matrix
+     */
+
     public Matrix getL() {
         return L;
     }
 
+    /**
+     * Gets lower-triangular transposed matrix
+     * @return the matrix
+     */
+
     public Matrix getLt() {
         return Lt;
     }
+
+    /**
+     * Gets determinant of matrix
+     * @return the matrix
+     */
 
     public double det() {
         double det = 1;
