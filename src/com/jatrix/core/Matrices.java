@@ -13,8 +13,12 @@ import java.util.Random;
 
 public class Matrices {
 
+    /**
+     *
+     */
     private Matrices() {
     }
+
 
     private static boolean isNotEqualsDimensions(Matrix m1, Matrix m2) {
         return m1.getRowDimension() != m2.getRowDimension() || m1.getColumnDimension() != m2.getColumnDimension();
@@ -23,8 +27,8 @@ public class Matrices {
 
     /**
      * Adds two matrices.
-     * @param m1 - the first Matrix operand.
-     * @param m2 - the second Matrix operand.
+     * @param m1 the first Matrix operand.
+     * @param m2 the second Matrix operand.
      * @return newMatrix Matrix object of summation of <code>m1</code> and <code>m2</code>
      */
     public static Matrix add(Matrix m1, Matrix m2) {
@@ -44,11 +48,12 @@ public class Matrices {
         return newMatrix;
     }
 
+
     /**
-     * This method is used to make a difference of two matrices.
-     * @param m1 - first matrix to sub method
-     * @param m2 - second matrix to sub method
-     * @return newMatrix - a difference of m1 and m2
+     * Subtracts two matrices.
+     * @param m1 the first Matrix operand.
+     * @param m2 the second the second Matrix operand.
+     * @return newMatrix difference of <code>m1</code> and <code>m2</code> {@link Matrix} objects.
      */
     public static Matrix sub(Matrix m1, Matrix m2) {
         if (isNotEqualsDimensions(m1, m2))
