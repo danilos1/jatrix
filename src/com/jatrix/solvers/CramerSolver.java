@@ -23,6 +23,9 @@ public class CramerSolver {
     }
 
     public CramerSolver(Matrix a, double[] b) {
+        if (!a.isSquare()) {
+            throw new SolverNotSupportedException("Matrix of must be squared");
+        }
         if (a.getRowDimension() != b.length)
             throw new MatrixSizeException("Matrix and constant's vector dimensions must be equaled");
         this.a = a.clone();
