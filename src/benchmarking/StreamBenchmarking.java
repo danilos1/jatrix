@@ -31,7 +31,7 @@ public class StreamBenchmarking {
         return matrix.stream().sum();
     }
 
-    @Benchmark
+    /*@Benchmark
     public double sumWithForCycleBenchmark() {
         double sum = 0;
         double[][] m = matrix.getMatrix();
@@ -45,7 +45,7 @@ public class StreamBenchmarking {
         }
 
         return sum;
-    }
+    }*/
 
     public static void main(String[] args) throws RunnerException {
         Options options = new OptionsBuilder().include(StreamBenchmarking.class.getSimpleName()).forks(1).build();
