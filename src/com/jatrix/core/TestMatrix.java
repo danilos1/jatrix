@@ -1,20 +1,19 @@
 package com.jatrix.core;
 
-import com.jatrix.decompositions.LUPDecomposition;
-import com.jatrix.solvers.CramerSolver;
-
-import java.io.File;
+import java.util.Arrays;
 
 public class TestMatrix {
     public static void main(String[] args) {
-        Matrix coefficients = new Matrix(new double[][]{
-                { -5, 3, -1 },
-                {  0, 8,  2 },
+        Matrix matrix = new Matrix(new double[][]{
+                {1, -9.6, 3, 5.7},
+                {-1, 4, 4, 9},
         });
+        double[] expected = {1, -9.6, 3, 5.7,-1, 4, 4, 9};
 
-        double[] b = {1, -5};
+        // Act
+        double[] actual = matrix.stream().toArray();
 
-        CramerSolver solver = new CramerSolver(coefficients, b);
-        System.out.println(solver);
+
+        System.out.println(Arrays.toString(actual));
     }
 }

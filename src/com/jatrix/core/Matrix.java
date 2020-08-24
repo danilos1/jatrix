@@ -9,7 +9,6 @@ import java.util.stream.StreamSupport;
 /**
  * Matrix class is used as a representation of a simple matrix
  */
-
 public class Matrix implements Cloneable, Iterable<Double> {
     private double[][] matrix;
     private final int row, col;
@@ -152,6 +151,9 @@ public class Matrix implements Cloneable, Iterable<Double> {
      * (a matrix with ones on the main diagonal and zeros elsewhere).
      */
     public Matrix identity() {
+        if (row != col) {
+            throw new MatrixSizeException("Matrix must be squared to identity");
+        }
         matrix = new double[row][col];
         for (int i = 0; i < row; i++) {
             matrix[i][i] = 1;
