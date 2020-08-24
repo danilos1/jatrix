@@ -31,21 +31,21 @@ public class StreamBenchmarking {
         return matrix.stream().sum();
     }
 
-    @Benchmark
-    public double sumWithForCycleBenchmark() {
-        double sum = 0;
-        double[][] m = matrix.getMatrix();
-        int rows = m.length;
-        int cols = m[0].length;
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                sum+=m[i][j];
-            }
-        }
-
-        return sum;
-    }
+//    @Benchmark
+//    public double sumWithForCycleBenchmark() {
+//        double sum = 0;
+//        double[][] m = matrix.getMatrix();
+//        int rows = m.length;
+//        int cols = m[0].length;
+//
+//        for (int i = 0; i < rows; i++) {
+//            for (int j = 0; j < cols; j++) {
+//                sum+=m[i][j];
+//            }
+//        }
+//
+//        return sum;
+//    }
 
     public static void main(String[] args) throws RunnerException {
         Options options = new OptionsBuilder().include(StreamBenchmarking.class.getSimpleName()).forks(1).build();
