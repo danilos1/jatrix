@@ -10,7 +10,6 @@ import com.jatrix.exceptions.MatrixSizeException;
 public class CholeskyDecomposition {
     private Matrix L;
     private Matrix Lt;
-    private int sign;
 
     /**
      * Constructs {@link CholeskyDecomposition} object, received a {@link Matrix} object to
@@ -42,7 +41,6 @@ public class CholeskyDecomposition {
         int size = A.getRowDimension();
         L = new Matrix(size).identity();
         Lt = new Matrix(size);
-        sign = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < i+1; j++) {
                 double sum = 0.0;
@@ -91,6 +89,6 @@ public class CholeskyDecomposition {
             double d = L.get(i, i);
             det *= d*d;
         }
-        return (sign & 0b1) == 0 ? det : -det;
+        return det;
     }
 }

@@ -356,7 +356,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
      * @return c array of numeric values
      */
     public double[] getColumn(int i) {
-        double[] c = new double[col];
+        double[] c = new double[row];
         for (int j = 0; j < row; j++) {
             c[j] = matrix[j][i];
         }

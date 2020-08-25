@@ -3,6 +3,8 @@ import com.jatrix.exceptions.MatrixSizeException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 public class MatrixTest {
 
     @Test
@@ -20,12 +22,10 @@ public class MatrixTest {
         Matrix actual = new Matrix(expectedArray);
         int actualRow = actual.getRowDimension();
         int actualCol = actual.getColumnDimension();
-        double[][] actualArray = actual.toArray();
 
         // Assert
-        Assert.assertEquals(expectedRow, actualRow);
-        Assert.assertEquals(expectedCol, actualCol);
-        //Assert.assertEquals(expectedArray, actualArray);
+        assertEquals(expectedRow, actualRow);
+        assertEquals(expectedCol, actualCol);
     }
 
     @Test(expected = MatrixSizeException.class)
@@ -58,9 +58,9 @@ public class MatrixTest {
         int actualCol = actual.getColumnDimension();
 
         // Assert
-        Assert.assertEquals(expected, actual);
-        Assert.assertEquals(expectedRow, actualRow);
-        Assert.assertEquals(expectedCol, actualCol);
+        assertEquals(expected, actual);
+        assertEquals(expectedRow, actualRow);
+        assertEquals(expectedCol, actualCol);
     }
 
     @Test
@@ -77,7 +77,7 @@ public class MatrixTest {
         Matrix actual = new Matrix(3,3, val);
 
         // Assert
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -97,8 +97,8 @@ public class MatrixTest {
 
 
         // Assert
-        Assert.assertEquals(expected, actual);
-        Assert.assertEquals(actualRow, actualCol);
+        assertEquals(expected, actual);
+        assertEquals(actualRow, actualCol);
     }
 
 
@@ -117,7 +117,7 @@ public class MatrixTest {
         Matrix actual = new Matrix(size, val);
 
         // Assert
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
 
@@ -130,7 +130,7 @@ public class MatrixTest {
         Matrix m = new Matrix(3,3).identity();
 
         // Assert
-        Assert.assertEquals(expected, m);
+        assertEquals(expected, m);
     }
 
 
@@ -157,7 +157,7 @@ public class MatrixTest {
         Matrix actual = m.getTranspose();
 
         // Assert
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -171,8 +171,8 @@ public class MatrixTest {
         boolean actual2 = matrix2.isSquare();
 
         // Assert
-        Assert.assertTrue(actual2);
-        Assert.assertFalse(actual1);
+        assertTrue(actual2);
+        assertFalse(actual1);
     }
 
     @Test
@@ -197,8 +197,8 @@ public class MatrixTest {
         boolean actual2 = m2.equals(m3);
 
         // Assert
-        Assert.assertTrue(actual1);
-        Assert.assertFalse(actual2);
+        assertTrue(actual1);
+        assertFalse(actual2);
     }
 
     @Test
@@ -208,13 +208,13 @@ public class MatrixTest {
                 {1, -9.6, 3, 5.7},
                 {-1, 4, 4, 9},
         });
-        double expected = 16.1;
+        double[] expectedArr = {1, -9.6, 3, 5.7,-1, 4, 4, 9};
 
         // Act
-        double actual = matrix.stream().sum();
+        double[] actualArr = matrix.stream().toArray();
 
         // Assert
-        Assert.assertEquals(expected, actual, 0.0001);
+        Assert.assertArrayEquals(expectedArr, actualArr, 1E-8);
     }
 
     @Test
@@ -322,7 +322,69 @@ public class MatrixTest {
         int actual2 = matrix2.hashCode();
 
         // Assert
-        Assert.assertNotEquals(actual1, actual2);
+        assertNotEquals(actual1, actual2);
     }
 
+    @Test
+    public void cloneTest_createCloneOfMatrix3x3_assertNotEquals() {
+        // Arrange
+        Matrix matrix = new Matrix(new double[][]{{2.9, -9, 12}, {3.5, 5.5, 6}, {-4, 2, -2}});
+        int expectedHashCode = matrix.hashCode();
+
+        // Act
+        Matrix clonedMatrix = matrix.clone();
+        int actualHashCode = clonedMatrix.hashCode();
+
+        assertNotEquals(expectedHashCode, actualHashCode);
+    }
+
+    @Test
+    public void getRowTest_getRowOfMatrix4x3_assertEquals() {
+        // Arrange
+        Matrix matrix = new Matrix(new double[][]{{5, 12, 13}, {3, 5, -6}, {2, 0, -8},{-0.5, 2, 1}});
+        double[] expectedRow = {2,0,-8};
+
+        // Act
+        double[] actualRow = matrix.getRow(2);
+
+        assertArrayEquals(expectedRow, actualRow, 1E-8);
+    }
+
+    @Test
+    public void getColumnTest_getRowOfMatrix4x3_assertEquals() {
+        // Arrange
+        Matrix matrix = new Matrix(new double[][]{{5, 12, 13}, {3, 5, -6}, {2, 0, -8},{-0.5, 2, 1}});
+        double[] expectedColumn = {12,5,0,2};
+
+        // Act
+        double[] actualColumn = matrix.getColumn(1);
+
+        assertArrayEquals(expectedColumn, actualColumn, 1E-8);
+    }
+
+    @Test
+    public void setRowTest_setRowOfMatrix4x3_assertEquals() {
+        // Arrange
+        Matrix matrix = new Matrix(new double[][]{{0, 1, 13}, {5, -7, 7}, {8, 0, -8},{9, 3, 1}});
+        Matrix newMatrix = matrix.clone();
+
+        // Act
+        double[] newRow = {9,9,5};
+        matrix.setRow(1, newRow);
+
+       assertNotEquals(matrix, newMatrix);
+    }
+
+    @Test
+    public void setColumnTest_setColumnOfMatrix4x3_assertEquals() {
+        // Arrange
+        Matrix matrix = new Matrix(new double[][]{{0, 1, 13}, {5, -7, 7}, {8, 0, -8},{9, 3, 1}});
+        Matrix newMatrix = matrix.clone();
+
+        // Act
+        double[] newColumn = {0,5,8,9};
+        matrix.setRow(0, newColumn);
+
+        assertNotEquals(matrix, newMatrix);
+    }
 }

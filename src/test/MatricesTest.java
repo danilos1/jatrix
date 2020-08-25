@@ -131,10 +131,10 @@ public class MatricesTest {
 
     @Test(expected = MatrixSizeException.class)
     public void inverseTest_inverseMatrix_assertMustBeThrownMatrixSizeException() {
+        // Arrange
         Matrix m1 = new Matrix(new double[][]{{1}, {4, 5}, {7, 8, 9}});
 
+        // Act
         Matrix m3 = Matrices.inverse(m1);
     }
-
-
 }
