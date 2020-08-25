@@ -11,7 +11,10 @@ import java.util.stream.StreamSupport;
  */
 public class Matrix implements Cloneable, Iterable<Double> {
     private double[][] matrix;
+
+
     private final int row, col;
+
 
     /**
      * Assigns a new specified matrix, defined as a two-dimensional array to a current matrix.

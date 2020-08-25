@@ -1,4 +1,5 @@
 import com.jatrix.core.Matrix;
+import com.jatrix.core.MatrixIterator;
 import com.jatrix.exceptions.MatrixSizeException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -33,7 +34,7 @@ public class MatrixTest {
         // Arrange
         double[][] a = {
                 {1, 2},
-                {4   }
+                {4}
         };
 
         // Act
@@ -44,16 +45,16 @@ public class MatrixTest {
     public void constructor2Test_createdMatrix4x3_assertEquals() {
         // Arrange
         Matrix expected = new Matrix(new double[][]{
-                {0,0,0},
-                {0,0,0},
-                {0,0,0},
-                {0,0,0}
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
         });
         int expectedRow = 4;
         int expectedCol = 3;
 
         // Act
-        Matrix actual = new Matrix(4,3);
+        Matrix actual = new Matrix(4, 3);
         int actualRow = actual.getRowDimension();
         int actualCol = actual.getColumnDimension();
 
@@ -68,13 +69,13 @@ public class MatrixTest {
         // Arrange
         int val = 4;
         Matrix expected = new Matrix(new double[][]{
-                {val,val,val},
-                {val,val,val},
-                {val,val,val},
+                {val, val, val},
+                {val, val, val},
+                {val, val, val},
         });
 
         // Act
-        Matrix actual = new Matrix(3,3, val);
+        Matrix actual = new Matrix(3, 3, val);
 
         // Assert
         assertEquals(expected, actual);
@@ -84,9 +85,9 @@ public class MatrixTest {
     public void constructor3Test_createdMatrix3x3_assertEquals() {
         // Arrange
         Matrix expected = new Matrix(new double[][]{
-                {0,0,0},
-                {0,0,0},
-                {0,0,0},
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0},
         });
 
         // Act
@@ -107,9 +108,9 @@ public class MatrixTest {
         // Arrange
         double val = 2;
         Matrix expected = new Matrix(new double[][]{
-                {val,val,val},
-                {val,val,val},
-                {val,val,val},
+                {val, val, val},
+                {val, val, val},
+                {val, val, val},
         });
 
         // Act
@@ -124,10 +125,10 @@ public class MatrixTest {
     @Test
     public void identityTest_matrixIsChangedToIdentity_assertTrue() {
         // Arrange
-        Matrix expected = new Matrix(new double[][]{{1,0,0},{0,1,0},{0,0,1}});
+        Matrix expected = new Matrix(new double[][]{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}});
 
         // Act
-        Matrix m = new Matrix(3,3).identity();
+        Matrix m = new Matrix(3, 3).identity();
 
         // Assert
         assertEquals(expected, m);
@@ -137,7 +138,7 @@ public class MatrixTest {
     @Test(expected = MatrixSizeException.class)
     public void identityTest_matrixIsChangedToIdentity_assertMust() {
         // Arrange
-        Matrix matrix = new Matrix(3,4);
+        Matrix matrix = new Matrix(3, 4);
 
         // Act
         matrix.identity();
@@ -146,11 +147,11 @@ public class MatrixTest {
     @Test
     public void getTransposeTest_getTransposedMatrix2x3_assertEquals() {
         // Arrange
-        Matrix m = new Matrix(new double[][]{{-5, 0, 6},{3.4, 5, -8}});
+        Matrix m = new Matrix(new double[][]{{-5, 0, 6}, {3.4, 5, -8}});
         Matrix expected = new Matrix(new double[][]{
                 {-5, 3.4},
-                { 0, 5},
-                { 6,-8},
+                {0, 5},
+                {6, -8},
         });
 
         // Act
@@ -163,8 +164,8 @@ public class MatrixTest {
     @Test
     public void isSquareTest_checkIfMatrixIsSquare_assertTrueFalse() {
         // Arrange
-        Matrix matrix1 = new Matrix(3,4);
-        Matrix matrix2 = new Matrix(2,2);
+        Matrix matrix1 = new Matrix(3, 4);
+        Matrix matrix2 = new Matrix(2, 2);
 
         // Act
         boolean actual1 = matrix1.isSquare();
@@ -208,7 +209,7 @@ public class MatrixTest {
                 {1, -9.6, 3, 5.7},
                 {-1, 4, 4, 9},
         });
-        double[] expectedArr = {1, -9.6, 3, 5.7,-1, 4, 4, 9};
+        double[] expectedArr = {1, -9.6, 3, 5.7, -1, 4, 4, 9};
 
         // Act
         double[] actualArr = matrix.stream().toArray();
@@ -220,8 +221,8 @@ public class MatrixTest {
     @Test
     public void isPairTest_checkIfMatrixIsPair_assertTrueFalse() {
         // Arrange
-        Matrix m1 = new Matrix(new double[][]{{1,2},{3,4}});
-        Matrix m2 = new Matrix(new double[][]{{1,2,3},{4,5,6}});
+        Matrix m1 = new Matrix(new double[][]{{1, 2}, {3, 4}});
+        Matrix m2 = new Matrix(new double[][]{{1, 2, 3}, {4, 5, 6}});
 
         // Act
         boolean actual1 = m1.isPair();
@@ -240,7 +241,7 @@ public class MatrixTest {
                 {0, 12},
                 {5.6, -4.3},
         });
-        Matrix expectedMatrix = new Matrix(new double[][]{{0,0},{0,0},{0,0}});
+        Matrix expectedMatrix = new Matrix(new double[][]{{0, 0}, {0, 0}, {0, 0}});
 
 
         // Act
@@ -335,56 +336,77 @@ public class MatrixTest {
         Matrix clonedMatrix = matrix.clone();
         int actualHashCode = clonedMatrix.hashCode();
 
+        // Assert
         assertNotEquals(expectedHashCode, actualHashCode);
     }
 
     @Test
     public void getRowTest_getRowOfMatrix4x3_assertEquals() {
         // Arrange
-        Matrix matrix = new Matrix(new double[][]{{5, 12, 13}, {3, 5, -6}, {2, 0, -8},{-0.5, 2, 1}});
-        double[] expectedRow = {2,0,-8};
+        Matrix matrix = new Matrix(new double[][]{{5, 12, 13}, {3, 5, -6}, {2, 0, -8}, {-0.5, 2, 1}});
+        double[] expectedRow = {2, 0, -8};
 
         // Act
         double[] actualRow = matrix.getRow(2);
 
+        // Assert
         assertArrayEquals(expectedRow, actualRow, 1E-8);
     }
 
     @Test
     public void getColumnTest_getRowOfMatrix4x3_assertEquals() {
         // Arrange
-        Matrix matrix = new Matrix(new double[][]{{5, 12, 13}, {3, 5, -6}, {2, 0, -8},{-0.5, 2, 1}});
-        double[] expectedColumn = {12,5,0,2};
+        Matrix matrix = new Matrix(new double[][]{{5, 12, 13}, {3, 5, -6}, {2, 0, -8}, {-0.5, 2, 1}});
+        double[] expectedColumn = {12, 5, 0, 2};
 
         // Act
         double[] actualColumn = matrix.getColumn(1);
 
+        // Assert
         assertArrayEquals(expectedColumn, actualColumn, 1E-8);
     }
 
     @Test
     public void setRowTest_setRowOfMatrix4x3_assertEquals() {
         // Arrange
-        Matrix matrix = new Matrix(new double[][]{{0, 1, 13}, {5, -7, 7}, {8, 0, -8},{9, 3, 1}});
+        Matrix matrix = new Matrix(new double[][]{{0, 1, 13}, {5, -7, 7}, {8, 0, -8}, {9, 3, 1}});
         Matrix newMatrix = matrix.clone();
 
         // Act
-        double[] newRow = {9,9,5};
+        double[] newRow = {9, 9, 5};
         matrix.setRow(1, newRow);
 
-       assertNotEquals(matrix, newMatrix);
+        // Assert
+        assertNotEquals(matrix, newMatrix);
     }
 
     @Test
     public void setColumnTest_setColumnOfMatrix4x3_assertEquals() {
         // Arrange
-        Matrix matrix = new Matrix(new double[][]{{0, 1, 13}, {5, -7, 7}, {8, 0, -8},{9, 3, 1}});
+        Matrix matrix = new Matrix(new double[][]{{0, 1, 13}, {5, -7, 7}, {8, 0, -8}, {9, 3, 1}});
         Matrix newMatrix = matrix.clone();
 
         // Act
-        double[] newColumn = {0,5,8,9};
-        matrix.setRow(0, newColumn);
+        double[] newColumn = {8, 3, 0, -6};
+        matrix.setColumn(0, newColumn);
 
+        // Assert
         assertNotEquals(matrix, newMatrix);
+    }
+
+    @Test
+    public void iteratorTest_getAnIteratorOfMatrix2x2_assertEquals() {
+        // Arrange
+        Matrix matrix = new Matrix(new double[][]{{9, 0.5}, {6, -5.4}});
+        double expectedNext = 9;
+
+        // Act
+        MatrixIterator matrixIterator = matrix.iterator();
+        boolean actualHasNext = matrixIterator.hasNext();
+        double actualNext = matrixIterator.next();
+
+        // Assert
+        assertTrue(actualHasNext);
+        assertEquals(expectedNext, actualNext, 1E-8);
     }
 }

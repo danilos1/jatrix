@@ -11,10 +11,14 @@ import static org.junit.Assert.assertNotEquals;
 
 public class TestMatrix {
     public static void main(String[] args) {
-        Matrix matrix = new Matrix(new double[][]{{5, 12, 13}, {3, 5, -6}, {2, 0, -8},{-0.5, 2, 1}});
-        double[] expectedColumn = {12,5,0,2};
+        Matrix matrix = new Matrix(new double[][]{{0, 1, 13}, {5, -7, 7}, {8, 0, -8},{9, 3, 1}});
+        Matrix newMatrix = matrix.clone();
 
         // Act
-        double[] actualColumn = matrix.getColumn(1);
+        double[] newColumn = {0,5,8,9};
+        matrix.setColumn(0, newColumn);
+
+        System.out.println(matrix.prettyOut());
+        System.out.println(newMatrix.prettyOut());
     }
 }
