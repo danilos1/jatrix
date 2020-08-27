@@ -4,6 +4,7 @@ package benchmarking;
 import com.jatrix.core.Matrices;
 import com.jatrix.core.Matrix;
 import com.jatrix.solvers.CramerSolver;
+import com.jatrix.solvers.GaussSolver;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -39,6 +40,12 @@ public class SolversBenchmarking {
     public double[] CramerSolverBenchmark() {
         CramerSolver cramerSolver = new CramerSolver(matrix, constants);
         return cramerSolver.getRoots();
+    }
+
+    @Benchmark
+    public double[] GaussSolverBenchmark() {
+        GaussSolver gaussSolver = new GaussSolver(matrix, constants);
+        return gaussSolver.getRoots();
     }
 
 
