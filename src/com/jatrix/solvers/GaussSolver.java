@@ -7,6 +7,10 @@ import com.jatrix.exceptions.MatrixSingularException;
 import com.jatrix.exceptions.MatrixSizeException;
 import com.jatrix.exceptions.SolverNotSupportedException;
 
+/**
+ * Class for solution of a quadratic system of linear algebraic equations with nonzero determinant of a {@link Matrix}
+ * object.
+ */
 
 public class GaussSolver {
     private Matrix matrix;
@@ -14,6 +18,10 @@ public class GaussSolver {
     private double[] x;
 
 
+    /**
+     * Gets roots of solving a system of linear equations.
+     * @return roots of solving a system of linear equations into an array.
+     */
     public double[] getRoots() {
         return x;
     }
@@ -23,12 +31,19 @@ public class GaussSolver {
         return b;
     }
 
-
+    /**
+     * Gets a {@link Matrix} object, representing a set of unknown variables.
+     * @return Matrix object
+     */
     public Matrix getMatrix() {
         return matrix;
     }
 
-
+    /**
+     * Constructs a GaussSolver object received a matrix and array of coefficients.
+     * @param matrix Matrix object, representing a matrix of unknown variables.
+     * @param b a coefficients array in the right part of the system of equations.
+     */
     public GaussSolver(Matrix matrix, double[] b) {
         if (!matrix.isSquare()) {
             throw new SolverNotSupportedException("Matrix of must be squared");
