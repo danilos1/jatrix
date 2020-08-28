@@ -94,7 +94,7 @@ There are some features of Jatrix library:
 
 ## <a name="docs">Documentation</a>
 
-All ```Jatrix API``` is stored in [JavaDoc](https://github.com/danilos1/jatrix/blob/master/docs/)
+All ```Jatrix API``` is stored in [JavaDoc](https://github.com/danilos1/jatrix/blob/master/docs/).
 
 ## License
 
