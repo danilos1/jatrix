@@ -8,7 +8,7 @@
 </p>
 
 
-## A library for performing different operations with matrices
+## A poweful library for performing different operations with matrices
 
 Hi there! Jatrix is a new library for performing different operations with matrices. There are some operations with matrices: summation, subtraction, multiplying, trasposition, inversion, solving a system of linear equations, decompostitions, etc. The library is focused on performance and simplicity. In the [benchmarking](https://github.com/danilos1/jatrix/tree/master/src/benchmarking) package you find benchmarks of some solutions.
 <hr>
