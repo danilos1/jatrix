@@ -8,7 +8,7 @@
   <artifactId>jatrix</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>Jatrix</name>
+  <name>jatrix</name>
   <description>
     Jatrix is a powerful library for performing different operations with matrices
   </description>
