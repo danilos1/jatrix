@@ -8,9 +8,39 @@
   <artifactId>jatrix</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>jatrix</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>Jatrix</name>
+  <description>
+    Jatrix is a powerful library for performing different operations with matrices
+  </description>
+  <url>https://github.com/danilos1/jatrix</url>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://github.com/danilos1/jatrix/blob/master/LICENSE</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Danil Solovjov</name>
+      <email>mr.danechek0@gmail.com</email>
+      <organization>com.jatrix</organization>
+      <organizationUrl>https://github.com/danilos1/</organizationUrl>
+    </developer>
+    <developer>
+      <name>Dmytro Tymochko</name>
+      <email>dima.tumochko@gmail.com</email>
+      <organization>com.jatrix</organization>
+      <organizationUrl>https://github.com/Dima2057/</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/danilos1/jatrix.git</connection>
+    <developerConnection>scm:git:ssh://github.com:danilos1/jatrix.git</developerConnection>
+    <url>http://github.com/danilos1/jatrix/tree/master</url>
+  </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
