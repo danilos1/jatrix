@@ -188,5 +188,70 @@ public class MatrixStatsTest {
         Assert.assertEquals(expected, actual, 1e-8);
     }
 
+    @Test
+    public void rowAverageTest_rowAverageOfMatrix_assertEquals() {
+        // Arrange
+        Matrix m1 = new Matrix(new double[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+        double[] expected = new double[]{2, 5, 8};
+
+        // Act
+        double actual[] = MatrixStats.rowAverage(m1);
+
+        // Assert
+        Assert.assertArrayEquals(expected, actual, 1e-8);
+    }
+
+    @Test
+    public void columnAverageTest_columnAverageOfMatrix_assertEquals() {
+        // Arrange
+        Matrix m1 = new Matrix(new double[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+        double[] expected = new double[]{4, 5, 6};
+
+        // Act
+        double actual[] = MatrixStats.columnAverage(m1);
+
+        // Assert
+        Assert.assertArrayEquals(expected, actual, 1e-8);
+    }
+
+    @Test
+    public void matrixAverageTest_averageNumberOfMatrix_assertEquals() {
+        // Arrange
+        Matrix m1 = new Matrix(new double[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+        double expected = 5;
+
+        // Act
+        double actual = MatrixStats.matrixAverage(m1);
+
+        // Assert
+        Assert.assertEquals(expected, actual, 1e-8);
+    }
+
+    @Test
+    public void rowAverageIndexTest_rowAverageOfMatrixWithGivenIndex_assertEquals() {
+        // Arrange
+        Matrix m1 = new Matrix(new double[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+        double expected = 2;
+
+        // Act
+        double actual = MatrixStats.rowAverage(m1, 0);
+
+        // Assert
+        Assert.assertEquals(expected, actual, 1e-8);
+    }
+
+    @Test
+    public void columnAverageIndexTest_rowAverageOfMatrixWithGivenIndex_assertEquals() {
+        // Arrange
+        Matrix m1 = new Matrix(new double[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+        double expected = 6;
+
+        // Act
+        double actual = MatrixStats.columnAverage(m1, 2);
+
+        // Assert
+        Assert.assertEquals(expected, actual, 1e-8);
+    }
+
 
 }
