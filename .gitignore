@@ -3,6 +3,8 @@ syntax: glob
 
 *.iml
 .idea
+mvn
+pom.xml
 target
 
 
