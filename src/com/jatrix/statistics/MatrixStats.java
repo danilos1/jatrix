@@ -2,6 +2,7 @@ package com.jatrix.statistics;
 
 import com.jatrix.core.Matrix;
 
+
 /**
  * Class for performing general statistical calculations such as min/max, average value etc. of a {@link Matrix} object.
  */
@@ -187,6 +188,91 @@ public class MatrixStats {
         return minElement;
     }
 
+    /**
+     * Finds an average element of the each row of the specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return rowAverage array of average matrix numbers
+     */
+    public static double[] rowAverage(Matrix matrix) {
+        double[] rowAverage = new double[matrix.getRowDimension()];
+        for (int i = 0; i < matrix.getRowDimension(); i++) {
+            double average = 0;
+            for (int j = 0; j < matrix.getColumnDimension(); j++) {
+                average +=  matrix.get(i, j);
+            }
+            rowAverage[i] = average / matrix.getColumnDimension();
+        }
+        return rowAverage;
+    }
+
+    /**
+     * Finds an average element of the each column of the specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return columnAverage array of average matrix numbers
+     */
+    public static double[] columnAverage(Matrix matrix) {
+        double[] columnAverage = new double[matrix.getRowDimension()];
+        for (int i = 0; i < matrix.getRowDimension(); i++) {
+            double average = 0;
+            for (int j = 0; j < matrix.getColumnDimension(); j++) {
+                average +=  matrix.get(j, i);
+            }
+            columnAverage[i] = average / matrix.getRowDimension();
+        }
+        return columnAverage;
+    }
+
+    /**
+     * Find an average element of the specified matrix.
+     * @param matrix {@link Matrix} object.
+     * @return matrixAverage an average matrix number
+     */
+    public static double matrixAverage(Matrix matrix) {
+        double matrixAverage = 0;
+        double average = 0;
+        for (int i = 0; i < matrix.getRowDimension(); i++) {
+            for (int j = 0; j < matrix.getColumnDimension(); j++) {
+                 average +=  matrix.get(i, j);
+            }
+            matrixAverage = average / (matrix.getRowDimension() * matrix.getColumnDimension());
+        }
+        return matrixAverage;
+    }
+
+    /**
+     * Finds an average element of the each row of the specified matrix for a given row index.
+     * @param matrix {@link Matrix} object.
+     * @param index matrix row index.
+     * @return rowAverage array of average matrix numbers
+     */
+    public static double rowAverage(Matrix matrix, int index) {
+        double rowAverage = 0;
+        for (int i = 0; i < matrix.getRowDimension(); i++) {
+            double average = 0;
+            for (int j = 0; j < matrix.getColumnDimension(); j++) {
+                average +=  matrix.get(index, j);
+            }
+            rowAverage = average / matrix.getColumnDimension();
+        }
+        return rowAverage;
+    }
+
+    /**
+     * Finds an average element of the each column of the specified matrix for a given column index.
+     * @param matrix {@link Matrix} object.
+     * @param index matrix column index.
+     * @return columnAverage array of average matrix numbers
+     */
+    public static double columnAverage(Matrix matrix, int index) {
+        double columnAverage = 0;
+        double average = 0;
+        for (int i = 0; i < matrix.getRowDimension(); i++) {
+            average +=  matrix.get(i, index);
+        }
+        columnAverage = average / matrix.getRowDimension();
+        return columnAverage;
+    }
+
 
     /**
      * Finds a maximum value of the specified matrix for a given column index.
@@ -273,4 +359,19 @@ public class MatrixStats {
         }
         return maxElements;
     }
+
+    public static double minRows(Matrix matrix, int index) {
+        double minElements = 0;
+        for (int i = 0; i < matrix.getRowDimension(); i++) {
+            double min = matrix.get(index, 0);
+            for (int j = 0; j < matrix.getColumnDimension(); j++) {
+                if (matrix.get(index, j) < min) {
+                    min = matrix.get(index, j);
+                }
+            }
+            minElements = min;
+        }
+        return minElements;
+    }
+
 }
