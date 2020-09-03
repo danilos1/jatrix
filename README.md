@@ -1,6 +1,7 @@
 # Jatrix
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/danilos1/jatrix/blob/master/LICENSE)
+[![Maven Central](https://img.shields.io/badge/maven%20central-0.1-green)](https://search.maven.org/artifact/com.github.danilos1/jatrix/0.1/jar)
 
 
 <p align="center">
@@ -12,6 +13,20 @@
 
 Hi there! Jatrix is a new library for performing different operations with matrices. There are some operations with matrices: summation, subtraction, multiplying, trasposition, inversion, solving a system of linear equations, decompostitions, etc. The library is focused on performance and simplicity. In the [benchmarking](https://github.com/danilos1/jatrix/tree/master/src/main/java/benchmarking) package you find benchmarks of some solutions.
 <hr>
+
+## Download
+
+To download the library you the following dependencies:
+- Apache Maven:
+```
+  <dependency>
+    <groupId>com.github.danilos1</groupId>
+    <artifactId>jatrix</artifactId>
+    <version>0.1</version>
+  </dependency>
+```
+- Gradle Groovy DSL:
+```implementation 'com.github.danilos1:jatrix:0.1'```
 
 The ```Jatrix API``` is consist of the following sections:
 
