@@ -57,7 +57,7 @@ System.out.println(result.prettyOut());
 - ```exceptions``` section includes exceptions of the library.
 - In ```solvers``` section you'll find a tools for solving linear equations.
 
-To demonstrate one of a solvers, let's solver the following system of linear equation:
+To demonstrate one of solvers, let's solve the following system of linear equation:
   
    { -5*x1 + 3*x2 - x3 = 1<br>
    { 8*x2 + 2*x3 = -5<br>
