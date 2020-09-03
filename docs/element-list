@@ -1,7 +1,7 @@
 benchmarking
-com.jatrix.conversion
-com.jatrix.core
-com.jatrix.decompositions
-com.jatrix.exceptions
-com.jatrix.solvers
-com.jatrix.statistics
+com.com.jatrix.conversion
+com.com.jatrix.core
+com.com.jatrix.decompositions
+com.com.jatrix.exceptions
+com.com.jatrix.solvers
+com.com.jatrix.statistics
