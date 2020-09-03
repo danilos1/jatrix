@@ -193,84 +193,89 @@ public class MatrixStats {
      * @param matrix {@link Matrix} object.
      * @return rowAverage array of average matrix numbers
      */
-    public static double[] rowAverage(Matrix matrix) {
-        double[] rowAverage = new double[matrix.getRowDimension()];
-        for (int i = 0; i < matrix.getRowDimension(); i++) {
-            double average = 0;
+    public static double[] rowAvg(Matrix matrix) {
+        int len = matrix.getRowDimension();
+        double[] rowAverage = new double[len];
+        for (int i = 0; i < len; i++) {
+            double sum = 0;
             for (int j = 0; j < matrix.getColumnDimension(); j++) {
-                average +=  matrix.get(i, j);
+                sum +=  matrix.get(i, j);
             }
-            rowAverage[i] = average / matrix.getColumnDimension();
+            rowAverage[i] = sum / matrix.getColumnDimension();
         }
+
         return rowAverage;
     }
 
     /**
      * Finds an average element of the each column of the specified matrix.
-     * @param matrix {@link Matrix} object.
-     * @return columnAverage array of average matrix numbers
+     * @param matrix {@link Matrix} object
+     * @return an array of average matrix numbers
      */
-    public static double[] columnAverage(Matrix matrix) {
-        double[] columnAverage = new double[matrix.getRowDimension()];
-        for (int i = 0; i < matrix.getRowDimension(); i++) {
-            double average = 0;
+    public static double[] colAvg(Matrix matrix) {
+        int len = matrix.getRowDimension();
+        double[] columnAverage = new double[len];
+        for (int i = 0; i < len; i++) {
+            double sum = 0;
             for (int j = 0; j < matrix.getColumnDimension(); j++) {
-                average +=  matrix.get(j, i);
+                sum +=  matrix.get(j, i);
             }
-            columnAverage[i] = average / matrix.getRowDimension();
+            columnAverage[i] = sum / len;
         }
+
         return columnAverage;
     }
+
 
     /**
      * Find an average element of the specified matrix.
-     * @param matrix {@link Matrix} object.
-     * @return matrixAverage an average matrix number
+     * @param matrix {@link Matrix} object
+     * @return an average matrix number
      */
-    public static double matrixAverage(Matrix matrix) {
-        double matrixAverage = 0;
-        double average = 0;
+    public static double avg(Matrix matrix) {
+        int size = matrix.getRowDimension() * matrix.getColumnDimension();
+        double sum = 0;
         for (int i = 0; i < matrix.getRowDimension(); i++) {
             for (int j = 0; j < matrix.getColumnDimension(); j++) {
-                 average +=  matrix.get(i, j);
+                 sum +=  matrix.get(i, j);
             }
-            matrixAverage = average / (matrix.getRowDimension() * matrix.getColumnDimension());
         }
-        return matrixAverage;
+
+        return sum / size;
     }
 
-    /**
-     * Finds an average element of the each row of the specified matrix for a given row index.
-     * @param matrix {@link Matrix} object.
-     * @param index matrix row index.
-     * @return rowAverage array of average matrix numbers
-     */
-    public static double rowAverage(Matrix matrix, int index) {
-        double rowAverage = 0;
-        for (int i = 0; i < matrix.getRowDimension(); i++) {
-            double average = 0;
-            for (int j = 0; j < matrix.getColumnDimension(); j++) {
-                average +=  matrix.get(index, j);
-            }
-            rowAverage = average / matrix.getColumnDimension();
-        }
-        return rowAverage;
-    }
 
     /**
-     * Finds an average element of the each column of the specified matrix for a given column index.
-     * @param matrix {@link Matrix} object.
-     * @param index matrix column index.
-     * @return columnAverage array of average matrix numbers
+     * Finds an average element of the row of the specified matrix for a given row <code>index</code>.
+     * @param matrix {@link Matrix} object
+     * @param index of <code>matrix</code> row
+     * @return average of <code>matrix</code> row by the specified row <code>index</code>
      */
-    public static double columnAverage(Matrix matrix, int index) {
-        double columnAverage = 0;
-        double average = 0;
-        for (int i = 0; i < matrix.getRowDimension(); i++) {
-            average +=  matrix.get(i, index);
+    public static double rowAvg(Matrix matrix, int index) {
+        int len = matrix.getColumnDimension();
+        double sum = 0;
+        for (int j = 0; j < matrix.getColumnDimension(); j++) {
+            sum += matrix.get(index, j);
         }
-        columnAverage = average / matrix.getRowDimension();
-        return columnAverage;
+
+        return sum / len;
+    }
+
+
+    /**
+     * Finds an average element of the column of the specified matrix for a given column <code>index</code>.
+     * @param matrix {@link Matrix} object.
+     * @param index of <code>matrix</code> column.
+     * @return average of <code>matrix</code> column by the specified column <code>index</code>
+     */
+    public static double colAvg(Matrix matrix, int index) {
+        int len = matrix.getRowDimension();
+        double sum = 0;
+        for (int i = 0; i < len; i++) {
+            sum +=  matrix.get(i, index);
+        }
+
+        return sum / len;
     }
 
 
@@ -360,6 +365,14 @@ public class MatrixStats {
         return maxElements;
     }
 
+
+    /**
+     * Finds a minimum value of the specified matrix for a given row index.
+     * @param matrix {@link Matrix} object.
+     * @param index matrix row index
+     * @return minElements minimum by row of <code>index</code> position number.
+     * @see #minRows
+     */
     public static double minRows(Matrix matrix, int index) {
         double minElements = 0;
         for (int i = 0; i < matrix.getRowDimension(); i++) {
