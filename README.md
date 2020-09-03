@@ -16,7 +16,7 @@ Hi there! Jatrix is a new library for performing different operations with matri
 
 ## Download
 
-To download the library you the following dependencies:
+To download the library you need to use the following dependencies:
 - Apache Maven:
 ```
   <dependency>
