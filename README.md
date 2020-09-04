@@ -1,6 +1,7 @@
 # Jatrix
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/danilos1/jatrix/blob/master/LICENSE)
+[![Maven Central](https://img.shields.io/badge/maven%20central-0.1-green)](https://search.maven.org/artifact/com.github.danilos1/jatrix/0.1/jar)
 
 
 <p align="center">
@@ -10,10 +11,24 @@
 
 ## A poweful library for performing different operations with matrices
 
-Hi there! Jatrix is a new library for performing different operations with matrices. There are some operations with matrices: summation, subtraction, multiplying, trasposition, inversion, solving a system of linear equations, decompostitions, etc. The library is focused on performance and simplicity. In the [benchmarking](https://github.com/danilos1/jatrix/tree/master/src/benchmarking) package you find benchmarks of some solutions.
+Hi there! Jatrix is a new library for performing different operations with matrices. There are some operations with matrices: summation, subtraction, multiplying, trasposition, inversion, solving a system of linear equations, decompostitions, etc. The library is focused on performance and simplicity. In the [benchmarking](https://github.com/danilos1/jatrix/tree/master/src/main/java/benchmarking) package you find benchmarks of some solutions.
 <hr>
 
-The ```Jatrix API``` is consist of the following sections:
+## Download
+
+To download the library you need to use the following dependencies:
+- Apache Maven:
+```
+  <dependency>
+    <groupId>com.github.danilos1</groupId>
+    <artifactId>jatrix</artifactId>
+    <version>0.1</version>
+  </dependency>
+```
+- Gradle Groovy DSL:
+```implementation 'com.github.danilos1:jatrix:0.1'```
+
+The ```Jatrix API``` is consisted of the following sections:
 
 <p align="center">
   <img src="https://github.com/danilos1/jatrix/blob/master/images/api.png"/>
@@ -42,7 +57,7 @@ System.out.println(result.prettyOut());
 - ```exceptions``` section includes exceptions of the library.
 - In ```solvers``` section you'll find a tools for solving linear equations.
 
-To demonstrate one of a solvers, let's solver the following system of linear equation:
+To demonstrate one of solvers, let's solve the following system of linear equation:
   
    { -5*x1 + 3*x2 - x3 = 1<br>
    { 8*x2 + 2*x3 = -5<br>
