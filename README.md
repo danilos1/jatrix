@@ -14,6 +14,15 @@
 Hi there! Jatrix is a new library for performing different operations with matrices. There are some operations with matrices: summation, subtraction, multiplying, trasposition, inversion, solving a system of linear equations, decompostitions, etc. The library is focused on performance and simplicity. In the [benchmarking](https://github.com/danilos1/jatrix/tree/master/src/main/java/benchmarking) package you find benchmarks of some solutions.
 <hr>
 
+## Features
+
+There are some features of Jatrix library:
+- A straightforward API.
+- Strassen multiplying (more faster than default matrix product, you can see the result of comparison at [samples](https://github.com/danilos1/jatrix/blob/master/samples/) directory
+  of the matrix multiplications).
+- Comfortable output methods. Printing out to .md, .txt and .html files in a pretty form.   
+- A vast numbers of methods for enjoyable development.
+
 ## Download
 
 To download the library you need to use the following dependencies:
@@ -55,7 +64,7 @@ System.out.println(result.prettyOut());
 ```
      
 - ```exceptions``` section includes exceptions of the library.
-- In ```solvers``` section you'll find a tools for solving linear equations.
+- In ```solvers``` section you'll find tools for solving linear equations.
 
 To demonstrate one of solvers, let's solve the following system of linear equation:
   
@@ -76,7 +85,7 @@ To demonstrate one of solvers, let's solve the following system of linear equati
    System.out.println(solver);
    ```
    
-- ```decompositions``` sections is used for decomposing some matrix (See [Matrix decomposition](https://en.wikipedia.org/wiki/Matrix_decomposition))
+- ```decompositions``` section is used for decomposing some matrix (See [Matrix decomposition](https://en.wikipedia.org/wiki/Matrix_decomposition))
 
 For example, let's decompose the matrix above:
 
@@ -93,19 +102,10 @@ For example, let's decompose the matrix above:
    System.out.println(lu.det());
 ```
 
-- ```converse``` block is used for changing a matrix somewise (swap matrix rows or columns, etc)
+- ```conversion``` block is used for changing a matrix somewise (swap matrix rows or columns, etc)
 - To find out some statistics such as maximum or minimum by row or column you can use ```statistics``` section.
 
 For detail information you should go to the [Documentation](#docs) page.
-
-## Features
-
-There are some features of Jatrix library:
-- A straightforward API.
-- Strassen multiplying (more faster than default matrix product, you can see the result of comparison at [samples](https://github.com/danilos1/jatrix/blob/master/samples/) directory
-  of the matrix multiplications).
-- Comfortable output methods. Printing out to markdown or text file in a pretty form.   
-- A vast numbers of methods for enjoyable development.
 
 ## <a name="docs">Documentation</a>
 
