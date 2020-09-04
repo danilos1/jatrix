@@ -11,6 +11,7 @@ public final class StrassenProduct {
 
     private StrassenProduct() {}
 
+
     /**
      * Multiplies two matrices by Strassen's algorithm.
      * @param m1 the first Matrix operand to multiplying operation.
@@ -41,6 +42,7 @@ public final class StrassenProduct {
         return join(c11, c12, c21, c22);
     }
 
+
     /**
      * Splits parent matrix into four child matrices.
      * @param A parent Matrix object, which is divided by 4 child Matrix objects.
@@ -62,6 +64,7 @@ public final class StrassenProduct {
 
         return new Matrix[]{a11, a12, a21, a22};
     }
+
 
     /**
      * Joins four child matrices into one parent Matrix object.

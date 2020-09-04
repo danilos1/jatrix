@@ -11,6 +11,7 @@ public class CholeskyDecomposition {
     private Matrix L;
     private Matrix Lt;
 
+
     /**
      * Constructs {@link CholeskyDecomposition} object, received a {@link Matrix} object to
      * decompose a matrix into Cholesky decomposition method.
@@ -25,6 +26,7 @@ public class CholeskyDecomposition {
                     A.getRowDimension() + " by " + A.getColumnDimension());
         decompose(A);
     }
+
 
     private void decompose(Matrix A) {
         if (!A.equals(A.getTranspose())) {
@@ -63,6 +65,7 @@ public class CholeskyDecomposition {
         Lt = L.getTranspose();
     }
 
+
     /**
      * Gets a lower-triangular matrix.
      * @return Matrix object
@@ -71,6 +74,7 @@ public class CholeskyDecomposition {
         return L;
     }
 
+
     /**
      * Gets a lower-triangular transposed matrix
      * @return Matrix object
@@ -78,6 +82,7 @@ public class CholeskyDecomposition {
     public Matrix getLt() {
         return Lt;
     }
+
 
     /**
      * Gets determinant of a Matrix object.

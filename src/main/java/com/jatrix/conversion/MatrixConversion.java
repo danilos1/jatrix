@@ -9,6 +9,7 @@ public class MatrixConversion {
 
     private MatrixConversion() {}
 
+
     /**
      * Swaps columns of a given matrix <code>m</code>
      * @param m Matrix object to swap rows.
@@ -21,6 +22,7 @@ public class MatrixConversion {
         m.setColumn(colIdx2, tempRow);
     }
 
+
     /**
      * Swaps rows of a given matrix <code>m</code>
      * @param m Matrix object to swap rows.
@@ -32,5 +34,4 @@ public class MatrixConversion {
         m.setRow(rowIdx1, m.getRow(rowIdx2));
         m.setRow(rowIdx2, tempRow);
     }
-
 }

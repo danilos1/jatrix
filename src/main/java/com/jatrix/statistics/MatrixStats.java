@@ -188,6 +188,7 @@ public class MatrixStats {
         return minElement;
     }
 
+
     /**
      * Finds an average element of the each row of the specified matrix.
      * @param matrix {@link Matrix} object.
@@ -206,6 +207,7 @@ public class MatrixStats {
 
         return rowAverage;
     }
+
 
     /**
      * Finds an average element of the each column of the specified matrix.
@@ -386,5 +388,4 @@ public class MatrixStats {
         }
         return minElements;
     }
-
 }

@@ -1,7 +1,6 @@
 package com.jatrix.printer;
 
 import com.jatrix.core.Matrix;
-
 import java.io.*;
 
 /**
@@ -9,6 +8,7 @@ import java.io.*;
  */
 public class MatrixPrinter {
     private Matrix matrix;
+
 
     /**
      * Constructs a MatrixPrinter object, received a matrix
@@ -69,6 +69,7 @@ public class MatrixPrinter {
             return false;
         }
     }
+
 
     /**
      * Saves a matrix in a pretty form as a .md (Markdown) file

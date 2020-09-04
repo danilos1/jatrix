@@ -13,9 +13,6 @@ import java.util.Random;
 
 public class Matrices {
 
-    /**
-     *
-     */
     private Matrices() {
     }
 

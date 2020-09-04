@@ -138,6 +138,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
     }
 
+
     /**
      * Constructs a Matrix object, received a size, which is a quantity of rows and columns simultaneously.
      * @param size quantity of rows and columns simultaneously.
@@ -163,6 +164,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return this;
     }
+
 
     /**
      * Constructs a Matrix object, which has size by size dimensions and fills a matrix with some value <code>val</code>.
@@ -213,6 +215,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return true;
     }
+
 
     /**
      * A method for supporting a Stream API with matrices
@@ -273,6 +276,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         return this.prettyOut(3);
     }
 
+
     /**
      * Prints out a matrix in a pretty form, which means an output of the matrix with equal indents.
      * @param accuracy number of decimal places.
@@ -322,6 +326,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
         }
         return matrix;
     }
+
 
     /**
      * Assigns new values of <code>newCol</code> array for the matrix row at <code>i</code> index position.

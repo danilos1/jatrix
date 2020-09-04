@@ -106,6 +106,7 @@ public class LUPDecomposition {
         return pA;
     }
 
+
     /**
      * Gets determinant of a Matrix object.
      * @return double value, representing determinant of Matrix object.

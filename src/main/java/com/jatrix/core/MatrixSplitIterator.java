@@ -1,6 +1,5 @@
 package com.jatrix.core;
 
-import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.function.DoubleConsumer;
 
@@ -13,6 +12,7 @@ public class MatrixSplitIterator implements Spliterator.OfDouble {
     private final double[][] matrix;
     private int start, end;
     private int row, col;
+
 
     /**
      * Constructs a MatrixSplitIterator object, received a two-dimensional array underlying matrix.

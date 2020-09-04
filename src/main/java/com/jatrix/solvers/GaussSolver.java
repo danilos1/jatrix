@@ -2,7 +2,6 @@ package com.jatrix.solvers;
 
 import com.jatrix.conversion.MatrixConversion;
 import com.jatrix.core.Matrix;
-import com.jatrix.decompositions.LUDecomposition;
 import com.jatrix.exceptions.MatrixSingularException;
 import com.jatrix.exceptions.MatrixSizeException;
 import com.jatrix.exceptions.SolverNotSupportedException;
@@ -31,6 +30,7 @@ public class GaussSolver {
         return b;
     }
 
+
     /**
      * Gets a {@link Matrix} object, representing a set of unknown variables.
      * @return Matrix object
@@ -38,6 +38,7 @@ public class GaussSolver {
     public Matrix getMatrix() {
         return matrix;
     }
+
 
     /**
      * Constructs a GaussSolver object received a matrix and array of coefficients.

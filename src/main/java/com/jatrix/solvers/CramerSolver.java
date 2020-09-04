@@ -23,6 +23,7 @@ public class CramerSolver {
         return a;
     }
 
+
     /**
      * Gets roots of solving a system of linear equations.
      * @return roots of solving a system of linear equations into an array.
@@ -31,9 +32,11 @@ public class CramerSolver {
         return x;
     }
 
+
     public double[] getConstants() {
         return b;
     }
+
 
     /**
      * Constructs a CramerSolver object received a matrix and array of coefficients.

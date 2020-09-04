@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Measurement(iterations = 5)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class MultiplyingBenchmarking {
-    @Param({"32"})
+    @Param({"32","64","128","512", "1024"})
     int N;
 
     private Matrix A;

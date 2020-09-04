@@ -28,6 +28,7 @@ public class LUDecomposition {
         decompose(A);
     }
 
+
     private void decompose(Matrix A) {
         int size = A.getRowDimension();
         L = new Matrix(size).identity();
