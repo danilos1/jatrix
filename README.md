@@ -28,7 +28,7 @@ To download the library you need to use the following dependencies:
 - Gradle Groovy DSL:
 ```implementation 'com.github.danilos1:jatrix:0.1'```
 
-The ```Jatrix API``` is consist of the following sections:
+The ```Jatrix API``` is consisted of the following sections:
 
 <p align="center">
   <img src="https://github.com/danilos1/jatrix/blob/master/images/api.png"/>
