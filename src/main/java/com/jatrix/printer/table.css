@@ -1,0 +1,30 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	margin-left: 25px;
+	font-size: 25px;
+}
+
+table {
+	font-size: 20px;
+	color: #fff;
+}
+
+tr, td {
+	padding: 18px;
+	background-color: #71AFF5;
+}
+
+table, th, td {
+    border: 1px solid #fff;
+    border-collapse: collapse;
+}
+
+th {
+	padding: 18px;
+	background-color: #499CF5;
+}
+
+.thin_text {
+	font-weight: 100;
+}
+
