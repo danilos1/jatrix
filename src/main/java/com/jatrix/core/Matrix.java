@@ -148,6 +148,48 @@ public class Matrix implements Cloneable, Iterable<Double> {
         this(size, size);
     }
 
+    /**
+     * Fills matrix with random double values
+     * @return current matrix of randomly filled double values
+     */
+    public Matrix random() {
+        Random random = new Random();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                this.set(i,j, random.nextDouble());
+            }
+        }
+        return this;
+    }
+
+
+    /**
+     * Fills matrix with random int values within a <code>range</code>
+     * (from -<code>range</code> to +<code>range</code> bounds, inclusively)
+     * @return current matrix of randomly filled int values within a <code>range</code> bounds
+     */
+    public Matrix random(int range) {
+        return this.random(-range, range);
+    }
+
+
+    /**
+     * Fills matrix with random int values within a <code>range</code> (from <code>start</code> to <code>end</code>
+     * bounds, inclusively)
+     * @return current matrix of randomly filled int values within a range:
+     * from <code>start</code> to <code>end</code> bounds
+     */
+    public Matrix random(int start, int end) {
+        Random random = new Random();
+        int l = end - start + 1;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                this.set(i,j, random.nextInt(l) + start);
+            }
+        }
+        return this;
+    }
+
 
     /**
      * A method for converting the matrix to identity matrix.
