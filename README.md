@@ -76,7 +76,7 @@ To demonstrate one of solvers, let's solve the following system of linear equati
    System.out.println(solver);
    ```
    
-- ```decompositions``` sections is used for decomposing some matrix (See [Matrix decomposition](https://en.wikipedia.org/wiki/Matrix_decomposition))
+- ```decompositions``` section is used for decomposing some matrix (See [Matrix decomposition](https://en.wikipedia.org/wiki/Matrix_decomposition))
 
 For example, let's decompose the matrix above:
 
@@ -93,7 +93,7 @@ For example, let's decompose the matrix above:
    System.out.println(lu.det());
 ```
 
-- ```converse``` block is used for changing a matrix somewise (swap matrix rows or columns, etc)
+- ```conversion``` block is used for changing a matrix somewise (swap matrix rows or columns, etc)
 - To find out some statistics such as maximum or minimum by row or column you can use ```statistics``` section.
 
 For detail information you should go to the [Documentation](#docs) page.
