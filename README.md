@@ -55,7 +55,7 @@ System.out.println(result.prettyOut());
 ```
      
 - ```exceptions``` section includes exceptions of the library.
-- In ```solvers``` section you'll find a tools for solving linear equations.
+- In ```solvers``` section you'll find tools for solving linear equations.
 
 To demonstrate one of solvers, let's solve the following system of linear equation:
   
