@@ -270,27 +270,7 @@ public class Matrix implements Cloneable, Iterable<Double> {
      * @return output of matrix in a pretty form into String object.
      */
     public String prettyOut() {
-        StringBuilder sb = new StringBuilder();
-
-        double[] columnLengths = new double[col];
-        for (int i = 0; i < col; i++) {
-            int maxLength = String.valueOf((int)matrix[0][i]).length();
-            for (int j = 1; j < row; j++) {
-                int cur = String.valueOf((int) matrix[j][i]).length();
-                if (Math.abs(cur) > Math.abs(maxLength)) maxLength = cur;
-            }
-            columnLengths[i] = maxLength + 1;
-        }
-
-        for (int i = 0; i < row; i++) {
-            sb.append("| ");
-            for (int j = 0; j < col; j++) {
-                String format = "%-"+(columnLengths[j] + 4)+"3f | ";
-                sb.append(String.format(format, matrix[i][j]));
-            }
-            sb.append("\n");
-        }
-        return sb.toString();
+        return this.prettyOut(3);
     }
 
     /**

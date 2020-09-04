@@ -10,12 +10,6 @@ public class TestMatrix {
         Matrix matrix = new Matrix(5);
         Matrices.fillRandom(matrix);
 
-        MatrixPrinter printer = new MatrixPrinter(matrix);
-        try {
-            System.out.println(printer.saveAsHtml(
-                    new File("C:\\Users\\Admin\\IdeaProjects\\jatrix\\src\\main\\java\\com\\jatrix\\printer\\matrix.html"), 9));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        System.out.println(matrix.prettyOut(4));
     }
 }
