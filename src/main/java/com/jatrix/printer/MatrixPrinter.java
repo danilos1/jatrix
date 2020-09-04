@@ -32,8 +32,6 @@ public class MatrixPrinter {
             throw new FileNotFoundException("The file "+file.getName()+" does not match to .html format");
 
         try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file))){
-            /*StringBuilder sb = new StringBuilder("<h1>"+getTableTitle() + " table").append("</h1>\n");
-            sb.append("<h3>Description: <span class=\"thin_text\">")*/
             int row = matrix.getRowDimension();
             int col = matrix.getColumnDimension();
 
@@ -41,7 +39,7 @@ public class MatrixPrinter {
                     "<html lang=\"en\">\n" +
                     "<head>\n" +
                     "\t<meta charset=\"UTF-8\">\n" +
-                    "\t<title>Another web page</title>\n" +
+                    "\t<title>Matrix output</title>\n" +
                     "\t<link rel=\"stylesheet\" href=\"table.css\">\n" +
                     "\t<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap\" rel=\"stylesheet\">" +
                     "</head>\n" +
