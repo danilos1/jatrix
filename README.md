@@ -14,6 +14,15 @@
 Hi there! Jatrix is a new library for performing different operations with matrices. There are some operations with matrices: summation, subtraction, multiplying, trasposition, inversion, solving a system of linear equations, decompostitions, etc. The library is focused on performance and simplicity. In the [benchmarking](https://github.com/danilos1/jatrix/tree/master/src/main/java/benchmarking) package you find benchmarks of some solutions.
 <hr>
 
+## Features
+
+There are some features of Jatrix library:
+- A straightforward API.
+- Strassen multiplying (more faster than default matrix product, you can see the result of comparison at [samples](https://github.com/danilos1/jatrix/blob/master/samples/) directory
+  of the matrix multiplications).
+- Comfortable output methods. Printing out to markdown or text file in a pretty form.   
+- A vast numbers of methods for enjoyable development.
+
 ## Download
 
 To download the library you need to use the following dependencies:
@@ -97,15 +106,6 @@ For example, let's decompose the matrix above:
 - To find out some statistics such as maximum or minimum by row or column you can use ```statistics``` section.
 
 For detail information you should go to the [Documentation](#docs) page.
-
-## Features
-
-There are some features of Jatrix library:
-- A straightforward API.
-- Strassen multiplying (more faster than default matrix product, you can see the result of comparison at [samples](https://github.com/danilos1/jatrix/blob/master/samples/) directory
-  of the matrix multiplications).
-- Comfortable output methods. Printing out to markdown or text file in a pretty form.   
-- A vast numbers of methods for enjoyable development.
 
 ## <a name="docs">Documentation</a>
 
