@@ -20,7 +20,7 @@ There are some features of Jatrix library:
 - A straightforward API.
 - Strassen multiplying (more faster than default matrix product, you can see the result of comparison at [samples](https://github.com/danilos1/jatrix/blob/master/samples/) directory
   of the matrix multiplications).
-- Comfortable output methods. Printing out to markdown or text file in a pretty form.   
+- Comfortable output methods. Printing out to .md, .txt and .html files in a pretty form.   
 - A vast numbers of methods for enjoyable development.
 
 ## Download
