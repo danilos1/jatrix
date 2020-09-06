@@ -14,6 +14,7 @@ public class MatrixPrinter {
      * Constructs a MatrixPrinter object, received a matrix
      *
      * @param matrix basic matrix, which can be printed into a file
+     * @see #saveAsHtml(File, int)
      */
     public MatrixPrinter(Matrix matrix) {
         this.matrix = matrix;
@@ -21,9 +22,23 @@ public class MatrixPrinter {
 
 
     /**
+     * Saves a matrix in a pretty form as a .html file (a default accuracy is '3').
+     *
+     * @param file File object, where a matrix will be stored
+     * @return boolean result of the saving a file, true if file was successfully written and false elsewhere
+     * @throws FileNotFoundException if <code>file</code> format does not match to .html format
+     * @see #saveAsHtml(File, int)
+     */
+    public boolean saveAsHtml(File file) throws FileNotFoundException {
+        return this.saveAsHtml(file, 3);
+    }
+
+
+    /**
      * Saves a matrix in a pretty form as a .html file
      *
      * @param file File object, where a matrix will be stored
+     * @param accuracy is a number of decimal places (e.g. 0.365 - an accuracy is '3')
      * @return boolean result of the saving a file, true if file was successfully written and false elsewhere
      * @throws FileNotFoundException if <code>file</code> format does not match to .html format
      */
