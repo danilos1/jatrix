@@ -104,6 +104,24 @@ For example, let's decompose the matrix above:
 
 - ```conversion``` block is used for changing a matrix somewise (swap matrix rows or columns, etc)
 - To find out some statistics such as maximum or minimum by row or column you can use ```statistics``` section.
+- ```printer``` block is used for printing out a matrix into a .txt, .md or .html files. E.g. let's print out a random matrix to html file:
+  ```
+    Matrix a = new Matrix(new double[][]{
+        { -5, 3, -1 },
+        {  0, 8,  2 },
+        { 12, 7, -6 },
+     });
+
+     MatrixPrinter printer = new MatrixPrinter(a);
+     try {
+        a.saveAsHtml(new File(C://...matrix.html));
+     } catch (FileNotFoundException e) {
+        e.printStackTrace();
+     }
+  ```
+    And ```matrix.html``` looks as the following page:
+    ![matrix_out](https://github.com/danilos1/jatrix/blob/master/images/matrix_into_html.png "Printing out a matrix to matrix.html file")
+  
 
 For detail information you should go to the [Documentation](#docs) page.
 
